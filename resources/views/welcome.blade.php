@@ -102,7 +102,7 @@
     <!-- HERO SECTION -->
     <section class="relative bg-gradient-to-br from-sky-600 via-blue-500 to-cyan-500 overflow-hidden ">
         <div class="absolute inset-0 opacity-50">
-            <img src="https://images.unsplash.com/photo-1541872703-74c5e44368f9?w=1200" 
+            <img src="{{ asset('DPD-RI.png') }}" 
                  class="w-full h-full object-cover">
         </div>
         

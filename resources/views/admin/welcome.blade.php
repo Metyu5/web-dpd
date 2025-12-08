@@ -4,10 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login Admin - DPD RI Kota Gorontalo</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+        @vite('resources/css/app.css', 'resources/js/app.js')
+        <link rel="icon" href="{{ asset('DPD-RI.png') }}" type="image/png">
     <style>
-        /* Disable scrolling completely */
         html, body {
             margin: 0;
             padding: 0;
@@ -43,15 +42,17 @@
             filter: drop-shadow(0 4px 6px rgba(0, 0, 0, 0.1));
         }
     </style>
+        
 </head>
 <body class="h-full bg-pattern overflow-hidden">
     
-    <!-- Main Container -->
+    <div id="loader-screen" class="fixed inset-0 bg-black/50 flex items-center justify-center z-[9999] transition-opacity duration-300">
+        <div class="animate-spin rounded-full h-16 w-16 border-4 border-white border-t-transparent"></div>
+    </div>
+     
     <div class="h-full flex flex-col justify-center px-6 sm:px-6 lg:px-8 overflow-hidden -translate-y-10">
         
-        <!-- Header Section -->
         <div class="sm:mx-auto sm:w-full sm:max-w-md animate-slideDown">
-            <!-- Logo & Title -->
             <div class="flex justify-center mb-4">
                 <div class="logo-shadow">
                     <img src="{{ asset('DPD-RI.png') }}" class="w-16" alt="logoDPD">
@@ -70,11 +71,9 @@
             </div>
         </div>
 
-        <!-- Login Form Card -->
         <div class="mt-4 sm:mx-auto sm:w-full sm:max-w-md animate-fadeIn">
             <div class="bg-white py-6 px-6 shadow-2xl rounded-2xl sm:px-8 border border-gray-100">
                 
-                <!-- Alert Information -->
                 <div class="mb-4 bg-blue-50 border-l-4 border-sky-500 p-3 rounded-r-lg">
                     <div class="flex items-start">
                         <div class="flex-shrink-0">
@@ -87,31 +86,32 @@
                         </div>
                     </div>
                 </div>
-
-                <!-- Login Form -->
-                <form class="space-y-4" action="#" method="POST">
-                    
-                    <!-- Username/Email Field -->
+                @if (session('error'))
+                    <div class="bg-red-100 border-l-4 border-red-600 p-3 mb-3 rounded-r-lg text-red-700 text-xs">
+                        {{ session('error') }}
+                    </div>
+                @endif
+                <form class="space-y-4" action="{{ route('admin.login.process') }}" method="POST">
+                    @csrf
                     <div>
-                        <label for="username" class="block text-xs font-semibold text-gray-700 mb-1.5">
-                            <i class="fas fa-user text-gray-400 mr-1"></i>Username / Email
+                        <label for="email" class="block text-xs font-semibold text-gray-700 mb-1.5">
+                            <i class="fas fa-user text-gray-400 mr-1"></i>Email
                         </label>
                         <div class="relative">
                             <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
                                 <i class="fas fa-envelope text-gray-400 text-sm"></i>
                             </div>
                             <input 
-                                id="username" 
-                                name="username" 
+                                id="email" 
+                                name="email" 
                                 type="text" 
                                 required 
                                 class="input-focus appearance-none block w-full pl-10 pr-3 py-2.5 border border-gray-300 rounded-lg placeholder-gray-400 focus:outline-none transition duration-200 text-gray-900 text-sm"
-                                placeholder="Masukkan username atau email"
+                                placeholder="Masukkan email"
                             >
                         </div>
                     </div>
 
-                    <!-- Password Field -->
                     <div>
                         <label for="password" class="block text-xs font-semibold text-gray-700 mb-1.5">
                             <i class="fas fa-lock text-gray-400 mr-1"></i>Password
@@ -138,7 +138,6 @@
                         </div>
                     </div>
 
-                    <!-- Remember Me & Forgot Password -->
                     <div class="flex items-center justify-between">
                         <div class="flex items-center">
                             <input 
@@ -159,7 +158,6 @@
                         </div>
                     </div>
 
-                    <!-- CAPTCHA Verification -->
                     <div class="bg-gray-50 p-3 rounded-lg border border-gray-200">
                         <div class="flex items-center justify-between mb-2">
                             <label class="block text-xs font-semibold text-gray-700">
@@ -181,8 +179,6 @@
                             >
                         </div>
                     </div>
-
-                    <!-- Submit Button -->
                     <div>
                         <button 
                             type="submit" 
@@ -193,21 +189,7 @@
                         </button>
                     </div>
                 </form>
-
-                <!-- Contact Admin -->
-                <div class="mt-4 grid grid-cols-2 gap-2">
-                    <a href="tel:085256748481" class="flex items-center justify-center px-3 py-2 border border-gray-300 rounded-lg shadow-sm bg-white text-xs font-medium text-gray-700 hover:bg-gray-50 transition">
-                        <i class="fas fa-phone text-green-600 mr-1.5"></i>
-                        Telepon
-                    </a>
-                    <a href="mailto:info@dpd.go.id" class="flex items-center justify-center px-3 py-2 border border-gray-300 rounded-lg shadow-sm bg-white text-xs font-medium text-gray-700 hover:bg-gray-50 transition">
-                        <i class="fas fa-envelope text-blue-600 mr-1.5"></i>
-                        Email
-                    </a>
-                </div>
-
             </div>
-
             <!-- Footer Info -->
             <div class="mt-3 text-center">
                 <p class="text-xs text-gray-500">
@@ -218,68 +200,60 @@
         </div>
     </div>
 
-    <!-- JavaScript Functions -->
     <script>
-        // Toggle Password Visibility
-        function togglePassword() {
-            const passwordInput = document.getElementById('password');
-            const toggleIcon = document.getElementById('toggleIcon');
-            
-            if (passwordInput.type === 'password') {
-                passwordInput.type = 'text';
-                toggleIcon.classList.remove('fa-eye');
-                toggleIcon.classList.add('fa-eye-slash');
-            } else {
-                passwordInput.type = 'password';
-                toggleIcon.classList.remove('fa-eye-slash');
-                toggleIcon.classList.add('fa-eye');
-            }
+    function togglePassword() {
+        const passwordInput = document.getElementById('password');
+        const toggleIcon = document.getElementById('toggleIcon');
+        
+        if (passwordInput.type === 'password') {
+            passwordInput.type = 'text';
+            toggleIcon.classList.remove('fa-eye');
+            toggleIcon.classList.add('fa-eye-slash');
+        } else {
+            passwordInput.type = 'password';
+            toggleIcon.classList.remove('fa-eye-slash');
+            toggleIcon.classList.add('fa-eye');
         }
+    }
 
-        // Refresh CAPTCHA
-        function refreshCaptcha() {
-            const chars = 'ABCDEFGHJKLMNPQRSTUVWXYZ23456789';
-            let captcha = '';
-            for (let i = 0; i < 5; i++) {
-                captcha += chars.charAt(Math.floor(Math.random() * chars.length));
-            }
-            document.getElementById('captchaCode').textContent = captcha;
-            
-            // Animation
-            const captchaElement = document.getElementById('captchaCode');
-            captchaElement.style.transform = 'rotate(360deg)';
-            captchaElement.style.transition = 'transform 0.5s ease';
-            setTimeout(() => {
-                captchaElement.style.transform = 'rotate(0deg)';
-            }, 500);
+    function refreshCaptcha() {
+        const chars = 'ABCDEFGHJKLMNPQRSTUVWXYZ23456789';
+        let captcha = '';
+        for (let i = 0; i < 5; i++) {
+            captcha += chars.charAt(Math.floor(Math.random() * chars.length));
         }
+        document.getElementById('captchaCode').textContent = captcha;
 
-        // Form Validation
-        document.querySelector('form').addEventListener('submit', function(e) {
-            e.preventDefault();
-            
-            const username = document.getElementById('username').value;
-            const password = document.getElementById('password').value;
-            
-            if (username && password) {
-                const submitBtn = e.target.querySelector('button[type="submit"]');
-                const originalText = submitBtn.innerHTML;
-                submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin mr-2"></i>Memverifikasi...';
-                submitBtn.disabled = true;
-                
-                setTimeout(() => {
-                    alert('Login berhasil! (Demo Mode)');
-                    submitBtn.innerHTML = originalText;
-                    submitBtn.disabled = false;
-                }, 2000);
-            }
-        });
+        const captchaElement = document.getElementById('captchaCode');
+        captchaElement.style.transform = 'rotate(360deg)';
+        captchaElement.style.transition = 'transform 0.5s ease';
+        setTimeout(() => {
+            captchaElement.style.transform = 'rotate(0deg)';
+        }, 500);
+    }
 
-        // Initialize CAPTCHA on load
-        window.addEventListener('load', function() {
-            refreshCaptcha();
-        });
-    </script>
+    document.querySelector('form').addEventListener('submit', function() {
+        const submitBtn = this.querySelector('button[type="submit"]');
+        submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin mr-2"></i>Memverifikasi...';
+        submitBtn.disabled = true;
+    });
+
+    window.addEventListener("load", () => {
+        const loader = document.getElementById("loader-screen");
+        loader.style.opacity = "0";
+
+        setTimeout(() => {
+            loader.style.display = "none";
+        }, 300); 
+    });
+
+    window.addEventListener('load', function() {
+        refreshCaptcha();
+    });
+    
+</script>
+
+
 
 </body>
 </html>
