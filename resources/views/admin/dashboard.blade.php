@@ -46,25 +46,25 @@
                     </div>
 
                     <nav class="space-y-2">
-                        <a href="#" class="flex items-center p-3 text-sm font-semibold rounded-lg bg-red-700 shadow-inner hover:bg-red-600 transition duration-150 ease-in-out">
+                        <a href="{{ route('admin.dashboard') }}" data-url="{{ route('admin.dashboard.content') }}" class="spa-link active-link flex items-center p-3 text-sm font-semibold rounded-lg bg-red-700 shadow-inner hover:bg-red-600 transition duration-150 ease-in-out">
                             <svg class="w-5 h-5 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"></path>
                             </svg>
                             Dashboard
                         </a>
-                        <a href="#" class="flex items-center p-3 text-sm font-medium rounded-lg hover:bg-red-700 transition duration-150 ease-in-out">
+                        <a href="{{ route('admin.berita.index') }}" data-url="{{ route('admin.berita.content') }}" class="spa-link flex items-center p-3 text-sm font-medium rounded-lg hover:bg-red-700 transition duration-150 ease-in-out">
                             <svg class="w-5 h-5 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20v-2h2m-4.5 0a4.5 4.5 0 11-9 0 4.5 4.5 0 019 0zM17 14v6m-6-6v6"></path>
                             </svg>
                             Data Berita
                         </a>
-                        <a href="#" class="flex items-center p-3 text-sm font-medium rounded-lg hover:bg-red-700 transition duration-150 ease-in-out">
+                        <a href="{{ route('admin.data-admin.index') }}" data-url="{{ route('admin.data-admin.content') }}" class="spa-link flex items-center p-3 text-sm font-medium rounded-lg hover:bg-red-700 transition duration-150 ease-in-out">
                             <svg class="w-5 h-5 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20v-2h2m-4.5 0a4.5 4.5 0 11-9 0 4.5 4.5 0 019 0zM17 14v6m-6-6v6"></path>
                             </svg>
                             Data Admin
                         </a>
-                        <a href="#" class="flex items-center p-3 text-sm font-medium rounded-lg hover:bg-red-700 transition duration-150 ease-in-out">
+                        <a href="{{ route('admin.manajemen.index') }}" data-url="{{ route('admin.manajemen.content') }}" class="spa-link flex items-center p-3 text-sm font-medium rounded-lg hover:bg-red-700 transition duration-150 ease-in-out">
                             <svg class="w-5 h-5 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-3 7h3m-3 4h3m-6-4h.01M9 16h.01"></path>
                             </svg>
@@ -72,7 +72,6 @@
                         </a>
                     </nav>
                 </div>
-                
                 <div class="p-6 border-t border-red-700 mt-auto flex-shrink-0">
                        <form action="/" method="POST">
                          @csrf
@@ -83,7 +82,6 @@
                         <svg class="w-5 h-5 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1"></path>
                         </svg>
-
                         Keluar
                     </button>
                     </form>
@@ -139,139 +137,19 @@
                 </div>
             </header>
 
-            <main class="flex-1 overflow-x-hidden overflow-y-auto p-6 md:p-8">
-
-                <nav class="text-sm mb-6">
-                    <ol class="inline-flex items-center">
-                        <li>
-                            <a href="#" class="text-red-700 hover:text-red-900 font-medium">
-                                <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
-                                    <path d="M10.707 2.293a1 1 0 00-1.414 0l-7 7a1 1 0 001.414 1.414L4 10.414V17a1 1 0 001 1h2a1 1 0 001-1v-2a1 1 0 011-1h2a1 1 0 011 1v2a1 1 0 001 1h2a1 1 0 001-1v-6.586l.293.293a1 1 0 001.414-1.414l-7-7z"></path>
-                                </svg>
-                            </a>
-                        </li>
-                        <li class="flex items-center">
-                            <svg class="w-3 h-3 mx-2 text-gray-400" viewBox="0 0 320 512">
-                                <path d="M285.476 272.971L91.132 467.314c-9.373 9.373-24.569 9.373-33.941 0l-22.667-22.667c-9.357-9.357-9.375-24.522-.04-33.901L188.505 256 34.484 101.255c-9.335-9.379-9.317-24.544.04-33.901l22.667-22.667c9.373-9.373 24.569-9.373 33.941 0L285.475 239.03c9.373 9.372 9.373 24.568.001 33.941z"></path>
-                            </svg>
-                            <span class="text-gray-500">Ringkasan Data Berita</span>
-                        </li>
-                    </ol>
-                </nav>
-
-                <h2 class="text-3xl font-bold text-gray-800 mb-8">Ringkasan Data</h2>
-
-                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-10">
-                    <div class="bg-white p-6 rounded-xl shadow-lg border-b-4 border-red-600 hover:scale-[1.02] transition">
-                        <div class="flex justify-between">
-                            <div>
-                                <p class="text-sm text-gray-500 font-medium uppercase">Berita Aktif</p>
-                                <p class="text-4xl font-bold text-gray-900 mt-1">136</p>
-                            </div>
-                            <div class="text-red-600 bg-red-100 p-3 rounded-full">
-                                <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20v-2h2m-4.5 0a4.5 4.5 0 10-9 0 4.5 4.5 0 019 0zM17 14v6m-6-6v6"></path>
-                                </svg>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="bg-white p-6 rounded-xl shadow-lg border-b-4 border-yellow-500 hover:scale-[1.02] transition">
-                        <div class="flex justify-between">
-                            <div>
-                                <p class="text-sm text-gray-500 font-medium uppercase">Berita Dihapus</p>
-                                <p class="text-4xl font-bold text-gray-900 mt-1">42</p>
-                            </div>
-                            <div class="text-yellow-600 bg-yellow-100 p-3 rounded-full">
-                                <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"></path>
-                                </svg>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="bg-white p-6 rounded-xl shadow-lg border-b-4 border-blue-600 hover:scale-[1.02] transition">
-                        <div class="flex justify-between">
-                            <div>
-                                <p class="text-sm text-gray-500 font-medium uppercase">Berita Baru</p>
-                                <p class="text-4xl font-bold text-gray-900 mt-1">18</p>
-                            </div>
-                            <div class="text-blue-600 bg-blue-100 p-3 rounded-full">
-                                <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"></path>
-                                </svg>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="bg-white p-6 rounded-xl shadow-lg border border-gray-200">
-                    <h3 class="text-xl font-semibold mb-4 border-b pb-3">Berita Terbaru (5 Teratas)</h3>
-
-                    <div class="overflow-x-auto">
-                        <table class="min-w-full divide-y divide-gray-200">
-                            <thead class="bg-gray-50">
-                                <tr>
-                                    <th class="px-4 py-3 text-left text-xs font-medium text-gray-800 uppercase">Judul</th>
-                                    <th class="px-4 py-3 text-left text-xs font-medium text-gray-800 uppercase">Foto</th>
-                                    <th class="px-4 py-3 text-left text-xs font-medium text-gray-800 uppercase">Keterangan</th>
-                                    <th class="px-4 py-3 text-left text-xs font-medium text-gray-800 uppercase">Kategori</th>
-                                    <th class="px-4 py-3 text-left text-xs font-medium text-gray-800 uppercase">Tanggal</th>
-                                </tr>
-                            </thead>
-                            <tbody class="bg-white divide-y divide-gray-200">
-
-                                <tr>
-                                    <td class="px-4 py-4 text-sm text-gray-900 truncate max-w-xs">DPD Kota Gorontalo</td>
-                                    <td class="px-4 py-4 text-sm text-gray-900 truncate">
-                                        <img src="https://www.dpd.go.id/media/Terbitan/WhatsApp%20Image%202024-04-02%20at%2020.02.29%20%281%29.jpeg" class="w-14 h-14 object-cover rounded-md" alt="Foto DPD">
-                                    </td>
-                                    <td class="px-4 py-4 text-sm text-gray-500 max-w-sm">Dapatkan update terkini tentang kegiatan, program, dan kebijakan Dewan Perwakilan Daerah Kota Gorontalo.</td>
-                                    <td class="px-4 py-4">
-                                        <span class="px-2 inline-flex text-xs rounded-full bg-yellow-100 text-yellow-800">Utama</span>
-                                    </td>
-                                    <td class="px-4 py-4 text-sm text-gray-500">2025-12-05</td>
-                                </tr>
-
-                                <tr>
-                                    <td class="px-4 py-4 text-sm text-gray-900 truncate">Revisi UU Otonomi Khusus</td>
-                                     <td class="px-4 py-4 text-sm text-gray-900 truncate">
-                                        <img src="https://gorontalo.brmp.pertanian.go.id/storage/assets/uploads/images/berita/o0ZRooU1CdnhHJQ5BTUFgozGiP7PilsBNeVLTMet.png" class="w-14 h-14 object-cover rounded-md" alt="Foto DPD">
-                                    </td>
-                                    <td class="px-4 py-4 text-sm text-gray-500 max-w-sm">DPD RI Serap Aspirasi Pelaku UMKM, Dorong Peningkatan Daya Saing Produk Lokal Minyak Kelapa</td>
-                                    <td class="px-4 py-4">
-                                        <span class="px-2 inline-flex text-xs rounded-full bg-red-100 text-red-800">Agenda</span>
-                                    </td>
-                                    <td class="px-4 py-4 text-sm text-gray-500">2025-12-04</td>
-                                </tr>
-
-                                <tr>
-                                    <td class="px-4 py-4 text-sm text-gray-900 truncate">Kantor DPD RI Provinsi Gorontalo Rayakan HUT ke-21</td>
-                                     <td class="px-4 py-4 text-sm text-gray-900 truncate">
-                                        <img src="https://www.dpd.go.id/media/berita-lama/berita-20201118_052515-.jpg" class="w-14 h-14 object-cover rounded-md" alt="Foto DPD">
-                                    </td>
-                                    <td class="px-4 py-4 text-sm text-gray-500 max-w-sm">DPD RI mengumumkan jadwal kunjungan kerja ke berbagai daerah.</td>
-                                    <td class="px-4 py-4">
-                                        <span class="px-2 inline-flex text-xs rounded-full bg-green-100 text-green-800">Publikasi</span>
-                                    </td>
-                                    <td class="px-4 py-4 text-sm text-gray-500">2025-12-03</td>
-                                </tr>
-
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
-
+            <main id="page-content" class="flex-1 overflow-x-hidden overflow-y-auto p-6 md:p-8">
+                @include('admin.dashboard-content')
             </main>
         </div>
     </div>
 
     <script>
     const sidebar = document.getElementById("sidebar");
-    const toggleBtn = document.getElementById("sidebar-toggle");
-    const closeBtn = document.getElementById("close-sidebar");
+    const toggleBtn = document.getElementById("sidebar-toggle");     
+    const closeBtn = document.getElementById("close-sidebar");      
     const overlay = document.getElementById("overlay");
 
+    // Toggle Sidebar Mobile
     toggleBtn.addEventListener("click", () => {
         sidebar.classList.remove("-translate-x-full");
         overlay.classList.remove("hidden");
@@ -286,19 +164,91 @@
         sidebar.classList.add("-translate-x-full");
         overlay.classList.add("hidden");
     });
-
-    const desktopToggle = document.getElementById("sidebarToggle");
+    
+    // Toggle Sidebar Desktop (Collapse/Expand)
+    const desktopToggle = document.getElementById("sidebarToggle"); 
     const mainContent = document.getElementById("main-content");
-
     desktopToggle.addEventListener("click", () => {
-        if (window.innerWidth >= 768) {  
-            // di laptop / desktop
-            sidebar.classList.toggle("sidebar-collapsed");
-            mainContent.classList.toggle("content-expanded");
-        }
+        sidebar.classList.toggle("sidebar-collapsed");
+        mainContent.classList.toggle("content-expanded");
     });
+
+
+    // --- LOGIKA SINGLE PAGE APPLICATION (SPA) ---
+    const pageContent = document.getElementById("page-content");
+    const spaLinks = document.querySelectorAll(".spa-link");
+
+    // Fungsi untuk update status link aktif di sidebar
+    function updateActiveLink(activeLink) {
+        spaLinks.forEach(l => {
+            l.classList.remove("bg-red-700", "shadow-inner", "font-semibold");
+            l.classList.add("font-medium");
+        });
+        activeLink.classList.add("bg-red-700", "shadow-inner", "font-semibold");
+        activeLink.classList.remove("font-medium");
+    }
+
+    // Tangani loading konten saat page pertama kali dimuat (jika menggunakan History API)
+    // Walaupun di Laravel biasanya tidak perlu, ini untuk memastikan navigasi berfungsi.
+    function loadContent(contentUrl, pageUrl, activeLink) {
+        // Tampilkan Loader
+        pageContent.innerHTML = `
+            <div class="flex items-center justify-center h-full min-h-[50vh]">
+                <div class="text-center">
+                    <svg class="animate-spin h-10 w-10 text-red-800 mx-auto" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                        <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+                        <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                    </svg>
+                    <p class="mt-4 text-lg text-gray-600">Memuat Konten...</p>
+                </div>
+            </div>
+        `;
+        
+        // Ambil Konten Baru via Fetch
+        fetch(contentUrl)
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('Gagal memuat konten. Status: ' + response.status);
+                }
+                return response.text();
+            })
+            .then(html => {
+                pageContent.innerHTML = html; // Suntikkan HTML ke area konten
+                history.pushState(null, '', pageUrl);
+                pageContent.scrollTop = 0; // Gulir ke atas
+                if (activeLink) {
+                    updateActiveLink(activeLink);
+                }
+            })
+            .catch(error => {
+                console.error('Error memuat konten:', error);
+                pageContent.innerHTML = `<div class="text-center py-20 text-red-600">Terjadi kesalahan saat memuat konten: ${error.message}.</div>`;
+            });
+    }
+
+    // Event Listener untuk semua link SPA
+    spaLinks.forEach(link => {
+        link.addEventListener("click", function(e) {
+            
+            if (!this.getAttribute("data-url")) {
+                return; // Biarkan link non-SPA berjalan normal
+            }
+
+            e.preventDefault(); // Mencegah reload halaman penuh
+
+            const contentUrl = this.getAttribute("data-url");
+            const pageUrl = this.getAttribute("href");
+
+            // Tutup Sidebar di Mobile
+            if (window.innerWidth < 768) {
+                 sidebar.classList.add("-translate-x-full");
+                 overlay.classList.add("hidden");
+            }
+            
+            loadContent(contentUrl, pageUrl, this);
+        });
+    });
+
 </script>
-
-
 </body>
 </html>

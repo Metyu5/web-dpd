@@ -25,6 +25,7 @@ class AdminController extends Controller
         }
 
         // 4. jika benar → redirect ke dashboard
+        session(['admin_id' => $admin->id]);
         return redirect()->route('admin.dashboard');
     }
 }
