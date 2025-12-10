@@ -77,9 +77,9 @@
                     </div>
                 </div>
                 <nav class="hidden lg:flex gap-8 text-gray-700 font-medium animate__animated animate__fadeInDown">
-                    <a href="/" class="hover:text-sky-600 transition border-b-2 border-sky-600 pb-1">Beranda</a>
-                    <a href="#berita-utama" class="hover:text-sky-600 transition">Berita</a>
-                    <a href="#" class="hover:text-sky-600 transition">Profil</a>
+                    <a href="/" id="beranda-link" class="hover:text-sky-600 transition border-b-2 border-sky-600 pb-1 menu-link">Beranda</a>
+                   <a href="/berita-utama" id="berita-link" class="hover:text-sky-600 transition menu-link">Berita</a>
+                    <a href="/profil-content" id="profil-link" class="hover:text-sky-600 transition menu-link">Profil</a>
                     <a href="#" class="hover:text-sky-600 transition">Kontak</a>
                 </nav>
                 <button class="lg:hidden text-gray-700">
@@ -90,7 +90,8 @@
             </div>
         </div>
     </header>
-    <section class="relative bg-gradient-to-br from-sky-600 via-blue-500 to-cyan-500 overflow-hidden ">
+    
+    <section id="hero-section" class="relative bg-gradient-to-br from-sky-600 via-blue-500 to-cyan-500 overflow-hidden ">
         <div class="absolute inset-0 opacity-50">
             <img src="{{ asset('20170303_organisasi_DPD.jpg') }}" 
                  class="w-full h-full object-cover">
@@ -119,7 +120,7 @@
             </div>
         </div>
     </section>
-    <section class="bg-gradient-to-r from-sky-600 to-blue-500 text-white overflow-hidden">
+    <section id="breaking-news-section" class="bg-gradient-to-r from-sky-600 to-blue-500 text-white overflow-hidden">
         <div class="max-w-7xl mx-auto px-4 py-3">
             <div class="flex items-center gap-4">
                 <span class="bg-red-500 text-white px-4 py-1.5 rounded font-bold text-sm whitespace-nowrap">
@@ -133,7 +134,8 @@
             </div>
         </div>
     </section>
-    <main class="max-w-7xl mx-auto px-4 py-12" id="berita">
+
+    <main class="max-w-7xl mx-auto px-4 py-12" id="main-content">
         <div class="grid grid-cols-1 lg:grid-cols-12 gap-8">
             <div class="lg:col-span-8">
                 <div id="berita-utama">
@@ -571,5 +573,122 @@
         </div>
     </footer>
 
+   <script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const mainContent = document.getElementById('main-content');
+        const menuLinks = document.querySelectorAll('.menu-link'); 
+        const heroSection = document.getElementById('hero-section');
+        const breakingNewsSection = document.getElementById('breaking-news-section');
+        const initialContent = mainContent.innerHTML; // Konten awal Beranda
+
+        // Fungsi untuk menampilkan indikator loading
+        function showLoading() {
+            mainContent.innerHTML = `
+                <div class="text-center py-20 text-sky-600">
+                    <svg class="animate-spin h-10 w-10 text-sky-600 mx-auto mb-4" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                        <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+                        <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                    </svg>
+                    <p class="font-semibold text-xl">Memuat Konten...</p>
+                </div>
+            `;
+        }
+
+        function loadContent(url, push = true) {
+            
+            showLoading(); 
+
+            const isBeranda = url === '/'; 
+            
+            let fetchUrl = url;
+            if (url === '/profil-content') {
+                fetchUrl = '/profil-content/content'; 
+            } else if (url === '/berita-utama') {
+                fetchUrl = '/berita-utama/content'; 
+            }
+            heroSection.style.display = isBeranda ? 'block' : 'none';
+            breakingNewsSection.style.display = isBeranda ? 'block' : 'none';
+            if (push) {
+                history.pushState({ path: url }, '', url);
+            }
+            if (isBeranda) {
+                setTimeout(() => {
+                    mainContent.innerHTML = initialContent;
+                    window.scrollTo({ top: 0, behavior: 'smooth' });
+                }, 100); 
+                return;
+            }
+            fetch(fetchUrl)
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error(`Gagal mengambil konten. Status: ${response.status}. Cek Route: ${fetchUrl}`);
+                    }
+                    return response.text();
+                })
+                .then(html => {
+                    setTimeout(() => {
+                        mainContent.innerHTML = html;
+                        window.scrollTo({ top: 0, behavior: 'smooth' });
+                    }, 100); 
+                })
+                .catch(error => {
+                    mainContent.innerHTML = `
+                        <div class="text-center py-20 text-red-600 font-semibold text-xl">
+                            Terjadi kesalahan saat memuat konten. Periksa Route atau File Blade.
+                            <p class="text-sm text-gray-500 mt-2">${error.message}</p>
+                        </div>`;
+                    console.error('Error:', error);
+                });
+        }
+        function setActiveLink(clickedLink) {
+            menuLinks.forEach(link => {
+                link.classList.remove('border-b-2', 'border-sky-600', 'pb-1');
+            });
+            clickedLink.classList.add('border-b-2', 'border-sky-600', 'pb-1');
+        }
+        function checkInitialUrl() {
+            const currentPath = window.location.pathname;
+            const menuLinkForPath = document.querySelector(`.menu-link[href="${currentPath}"]`);
+            if (currentPath !== '/' && menuLinkForPath) {
+                loadContent(currentPath, false); 
+                setActiveLink(menuLinkForPath);
+            } else {
+                const berandaLink = document.getElementById('beranda-link');
+                if (berandaLink) {
+                    setActiveLink(berandaLink);
+                }
+            }
+        }
+        menuLinks.forEach(link => {
+            link.addEventListener('click', function(e) {
+                const href = this.getAttribute('href');
+
+                if (href.startsWith('#')) {
+                    return;
+                }
+
+                e.preventDefault(); 
+                loadContent(href, true); 
+
+                setActiveLink(this);
+            });
+        });
+        window.addEventListener('popstate', function(e) {
+            const currentPath = window.location.pathname;
+            const menuLinkForPath = document.querySelector(`.menu-link[href="${currentPath}"]`);
+            if (menuLinkForPath) {
+                loadContent(currentPath, false); 
+                setActiveLink(menuLinkForPath);
+            } else if (currentPath === '/') {
+                loadContent('/', false);
+                const berandaLink = document.getElementById('beranda-link');
+                if (berandaLink) {
+                    setActiveLink(berandaLink);
+                }
+            }
+        });
+        checkInitialUrl();
+    });
+</script>
 </body>
 </html>
