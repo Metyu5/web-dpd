@@ -23,7 +23,7 @@
         <div class="flex justify-between">
             <div>
                 <p class="text-sm text-gray-500 font-medium uppercase">Berita Aktif</p>
-                <p class="text-4xl font-bold text-gray-900 mt-1">136</p>
+                <p class="text-2xl font-bold text-gray-900 mt-1">136</p>
             </div>
             <div class="text-red-600 bg-red-100 p-3 rounded-full">
                 <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -37,7 +37,7 @@
         <div class="flex justify-between">
             <div>
                 <p class="text-sm text-gray-500 font-medium uppercase">Berita Dihapus</p>
-                <p class="text-4xl font-bold text-gray-900 mt-1">42</p>
+                <p class="text-2xl font-bold text-gray-900 mt-1">42</p>
             </div>
             <div class="text-yellow-600 bg-yellow-100 p-3 rounded-full">
                 <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -51,7 +51,7 @@
         <div class="flex justify-between">
             <div>
                 <p class="text-sm text-gray-500 font-medium uppercase">Berita Baru</p>
-                <p class="text-4xl font-bold text-gray-900 mt-1">18</p>
+                <p class="text-2xl font-bold text-gray-900 mt-1">18</p>
             </div>
             <div class="text-blue-600 bg-blue-100 p-3 rounded-full">
                 <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24">

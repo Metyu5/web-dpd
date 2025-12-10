@@ -1,35 +1,21 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dashboard Admin DPD Gorontalo</title>
-    @vite(['resources/css/app.css', 'resources/js/app.js'])
+    @vite(['resources/css/app.css', 'resources/css/admin.css', 'resources/js/app.js', 'resources/js/admin.js'])
     <link rel="icon" href="{{ asset('DPD-RI.png') }}" type="image/png">
-    <style>
-        .sidebar-scroll::-webkit-scrollbar {
-            width: 5px;
-        }
-        .sidebar-scroll::-webkit-scrollbar-thumb {
-            background: rgba(255, 255, 255, 0.3);
-            border-radius: 10px;
-        }
-    @media (min-width: 768px) {
-        .sidebar-collapsed {
-            width: 0 !important;
-            transform: translateX(-100%);
-        }
-
-        .content-expanded {
-            margin-left: 0 !important;
-        }
-    }
-    </style>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
 </head>
 <body class="bg-white font-sans antialiased text-gray-800">
 
     <div class="flex h-screen overflow-hidden">
-        
+
         <aside id="sidebar" class="flex-shrink-0 w-64 bg-red-800 text-white shadow-2xl transform transition-all duration-300 ease-in-out md:translate-x-0 -translate-x-full overflow-y-auto sidebar-scroll z-50 fixed md:static md:inset-y-0 inset-y-0">
             <div class="flex flex-col h-full">
                 <div class="p-6 flex-shrink-0">
@@ -53,8 +39,8 @@
                             Dashboard
                         </a>
                         <a href="{{ route('admin.berita.index') }}" data-url="{{ route('admin.berita.content') }}" class="spa-link flex items-center p-3 text-sm font-medium rounded-lg hover:bg-red-700 transition duration-150 ease-in-out">
-                            <svg class="w-5 h-5 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20v-2h2m-4.5 0a4.5 4.5 0 11-9 0 4.5 4.5 0 019 0zM17 14v6m-6-6v6"></path>
+                             <svg class="w-5 h-5 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-3 7h3m-3 4h3m-6-4h.01M9 16h.01"></path>
                             </svg>
                             Data Berita
                         </a>
@@ -64,35 +50,25 @@
                             </svg>
                             Data Admin
                         </a>
-                        <a href="{{ route('admin.manajemen.index') }}" data-url="{{ route('admin.manajemen.content') }}" class="spa-link flex items-center p-3 text-sm font-medium rounded-lg hover:bg-red-700 transition duration-150 ease-in-out">
-                            <svg class="w-5 h-5 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-3 7h3m-3 4h3m-6-4h.01M9 16h.01"></path>
-                            </svg>
-                            Manajemen Berita
-                        </a>
                     </nav>
                 </div>
                 <div class="p-6 border-t border-red-700 mt-auto flex-shrink-0">
-                       <form action="/" method="POST">
-                         @csrf
-                         <button 
-                        type="submit" 
+                    <button
+                        id="logout-mobile"
                         class="flex items-center w-full p-3 text-sm font-medium rounded-lg hover:bg-red-700 transition duration-150 ease-in-out text-left">
-                        
                         <svg class="w-5 h-5 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1"></path>
                         </svg>
                         Keluar
                     </button>
-                    </form>
                 </div>
             </div>
         </aside>
-        <div id="overlay" 
-         class="fixed inset-0 bg-black/30 backdrop-blur-sm hidden z-20 md:hidden"></div>
+        <div id="overlay"
+            class="fixed inset-0 bg-black/30 backdrop-blur-sm hidden z-20 md:hidden"></div>
 
         <div id="main-content" class="flex-1 flex flex-col overflow-hidden transition-all duration-300 ease-in-out bg-gray-100">
-            
+
             <header class="flex items-center justify-between p-4 bg-white border-b border-gray-200 shadow-md sticky top-0 z-40">
                 <div class="flex items-center">
                     <button id="sidebar-toggle" class="text-gray-500 hover:text-red-800 focus:outline-none md:hidden mr-4 p-2 rounded-md hover:bg-gray-100 transition duration-150">
@@ -105,7 +81,7 @@
                     </button>
 
                     <h1 class="text-xl font-semibold text-gray-800 hidden sm:block">Dashboard Admin</h1>
-                    
+
                 </div>
 
                 <div class="flex items-center space-x-4">
@@ -130,7 +106,10 @@
                                 <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-red-50 hover:text-red-700">Profil</a>
                                 <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-red-50 hover:text-red-700">Pengaturan</a>
                                 <div class="border-t border-gray-100"></div>
-                                <a href="#" class="block px-4 py-2 text-sm text-red-600 hover:bg-red-50 rounded-b-lg">Keluar</a>
+                                <a href="#" id="logout-desktop"
+                                    class="block px-4 py-2 text-sm text-red-600 hover:bg-red-50 rounded-b-lg">
+                                    Keluar
+                                </a>
                             </div>
                         </div>
                     </div>
@@ -142,113 +121,25 @@
             </main>
         </div>
     </div>
+    <!-- Logout Modal -->
+<div id="logout-modal" class="fixed inset-0 bg-black/40 hidden justify-center items-center z-[999]">
+    <div class="bg-white rounded-xl shadow-xl p-6 w-80">
+        <h2 class="text-lg font-semibold text-gray-800">Konfirmasi</h2>
+        <p class="mt-2 text-gray-600">Yakin ingin keluar?</p>
 
-    <script>
-    const sidebar = document.getElementById("sidebar");
-    const toggleBtn = document.getElementById("sidebar-toggle");     
-    const closeBtn = document.getElementById("close-sidebar");      
-    const overlay = document.getElementById("overlay");
-
-    // Toggle Sidebar Mobile
-    toggleBtn.addEventListener("click", () => {
-        sidebar.classList.remove("-translate-x-full");
-        overlay.classList.remove("hidden");
-    });
-
-    closeBtn.addEventListener("click", () => {
-        sidebar.classList.add("-translate-x-full");
-        overlay.classList.add("hidden");
-    });
-
-    overlay.addEventListener("click", () => {
-        sidebar.classList.add("-translate-x-full");
-        overlay.classList.add("hidden");
-    });
-    
-    // Toggle Sidebar Desktop (Collapse/Expand)
-    const desktopToggle = document.getElementById("sidebarToggle"); 
-    const mainContent = document.getElementById("main-content");
-    desktopToggle.addEventListener("click", () => {
-        sidebar.classList.toggle("sidebar-collapsed");
-        mainContent.classList.toggle("content-expanded");
-    });
+        <div class="flex justify-end gap-3 mt-6">
+            <button id="cancel-logout" class="px-4 py-2 rounded-lg bg-gray-100 hover:bg-gray-200">
+                Tidak
+            </button>
+            <button id="confirm-logout" class="px-4 py-2 rounded-lg bg-red-600 text-white hover:bg-red-700">
+                Ya
+            </button>
+        </div>
+    </div>
+</div>
 
 
-    // --- LOGIKA SINGLE PAGE APPLICATION (SPA) ---
-    const pageContent = document.getElementById("page-content");
-    const spaLinks = document.querySelectorAll(".spa-link");
 
-    // Fungsi untuk update status link aktif di sidebar
-    function updateActiveLink(activeLink) {
-        spaLinks.forEach(l => {
-            l.classList.remove("bg-red-700", "shadow-inner", "font-semibold");
-            l.classList.add("font-medium");
-        });
-        activeLink.classList.add("bg-red-700", "shadow-inner", "font-semibold");
-        activeLink.classList.remove("font-medium");
-    }
-
-    // Tangani loading konten saat page pertama kali dimuat (jika menggunakan History API)
-    // Walaupun di Laravel biasanya tidak perlu, ini untuk memastikan navigasi berfungsi.
-    function loadContent(contentUrl, pageUrl, activeLink) {
-        // Tampilkan Loader
-        pageContent.innerHTML = `
-            <div class="flex items-center justify-center h-full min-h-[50vh]">
-                <div class="text-center">
-                    <svg class="animate-spin h-10 w-10 text-red-800 mx-auto" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
-                        <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
-                        <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
-                    </svg>
-                    <p class="mt-4 text-lg text-gray-600">Memuat Konten...</p>
-                </div>
-            </div>
-        `;
-        
-        // Ambil Konten Baru via Fetch
-        fetch(contentUrl)
-            .then(response => {
-                if (!response.ok) {
-                    throw new Error('Gagal memuat konten. Status: ' + response.status);
-                }
-                return response.text();
-            })
-            .then(html => {
-                pageContent.innerHTML = html; // Suntikkan HTML ke area konten
-                history.pushState(null, '', pageUrl);
-                pageContent.scrollTop = 0; // Gulir ke atas
-                if (activeLink) {
-                    updateActiveLink(activeLink);
-                }
-            })
-            .catch(error => {
-                console.error('Error memuat konten:', error);
-                pageContent.innerHTML = `<div class="text-center py-20 text-red-600">Terjadi kesalahan saat memuat konten: ${error.message}.</div>`;
-            });
-    }
-
-    // Event Listener untuk semua link SPA
-    spaLinks.forEach(link => {
-        link.addEventListener("click", function(e) {
-            
-            if (!this.getAttribute("data-url")) {
-                return; // Biarkan link non-SPA berjalan normal
-            }
-
-            e.preventDefault(); // Mencegah reload halaman penuh
-
-            const contentUrl = this.getAttribute("data-url");
-            const pageUrl = this.getAttribute("href");
-
-            // Tutup Sidebar di Mobile
-            if (window.innerWidth < 768) {
-                 sidebar.classList.add("-translate-x-full");
-                 overlay.classList.add("hidden");
-            }
-            
-            loadContent(contentUrl, pageUrl, this);
-        });
-    });
-
-</script>
 </body>
+
 </html>

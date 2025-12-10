@@ -40,7 +40,6 @@
 </head>
 <body class="bg-gray-50">
 
-    <!-- TOP BAR -->
     <div class="bg-sky-600 text-white text-sm ">
         <div class="max-w-7xl mx-auto px-4 py-2 flex justify-between items-center">
             <div class="flex gap-4 items-center">
@@ -67,11 +66,9 @@
         </div>
     </div>
 
-    <!-- NAVBAR -->
     <header class="bg-white shadow-md sticky top-0 z-50 ">
         <div class="max-w-7xl mx-auto px-4 py-4">
             <div class="flex justify-between items-center">
-                <!-- Logo & Title -->
                 <div class="flex items-center gap-3 animate__animated animate__fadeInDown">
                     <img src="{{ asset('DPD-RI.png') }}" class="w-14 h-14" alt="Logo DPD RI">
                     <div>
@@ -79,15 +76,12 @@
                         <p class="text-xs text-gray-600">Dewan Perwakilan Daerah Kota Gorontalo</p>
                     </div>
                 </div>
-                
-                <!-- Navigation Menu -->
                 <nav class="hidden lg:flex gap-8 text-gray-700 font-medium animate__animated animate__fadeInDown">
                     <a href="/" class="hover:text-sky-600 transition border-b-2 border-sky-600 pb-1">Beranda</a>
                     <a href="#berita-utama" class="hover:text-sky-600 transition">Berita</a>
                     <a href="#" class="hover:text-sky-600 transition">Profil</a>
                     <a href="#" class="hover:text-sky-600 transition">Kontak</a>
                 </nav>
-                <!-- Mobile Menu Button -->
                 <button class="lg:hidden text-gray-700">
                     <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
@@ -197,17 +191,11 @@
                         </div>
                     </div>
                 </div>
-
-                <!-- Section Title -->
                 <div class="flex items-center gap-3 mb-8">
                     <div class="w-1.5 h-10 bg-sky-600 rounded-full"></div>
                     <h3 class="text-2xl font-bold text-gray-800">Berita Terkini</h3>
                 </div>
-
-                <!-- NEWS GRID -->
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
-
-                    <!-- NEWS CARD 1 -->
                     <div class="bg-white shadow-lg rounded-xl overflow-hidden hover-lift group">
                         <div class="relative overflow-hidden">
                             <img src="https://gorontalo.brmp.pertanian.go.id/storage/assets/uploads/images/berita/o0ZRooU1CdnhHJQ5BTUFgozGiP7PilsBNeVLTMet.png" 
@@ -239,8 +227,6 @@
                             </a>
                         </div>
                     </div>
-
-                    <!-- NEWS CARD 2 -->
                     <div class="bg-white shadow-lg rounded-xl overflow-hidden hover-lift group">
                         <div class="relative overflow-hidden">
                             <img src="https://www.dpd.go.id/media/WhatsApp%20Image%202025-10-03%20at%2017.37.56.jpeg" 
@@ -272,8 +258,6 @@
                             </a>
                         </div>
                     </div>
-
-                    <!-- NEWS CARD 3 -->
                     <div class="bg-white shadow-lg rounded-xl overflow-hidden hover-lift group">
                         <div class="relative overflow-hidden">
                             <img src="https://www.dpd.go.id/media/WhatsApp%20Image%202025-05-14%20at%2020.01.30.jpeg" 
@@ -305,8 +289,6 @@
                             </a>
                         </div>
                     </div>
-
-                    <!-- NEWS CARD 4 -->
                     <div class="bg-white shadow-lg rounded-xl overflow-hidden hover-lift group">
                         <div class="relative overflow-hidden">
                             <img src="https://www.dpd.go.id/media/Terbitan/WhatsApp%20Image%202024-04-02%20at%2020.02.29%20%281%29.jpeg" 
@@ -340,8 +322,6 @@
                     </div>
 
                 </div>
-
-                <!-- LOAD MORE BUTTON -->
                 <div class="text-center mt-10">
                     <button class="bg-sky-600 text-white px-10 py-3 rounded-lg font-semibold hover:bg-blue-700 transition shadow-lg hover:shadow-xl">
                         Muat Berita Lainnya
@@ -349,11 +329,7 @@
                 </div>
 
             </div>
-
-            <!-- SIDEBAR -->
             <aside class="lg:col-span-4 space-y-6">
-                
-                <!-- SEARCH BOX -->
                 <div class="bg-white shadow-lg rounded-xl p-6">
                     <h4 class="font-bold text-lg mb-4 text-gray-800 flex items-center gap-2">
                         <svg class="w-5 h-5 text-sky-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -371,8 +347,6 @@
                         </button>
                     </div>
                 </div>
-
-                <!-- CATEGORIES -->
                 <div class="bg-white shadow-lg rounded-xl p-6">
                     <h4 class="font-bold text-lg mb-5 text-gray-800">Kategori</h4>
                     <ul class="space-y-3">
@@ -402,8 +376,6 @@
                         </li>
                     </ul>
                 </div>
-
-                <!-- AGENDA -->
                 <div class="bg-gradient-to-br from-sky-600 to-blue-500 text-white shadow-lg rounded-xl p-6">
                     <h4 class="font-bold text-lg mb-5 flex items-center gap-2">
                         <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -441,8 +413,6 @@
                         </li>
                     </ul>
                 </div>
-
-                <!-- POPULAR NEWS -->
                 <div class="bg-white shadow-lg rounded-xl p-6">
                     <h4 class="font-bold text-lg mb-5 text-gray-800 flex items-center gap-2">
                         <svg class="w-5 h-5 text-sky-600" fill="currentColor" viewBox="0 0 20 20">
@@ -503,8 +473,6 @@
 
         </div>
     </main>
-
-    <!-- FOOTER -->
     <footer class="bg-gray-900 text-gray-300 pt-12 pb-6 mt-16">
         <div class="max-w-7xl mx-auto px-4">
             <div class="grid grid-cols-1 md:grid-cols-12 gap-8 mb-8">
@@ -522,25 +490,21 @@
                         Dewan Perwakilan Daerah Provinsi Gorontalo
                     </p>
                     <div class="flex gap-3">
-                        <!-- Facebook -->
                         <a href="#" class="w-10 h-10 bg-sky-600 rounded-lg flex items-center justify-center hover:bg-blue-700 transition">
                             <svg class="w-5 h-5 text-white" fill="currentColor" viewBox="0 0 24 24">
                                 <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
                             </svg>
                         </a>
-                        <!-- Twiter -->
                         <a href="#" class="w-10 h-10 bg-sky-600 rounded-lg flex items-center justify-center hover:bg-blue-400 transition">
                             <svg class="w-5 h-5 text-white" fill="currentColor" viewBox="0 0 24 24">
                                 <path d="M23.953 4.57a10 10 0 01-2.825.775 4.958 4.958 0 002.163-2.723c-.951.555-2.005.959-3.127 1.184a4.92 4.92 0 00-8.384 4.482C7.69 8.095 4.067 6.13 1.64 3.162a4.822 4.822 0 00-.666 2.475c0 1.71.87 3.213 2.188 4.096a4.904 4.904 0 01-2.228-.616v.06a4.923 4.923 0 003.946 4.827 4.996 4.996 0 01-2.212.085 4.936 4.936 0 004.604 3.417 9.867 9.867 0 01-6.102 2.105c-.39 0-.779-.023-1.17-.067a13.995 13.995 0 007.557 2.209c9.053 0 13.998-7.496 13.998-13.985 0-.21 0-.42-.015-.63A9.935 9.935 0 0024 4.59z"/>
                             </svg>
                         </a>
-                        <!-- Instagram -->
                         <a href="https://www.instagram.com/dpdrigorontalo26?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" class="w-10 h-10 bg-sky-600 rounded-lg flex items-center justify-center hover:bg-red-700 transition">
                             <svg class="w-5 h-5 text-white" fill="currentColor" viewBox="0 0 24 24">
                                 <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
                             </svg>
                         </a>
-                        <!-- Youtube -->
                         <a href="#" class="w-10 h-10 bg-sky-600 rounded-lg flex items-center justify-center hover:bg-red-700 transition">
                             <svg class="w-5 h-5 text-white" fill="currentColor" viewBox="0 0 24 24">
                                 <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
@@ -548,8 +512,6 @@
                         </a>
                     </div>
                 </div>
-
-                <!-- Quick Links -->
                 <div class="md:col-span-2">
                     <h4 class="font-bold text-white mb-4 text-sm">Tautan Cepat</h4>
                     <ul class="space-y-2 text-sm">
@@ -567,26 +529,6 @@
                         </a></li>
                     </ul>
                 </div>
-
-                <!-- <div class="md:col-span-3">
-                    <h4 class="font-bold text-white mb-4 text-sm">Layanan</h4>
-                    <ul class="space-y-2 text-sm">
-                        <li><a href="#" class="hover:text-sky-400 transition flex items-center gap-2">
-                            <span class="text-sky-500">›</span> Aspirasi Masyarakat
-                        </a></li>
-                        <li><a href="#" class="hover:text-sky-400 transition flex items-center gap-2">
-                            <span class="text-sky-500">›</span> Dokumen Publik
-                        </a></li>
-                        <li><a href="#" class="hover:text-sky-400 transition flex items-center gap-2">
-                            <span class="text-sky-500">›</span> Transparansi Keuangan
-                        </a></li>
-                        <li><a href="#" class="hover:text-sky-400 transition flex items-center gap-2">
-                            <span class="text-sky-500">›</span> PPID
-                        </a></li>
-                    </ul>
-                </div> -->
-
-                <!-- Contact -->
                 <div class="md:col-span-3">
                     <h4 class="font-bold text-white mb-4 text-sm">Kontak</h4>
                     <ul class="space-y-3 text-sm">
@@ -614,8 +556,6 @@
                 </div>
 
             </div>
-
-            <!-- Bottom Footer -->
             <div class="border-t border-gray-800 pt-6 text-center">
                 <p class="text-sm text-gray-400">
                     © 2025 <span class="text-sky-500 font-semibold">Dewan Perwakilan Daerah Provinsi Gorontalo</span>. Seluruh Hak Cipta Dilindungi.
