@@ -172,12 +172,7 @@
                             Dapatkan update terkini tentang kegiatan, program, dan kebijakan Dewan Perwakilan Daerah Kota Gorontalo untuk kemajuan daerah.
                         </p>
                         <div class="flex items-center justify-between">
-                            <a href="#" class="inline-flex items-center gap-2 text-sky-600 font-semibold hover:text-blue-700 transition">
-                                Baca Selengkapnya 
-                                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/>
-                                </svg>
-                            </a>
+                           
                             <div class="flex gap-2">
                                 <button class="p-2 hover:bg-gray-100 rounded-lg transition">
                                     <svg class="w-5 h-5 text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -221,12 +216,7 @@
                             <p class="text-gray-600 text-sm mb-4 line-clamp-3">
                                 Dalam rangka menjalankan agenda reses, salah satu Anggota Dewan Perwakilan Daerah Republik Indonesia (DPD RI) di Daerah Pemilihan Provinsi Gorontalo Hj. Rahmijati Jahja,  melakukan kunjungan kerja ke salah satu pelaku Usaha Mikro Kecil dan Menengah (UMKM) Helco Melati pengolah minyak kelapa yang berlokasi di Desa Huidu Kecamatan Limboto Barat Kabupaten Gorontalo.
                             </p>
-                            <a href="https://gorontalo.brmp.pertanian.go.id/berita/dpd-ri-serap-aspirasi-pelaku-umkm-dorong-peningkatan-daya-saing-produk-lokal-minyak-kelapa#:~:text=09%20Oktober%202025-,DPD%20RI%20Serap%20Aspirasi%20Pelaku%20UMKM%2C%20Dorong%20Peningkatan%20Daya%20Saing,mengedepankan%20syarat%2Dsayarat%20ketentuan%20pengolahan." class="inline-flex items-center gap-1 text-sky-600 text-sm font-semibold hover:gap-2 transition-all">
-                                Selengkapnya 
-                                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
-                                </svg>
-                            </a>
+                          
                         </div>
                     </div>
                     <div class="bg-white shadow-lg rounded-xl overflow-hidden hover-lift group">
@@ -252,12 +242,7 @@
                             <p class="text-gray-600 text-sm mb-4 line-clamp-3">
                                 DPD RI mengumumkan jadwal kunjungan kerja ke berbagai daerah untuk mendengar aspirasi masyarakat dan meninjau pelaksanaan program pembangunan.
                             </p>
-                            <a href="#" class="inline-flex items-center gap-1 text-sky-600 text-sm font-semibold hover:gap-2 transition-all">
-                                Selengkapnya 
-                                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
-                                </svg>
-                            </a>
+                            
                         </div>
                     </div>
                     <div class="bg-white shadow-lg rounded-xl overflow-hidden hover-lift group">
@@ -283,12 +268,7 @@
                             <p class="text-gray-600 text-sm mb-4 line-clamp-3">
                                dpd.go.id, Jakarta- Komite I Dewan Perwakilan Daerah RI menerima masukan dan usulan Pemerintah Provinsi Sulawesi Tenggara, Sulawesi Utara dan Gorontalo terkait penyempurnaan dasar hukum, karakteristik daerah, hari jadi atau pembentukan daerah, batas daerah, cakupan wilayah, dan pencantuman wilayah serta titik koordinat ke dalam RUU Kabupaten/Kota untuk mencegah potensi sengketa wilayah. Hal ini disampaikan dalam rapat dengar pendapat umum (RDPU) Komite I DPD RI dengan Gubernur Sulawesi Tenggara, Sulawesi Utara dan Gorontalo di Ruang Rapat Komite I, Rabu, 14 Mei 2025.
                             </p>
-                            <a href="#" class="inline-flex items-center gap-1 text-sky-600 text-sm font-semibold hover:gap-2 transition-all">
-                                Selengkapnya 
-                                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
-                                </svg>
-                            </a>
+                          
                         </div>
                     </div>
                     <div class="bg-white shadow-lg rounded-xl overflow-hidden hover-lift group">
@@ -314,12 +294,7 @@
                             <p class="text-gray-600 text-sm mb-4 line-clamp-3">
                                dpd.go.id - KETUA DPD RI, AA LaNyalla Mahmud Mattalitti berbuka puasa dengan sejumlah Senator terpilih pada Pemilu 14 Februari 2024 lalu di Pelataran Hutan Kota, Jakarta, Selasa (2/4/2024).
                             </p>
-                            <a href="#" class="inline-flex items-center gap-1 text-sky-600 text-sm font-semibold hover:gap-2 transition-all">
-                                Selengkapnya 
-                                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
-                                </svg>
-                            </a>
+                           
                         </div>
                     </div>
 
@@ -378,43 +353,7 @@
                         </li>
                     </ul>
                 </div>
-                <div class="bg-gradient-to-br from-sky-600 to-blue-500 text-white shadow-lg rounded-xl p-6">
-                    <h4 class="font-bold text-lg mb-5 flex items-center gap-2">
-                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/>
-                        </svg>
-                        Agenda Mendatang
-                    </h4>
-                    <ul class="space-y-4">
-                        <li class="border-l-4 border-white pl-4 py-2 hover:bg-sky-500 rounded-r-lg transition cursor-pointer">
-                            <p class="font-semibold text-sm mb-1">DPD RI Konferensi Runtutan Waralaba Dasari</p>
-                            <p class="text-xs text-blue-100 flex items-center gap-1">
-                                <svg class="w-3 h-3" fill="currentColor" viewBox="0 0 20 20">
-                                    <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-12a1 1 0 10-2 0v4a1 1 0 00.293.707l2.828 2.829a1 1 0 101.415-1.415L11 9.586V6z" clip-rule="evenodd"/>
-                                </svg>
-                                2 Desember
-                            </p>
-                        </li>
-                        <li class="border-l-4 border-white pl-4 py-2 hover:bg-sky-500 rounded-r-lg transition cursor-pointer">
-                            <p class="font-semibold text-sm mb-1">Rapal Resesan Khawasi Ahmad Daendi</p>
-                            <p class="text-xs text-blue-100 flex items-center gap-1">
-                                <svg class="w-3 h-3" fill="currentColor" viewBox="0 0 20 20">
-                                    <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-12a1 1 0 10-2 0v4a1 1 0 00.293.707l2.828 2.829a1 1 0 101.415-1.415L11 9.586V6z" clip-rule="evenodd"/>
-                                </svg>
-                                3 Desember
-                            </p>
-                        </li>
-                        <li class="border-l-4 border-white pl-4 py-2 hover:bg-sky-500 rounded-r-lg transition cursor-pointer">
-                            <p class="font-semibold text-sm mb-1">Rapal serabitan pada Pubitelasiega S088</p>
-                            <p class="text-xs text-blue-100 flex items-center gap-1">
-                                <svg class="w-3 h-3" fill="currentColor" viewBox="0 0 20 20">
-                                    <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-12a1 1 0 10-2 0v4a1 1 0 00.293.707l2.828 2.829a1 1 0 101.415-1.415L11 9.586V6z" clip-rule="evenodd"/>
-                                </svg>
-                                3 Desember
-                            </p>
-                        </li>
-                    </ul>
-                </div>
+
                 <div class="bg-white shadow-lg rounded-xl p-6">
                     <h4 class="font-bold text-lg mb-5 text-gray-800 flex items-center gap-2">
                         <svg class="w-5 h-5 text-sky-600" fill="currentColor" viewBox="0 0 20 20">
@@ -579,9 +518,7 @@
         const menuLinks = document.querySelectorAll('.menu-link'); 
         const heroSection = document.getElementById('hero-section');
         const breakingNewsSection = document.getElementById('breaking-news-section');
-        const initialContent = mainContent.innerHTML; // Konten awal Beranda
-
-        // Fungsi untuk menampilkan indikator loading
+        const initialContent = mainContent.innerHTML; 
         function showLoading() {
             mainContent.innerHTML = `
                 <div class="text-center py-20 text-sky-600">
