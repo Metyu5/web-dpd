@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use App\Models\Berita;
 use Illuminate\Http\Request;
 use App\Models\Admin;
 use Illuminate\Support\Facades\Hash;
@@ -28,4 +28,5 @@ class AdminController extends Controller
         session(['admin_id' => $admin->id]);
         return redirect()->route('admin.dashboard');
     }
+
 }

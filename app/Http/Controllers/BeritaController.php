@@ -7,6 +7,48 @@ use Illuminate\Http\Request;
 
 class BeritaController extends Controller
 {
+    public function indexDashboard(Request $request)
+    {
+        // Hitung semua data (seperti di dashboardData)
+        $berita_populer_count = Berita::where('keterangan', 'berita_populer')->count();
+        $berita_utama_count = Berita::where('keterangan', 'utama')->count();
+        $berita_agenda_count = Berita::where('keterangan', 'agenda')->count();
+        $berita_publikasi_count = Berita::where('keterangan', 'publikasi')->count();
+        $berita_kegiatan_count = Berita::where('keterangan', 'kegiatan')->count();
+        $berita_biasa_count = Berita::where('keterangan', 'berita')->count();
+
+        // Me-return view dashboard.blade.php dan melewatkan data ke dalamnya.
+        // Data ini akan tersedia untuk @include('admin.dashboard-content')
+        return view('admin.dashboard', compact(
+            'berita_populer_count',
+            'berita_utama_count',
+            'berita_agenda_count',
+            'berita_publikasi_count',
+            'berita_kegiatan_count',
+            'berita_biasa_count'
+        ));
+    }
+    public function dashboardData(Request $request)
+    {
+        $berita_populer_count = Berita::where('keterangan', 'berita_populer')->count();
+        $berita_utama_count = Berita::where('keterangan', 'utama')->count();
+        $berita_agenda_count = Berita::where('keterangan', 'agenda')->count();
+        $berita_publikasi_count = Berita::where('keterangan', 'publikasi')->count();
+        $berita_kegiatan_count = Berita::where('keterangan', 'kegiatan')->count();
+        $berita_biasa_count = Berita::where('keterangan', 'berita')->count();
+
+
+        return view('admin.dashboard-content', compact(
+            'berita_populer_count',
+            'berita_utama_count',
+            'berita_agenda_count',
+            'berita_publikasi_count',
+            'berita_kegiatan_count',
+            'berita_biasa_count'
+        ));
+    }
+
+
     public function index(Request $request)
     {
         $query = Berita::query();
@@ -17,7 +59,7 @@ class BeritaController extends Controller
                 ->orWhere('isi_berita', 'like', '%' . $search . '%')
                 ->orWhere('keterangan', 'like', '%' . $search . '%');
         }
-
+        
         $berita = $query->paginate(5);
 
         return view('admin.data-berita-content', compact('berita'));

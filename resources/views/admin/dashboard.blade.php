@@ -15,15 +15,20 @@
 </head>
 <body class="bg-white font-sans antialiased text-gray-800">
 
+    {{-- Ambil nama route saat ini untuk pengecekan class aktif --}}
+    @php
+        $currentRoute = Route::currentRouteName();
+    @endphp
+
     <div class="flex h-screen overflow-hidden">
 
-        <aside id="sidebar" class="flex-shrink-0 w-64 bg-red-800 text-white shadow-2xl transform transition-all duration-300 ease-in-out md:translate-x-0 -translate-x-full overflow-y-auto sidebar-scroll z-50 fixed md:static md:inset-y-0 inset-y-0">
+        <aside id="sidebar" class="flex-shrink-0 w-64 bg-red-700 text-white shadow-2xl transform transition-all duration-300 ease-in-out md:translate-x-0 -translate-x-full overflow-y-auto sidebar-scroll z-50 fixed md:static md:inset-y-0 inset-y-0">
             <div class="flex flex-col h-full">
                 <div class="p-6 flex-shrink-0">
                     <div class="flex justify-between items-center mb-8">
                         <div class="text-center flex-1">
                             <img src="{{ asset('DPD-RI.png') }}" alt="Logo DPD RI" class="w-16 h-16 mx-auto mb-2 filter brightness-110">
-                            <span class="text-xl font-semibold tracking-wider uppercase border-b border-red-700 pb-2 block">DPD RI PROVINSI GORONTALO</span>
+                            <span class="text-xl font-semibold tracking-wider uppercase border-b border-white pb-2 block">DPD RI PROVINSI GORONTALO</span>
                         </div>
                         <button id="close-sidebar" class="text-white hover:text-gray-200 focus:outline-none md:hidden p-2 rounded-md hover:bg-red-700 transition duration-150">
                             <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -33,19 +38,33 @@
                     </div>
 
                     <nav class="space-y-2">
-                        <a href="{{ route('admin.dashboard') }}" data-url="{{ route('admin.dashboard.content') }}" class="spa-link active-link flex items-center p-3 text-sm font-semibold rounded-lg bg-red-700 shadow-inner hover:bg-red-600 transition duration-150 ease-in-out">
+                        {{-- Dashboard Link: Cek apakah route aktif adalah 'admin.dashboard' --}}
+                        <a href="{{ route('admin.dashboard') }}" 
+                           data-url="{{ route('admin.dashboard.content') }}" 
+                           class="spa-link flex items-center p-3 text-sm rounded-lg transition duration-150 ease-in-out 
+                           {{ $currentRoute == 'admin.dashboard' ? 'bg-red-700 shadow-inner font-semibold active-link' : 'font-medium hover:bg-red-600' }}">
                             <svg class="w-5 h-5 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"></path>
                             </svg>
                             Dashboard
                         </a>
-                        <a href="{{ route('admin.berita.index') }}" data-url="{{ route('admin.berita.content') }}" class="spa-link flex items-center p-3 text-sm font-medium rounded-lg hover:bg-red-700 transition duration-150 ease-in-out">
+                        
+                        {{-- Data Berita Link: Cek apakah route aktif adalah 'admin.berita.index' --}}
+                        <a href="{{ route('admin.berita.index') }}" 
+                           data-url="{{ route('admin.berita.content') }}" 
+                           class="spa-link flex items-center p-3 text-sm rounded-lg transition duration-150 ease-in-out 
+                           {{ $currentRoute == 'admin.berita.index' ? 'bg-red-700 shadow-inner font-semibold active-link' : 'font-medium hover:bg-red-600' }}">
                              <svg class="w-5 h-5 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-3 7h3m-3 4h3m-6-4h.01M9 16h.01"></path>
-                            </svg>
+                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-3 7h3m-3 4h3m-6-4h.01M9 16h.01"></path>
+                             </svg>
                             Data Berita
                         </a>
-                        <a href="{{ route('admin.data-admin.index') }}" data-url="{{ route('admin.data-admin.content') }}" class="spa-link flex items-center p-3 text-sm font-medium rounded-lg hover:bg-red-700 transition duration-150 ease-in-out">
+                        
+                        {{-- Data Admin Link: Cek apakah route aktif adalah 'admin.data-admin.index' --}}
+                        <a href="{{ route('admin.data-admin.index') }}" 
+                           data-url="{{ route('admin.data-admin.content') }}" 
+                           class="spa-link flex items-center p-3 text-sm rounded-lg transition duration-150 ease-in-out 
+                           {{ $currentRoute == 'admin.data-admin.index' ? 'bg-red-700 shadow-inner font-semibold active-link' : 'font-medium hover:bg-red-600' }}">
                             <svg class="w-5 h-5 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20v-2h2m-4.5 0a4.5 4.5 0 11-9 0 4.5 4.5 0 019 0zM17 14v6m-6-6v6"></path>
                             </svg>
@@ -53,7 +72,7 @@
                         </a>
                     </nav>
                 </div>
-                <div class="p-6 border-t border-red-700 mt-auto flex-shrink-0">
+                <div class="p-6 border-t border-white mt-auto flex-shrink-0">
                     <button
                         id="logout-mobile"
                         class="flex items-center w-full p-3 text-sm font-medium rounded-lg hover:bg-red-700 transition duration-150 ease-in-out text-left">
@@ -122,8 +141,7 @@
             </main>
         </div>
     </div>
-    <!-- Logout Modal -->
-<div id="logout-modal" class="fixed inset-0 bg-black/40 hidden justify-center items-center z-[999]">
+    <div id="logout-modal" class="fixed inset-0 bg-black/40 hidden justify-center items-center z-[999]">
     <div class="bg-white rounded-xl shadow-xl p-6 w-80">
         <h2 class="text-lg font-semibold text-gray-800">Konfirmasi</h2>
         <p class="mt-2 text-gray-600">Yakin ingin keluar?</p>

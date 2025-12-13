@@ -381,9 +381,16 @@ document.addEventListener("DOMContentLoaded", () => {
 
     function loadContent(contentUrl, pageUrl, activeLink) {
         pageContent.innerHTML = `
-            <div class="flex items-center justify-center h-full min-h-[50vh]">
-                <p class="text-gray-600">Memuat...</p>
-            </div>
+            <div class="flex flex-col items-center justify-center h-full min-h-[50vh] gap-4">
+            <!-- Spinner -->
+            <div class="w-12 h-12 border-4 border-blue-300 border-t-blue-600 rounded-full animate-spin"></div>
+            
+            <!-- Text -->
+            <p class="text-gray-700 font-semibold text-lg animate-pulse">Memuat...</p>
+            
+            <!-- Optional tips -->
+            <p class="text-gray-400 text-sm">Harap tunggu sebentar, konten sedang dimuat.</p>
+        </div>
         `;
 
         fetch(contentUrl)
