@@ -8,16 +8,16 @@
     <title>Dashboard Admin DPD Gorontalo</title>
     @vite(['resources/css/app.css', 'resources/css/admin.css', 'resources/js/app.js', 'resources/js/admin.js'])
     <link rel="icon" href="{{ asset('DPD-RI.png') }}" type="image/png">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;600;700;800&display=swap" rel="stylesheet">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
 </head>
 <body class="bg-white font-sans antialiased text-gray-800">
 
-    {{-- Ambil nama route saat ini untuk pengecekan class aktif --}}
+    {{-- Ambil request untuk pengecekan route yang lebih fleksibel --}}
     @php
-        $currentRoute = Route::currentRouteName();
+        $request = app('request');
     @endphp
 
     <div class="flex h-screen overflow-hidden">
@@ -38,33 +38,32 @@
                     </div>
 
                     <nav class="space-y-2">
-                        {{-- Dashboard Link: Cek apakah route aktif adalah 'admin.dashboard' --}}
+                        {{-- Dashboard Link: Cek apakah route aktif dimulai dengan 'admin.dashboard*' --}}
                         <a href="{{ route('admin.dashboard') }}" 
                            data-url="{{ route('admin.dashboard.content') }}" 
                            class="spa-link flex items-center p-3 text-sm rounded-lg transition duration-150 ease-in-out 
-                           {{ $currentRoute == 'admin.dashboard' ? 'bg-red-700 shadow-inner font-semibold active-link' : 'font-medium hover:bg-red-600' }}">
+                           {{ $request->routeIs('admin.dashboard*') ? 'bg-red-700 shadow-inner font-semibold active-link' : 'font-medium hover:bg-red-600' }}">
                             <svg class="w-5 h-5 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"></path>
                             </svg>
                             Dashboard
                         </a>
                         
-                        {{-- Data Berita Link: Cek apakah route aktif adalah 'admin.berita.index' --}}
+                        {{-- Data Berita Link: Cek apakah route aktif dimulai dengan 'admin.berita.*' --}}
                         <a href="{{ route('admin.berita.index') }}" 
                            data-url="{{ route('admin.berita.content') }}" 
                            class="spa-link flex items-center p-3 text-sm rounded-lg transition duration-150 ease-in-out 
-                           {{ $currentRoute == 'admin.berita.index' ? 'bg-red-700 shadow-inner font-semibold active-link' : 'font-medium hover:bg-red-600' }}">
+                           {{ $request->routeIs('admin.berita.*') ? 'bg-red-700 shadow-inner font-semibold active-link' : 'font-medium hover:bg-red-600' }}">
                              <svg class="w-5 h-5 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-3 7h3m-3 4h3m-6-4h.01M9 16h.01"></path>
                              </svg>
                             Data Berita
                         </a>
                         
-                        {{-- Data Admin Link: Cek apakah route aktif adalah 'admin.data-admin.index' --}}
                         <a href="{{ route('admin.data-admin.index') }}" 
                            data-url="{{ route('admin.data-admin.content') }}" 
                            class="spa-link flex items-center p-3 text-sm rounded-lg transition duration-150 ease-in-out 
-                           {{ $currentRoute == 'admin.data-admin.index' ? 'bg-red-700 shadow-inner font-semibold active-link' : 'font-medium hover:bg-red-600' }}">
+                           {{ $request->routeIs('admin.data-admin.*') ? 'bg-red-700 shadow-inner font-semibold active-link' : 'font-medium hover:bg-red-600' }}">
                             <svg class="w-5 h-5 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20v-2h2m-4.5 0a4.5 4.5 0 11-9 0 4.5 4.5 0 019 0zM17 14v6m-6-6v6"></path>
                             </svg>
@@ -137,7 +136,7 @@
             </header>
 
             <main id="page-content" class="flex-1 overflow-x-hidden overflow-y-auto p-6 md:p-8">
-                @include('admin.dashboard-content')
+                {{-- KONTEN AWAL TELAH DIHAPUS. Konten akan dimuat oleh admin.js melalui AJAX/SPA --}}
             </main>
         </div>
     </div>

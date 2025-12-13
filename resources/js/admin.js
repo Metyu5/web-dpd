@@ -424,5 +424,22 @@ document.addEventListener("DOMContentLoaded", () => {
             loadContent(contentUrl, this.href, this);
         });
     });
+    function initInitialLoad() {
+        const currentUrl = window.location.href;
+        // Cari link sidebar yang href-nya cocok dengan URL saat ini
+        const activeLink = document.querySelector(`.spa-link[href="${currentUrl}"]`);
+
+        if (activeLink) {
+            const contentUrl = activeLink.getAttribute("data-url");
+            
+            if (contentUrl) {
+                // Panggil loadContent untuk mengisi #page-content
+                loadContent(contentUrl, currentUrl, activeLink);
+            }
+        }
+    }
+    
+    // Panggil fungsi setelah DOM dimuat
+    initInitialLoad();
 
 });
