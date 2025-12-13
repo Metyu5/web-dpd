@@ -53,7 +53,8 @@
                 <tr>
                     <th class="px-6 py-3 text-left text-xs font-normal text-gray-700 uppercase tracking-wider">No</th>
                     <th class="px-6 py-3 text-left text-xs font-normal text-gray-700 uppercase tracking-wider">Judul Berita</th>
-                    <th class="px-6 py-3 text-left text-xs font-normal text-gray-700 uppercase tracking-wider">Isi Berita</th> <th class="px-6 py-3 text-left text-xs font-normal text-gray-700 uppercase tracking-wider">Foto</th>
+                    <th class="px-6 py-3 text-left text-xs font-normal text-gray-700 uppercase tracking-wider">Isi Berita</th>
+                    <th class="px-6 py-3 text-left text-xs font-normal text-gray-700 uppercase tracking-wider">Foto</th>
                     <th class="px-6 py-3 text-left text-xs font-normal text-gray-700 uppercase tracking-wider">Keterangan</th>
                     <th class="px-6 py-3 text-center text-xs font-normal text-gray-700 uppercase tracking-wider">Aksi</th>
                 </tr>
@@ -63,12 +64,12 @@
                 <tr class="hover:bg-red-50/50 transition cursor-pointer">
                     <td class="px-6 py-4 text-sm font-normal text-gray-900">{{ $berita->firstItem() + $key }}</td>
                     <td class="px-6 py-4 text-sm font-normal text-gray-800 max-w-xs truncate">{{ $item->judul_berita }}</td>
-                    
+
                     {{-- DATA BARU: Isi Berita (dibuat ringkas/truncate agar tidak memenuhi tabel) --}}
                     <td class="px-6 py-4 text-sm font-normal text-gray-600 max-w-md">
                         {{ \Illuminate\Support\Str::limit(strip_tags($item->isi_berita), 150) }}
                     </td>
-                    
+
                     <td class="px-6 py-4">
                         <img src="{{ asset($item->foto) }}" class="w-24 h-16 object-cover rounded-lg shadow border focus:outline-none">
                     </td>

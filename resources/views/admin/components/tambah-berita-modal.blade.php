@@ -1,6 +1,6 @@
 <div id="addModal" class="fixed inset-0 bg-black/40 hidden justify-center items-center z-[999] px-4">
     <div class="bg-white w-full max-w-7xl rounded-xl shadow-xl overflow-hidden animate-scaleIn">
-        
+
         <div class="px-6 py-4 border-b flex justify-between items-center bg-gray-50">
             <h2 class="text-lg font-semibold text-gray-800">Tambah Berita</h2>
             <button id="closeAddModal" class="text-gray-500 hover:text-red-600 transition p-2 rounded-lg">✕</button>
@@ -42,15 +42,16 @@
 
                         <div class="flex flex-col items-start gap-3">
 
-                            <img id="previewImage" 
+                            <img id="previewImage"
                                 class="hidden w-48 h-32 object-cover rounded shadow border bg-gray-100">
 
-                            <input id="fotoInput" 
+                            <input id="fotoInput"
                                 type="file" name="foto" accept="image/*" required
                                 class="block text-sm border border-gray-300 rounded-lg cursor-pointer bg-gray-50
                                         file:mr-4 file:py-2 file:px-4 file:rounded-lg file:border-0
                                         file:bg-red-500 file:text-white file:text-sm hover:file:bg-red-400 transition
-                                        w-[250px]"> </div>
+                                        w-[250px]">
+                        </div>
                     </div>
 
 

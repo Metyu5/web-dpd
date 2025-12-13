@@ -14,8 +14,8 @@ class BeritaController extends Controller
         if ($request->filled('search')) {
             $search = $request->search;
             $query->where('judul_berita', 'like', '%' . $search . '%')
-                  ->orWhere('isi_berita', 'like', '%' . $search . '%')
-                  ->orWhere('keterangan', 'like', '%' . $search . '%');
+                ->orWhere('isi_berita', 'like', '%' . $search . '%')
+                ->orWhere('keterangan', 'like', '%' . $search . '%');
         }
 
         $berita = $query->paginate(5);

@@ -33,20 +33,18 @@
         Route::get('/dashboard/content', function () {
             return view('admin.dashboard-content');
         })->name('dashboard.content');
-        
-        // Route utama untuk menu "Data Berita"
+
         Route::get('/data-berita', function () {
             return view('admin.dashboard');
         })->name('berita.index');
-        
-        // Route 'content' yang memanggil Controller untuk menampilkan data
+
         Route::get('/data-berita/content', [BeritaController::class, 'index'])
-            ->name('berita.content'); 
+            ->name('berita.content');
 
         Route::post('/data-berita', [BeritaController::class, 'store'])
-        ->name('store-berita');
+            ->name('store-berita');
 
-        
+
         Route::get('/data-admin', function () {
             return view('admin.dashboard');
         })->name('data-admin.index');
@@ -61,13 +59,10 @@
         })->name('manajemen.content');
 
 
-    Route::get('/berita/get/{id}', [BeritaController::class, 'get'])
-    ->name('admin.berita.get');
-    Route::put('/berita/update/{id}', [BeritaController::class, 'update'])
-    ->name('admin.berita.update');
-     Route::delete('/berita/delete/{id}', [BeritaController::class, 'destroy'])
-     ->name('admin.berita.delete');
-   
-        
-
+        Route::get('/berita/get/{id}', [BeritaController::class, 'get'])
+            ->name('admin.berita.get');
+        Route::put('/berita/update/{id}', [BeritaController::class, 'update'])
+            ->name('admin.berita.update');
+        Route::delete('/berita/delete/{id}', [BeritaController::class, 'destroy'])
+            ->name('admin.berita.delete');
     });

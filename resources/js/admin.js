@@ -1,8 +1,4 @@
 document.addEventListener("DOMContentLoaded", () => {
-
-    // =========================
-    // SIDEBAR MOBILE
-    // =========================
     function initSidebarMobile() {
         const sidebar = document.getElementById("sidebar");
         const toggleBtn = document.getElementById("sidebar-toggle");
@@ -31,12 +27,6 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     }
     initSidebarMobile();
-
-
-
-    // =========================
-    // SIDEBAR DESKTOP
-    // =========================
     function initSidebarDesktop() {
         const sidebar = document.getElementById("sidebar");
         const desktopToggle = document.getElementById("sidebarToggle");
@@ -50,12 +40,6 @@ document.addEventListener("DOMContentLoaded", () => {
         };
     }
     initSidebarDesktop();
-
-
-
-    // =========================
-    // LOGOUT MODAL
-    // =========================
     function initLogout() {
         const logoutModal = document.getElementById("logout-modal");
         const mobileLogout = document.getElementById("logout-mobile");
@@ -85,12 +69,6 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     }
     initLogout();
-
-
-
-    // =========================
-    // MODAL TAMBAH BERITA (AJAX SUBMIT)
-    // =========================
     function initAddModal() {
         const addModal = document.getElementById("addModal");
         const openAdd = document.getElementById("openAddModal");
@@ -139,7 +117,6 @@ document.addEventListener("DOMContentLoaded", () => {
             };
         }
 
-        // === LOGIKA SUBMIT FORM TAMBAH (AJAX) ===
         if (addForm) {
             addForm.addEventListener("submit", async function (e) {
                 e.preventDefault(); 
@@ -184,8 +161,6 @@ document.addEventListener("DOMContentLoaded", () => {
                         previewImage.classList.add("hidden"); 
                         previewImage.src = '';
                     }
-
-                    // Muat ulang konten SPA untuk refresh tabel
                     const activeLink = document.querySelector(".spa-link.bg-red-700");
                     if (activeLink) {
                         const contentUrl = activeLink.getAttribute("data-url");
@@ -205,10 +180,6 @@ document.addEventListener("DOMContentLoaded", () => {
     }
     initAddModal();
 
-
-    // =========================
-    // HANDLER SUBMIT FORM EDIT
-    // =========================
     function initEditFormHandler() {
         const editForm = document.getElementById("editForm");
         const editModal = document.getElementById("editModal");
@@ -272,21 +243,12 @@ document.addEventListener("DOMContentLoaded", () => {
     }
     initEditFormHandler();
 
-
-    // ============================================================
-    // EVENT DELEGATION (EDIT + DELETE + PAGINATION)
-    // ============================================================
     const pageContent = document.getElementById("page-content");
 
     document.addEventListener("click", async (e) => {
-
-        // ====================
-        // EDIT BERITA
-        // ====================
         if (e.target.closest(".btnEdit")) {
             const btn = e.target.closest(".btnEdit");
             const id = btn.dataset.id;
-            // ... (Logic ambil dan isi data edit) ...
             try {
                 const res = await fetch(`/admin/berita/get/${id}`);
                 if (!res.ok) throw new Error("Gagal mengambil data");
@@ -311,9 +273,6 @@ document.addEventListener("DOMContentLoaded", () => {
             }
         }
 
-        // ====================
-        // DELETE BERITA
-        // ====================
         if (e.target.closest(".btnDelete")) {
             const btn = e.target.closest(".btnDelete");
             const id = btn.dataset.id;
@@ -376,28 +335,18 @@ document.addEventListener("DOMContentLoaded", () => {
                 }
             });
         }
-        
-        // ====================
-        // PAGINATION HANDLING (BARU)
-        // ====================
         const clickedLink = e.target.closest('a[href]:not(.spa-link)');
         
-        // Cek apakah link yang diklik adalah link pagination (memiliki "page=" di href)
         if (clickedLink && pageContent.contains(clickedLink) && clickedLink.href.includes('page=')) {
             e.preventDefault();
             const pageUrl = clickedLink.href;
             
-            // Muat konten halaman baru via AJAX. Kirim null untuk activeLink.
             loadContent(pageUrl, pageUrl, null);
         }
 
     });
 
 
-
-    // =========================
-    // CLOSE EDIT MODAL
-    // =========================
     function initEditModalCloser() {
         const close1 = document.getElementById("closeEditModal");
         const close2 = document.getElementById("closeEditModal2");
@@ -411,25 +360,12 @@ document.addEventListener("DOMContentLoaded", () => {
         };
     }
     initEditModalCloser();
-    
-    
-
-
-    // =========================
-    // CLOSE DELETE MODAL
-    // =========================
     const closeDelete = document.getElementById("closeDeleteModal");
     if (closeDelete) {
         closeDelete.onclick = () => {
             document.getElementById("deleteModal").classList.add("hidden");
         };
     }
-
-
-
-    // =========================
-    // SPA HANDLING (LOAD CONTENT)
-    // =========================
     const spaLinks = document.querySelectorAll(".spa-link");
 
     function updateActiveLink(activeLink) {
@@ -456,18 +392,16 @@ document.addEventListener("DOMContentLoaded", () => {
                 pageContent.innerHTML = html;
                 history.pushState(null, "", pageUrl);
 
-                // Jika activeLink null (misalnya dari pagination), cari link yang saat ini aktif
                 let finalActiveLink = activeLink;
                 if (!finalActiveLink) {
                     finalActiveLink = document.querySelector(".spa-link.bg-red-700");
                 }
                 updateActiveLink(finalActiveLink);
 
-                // Re-init DOM baru
                 initAddModal();
                 initLogout();
                 initEditModalCloser();
-                initEditFormHandler(); // Panggil handler form edit/tambah
+                initEditFormHandler(); 
             })
             .catch(err => {
                 pageContent.innerHTML = `<p class="text-red-600 text-center py-20">${err}</p>`;
