@@ -4,17 +4,38 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>DPD RI - Dewan Perwakilan Daerah Kota Gorontalo</title>
-        @vite('resources/css/app.css')
-    
+            @vite(['resources/css/app.css', 'resources/js/app.js'])
+
     <link rel="icon" href="{{'DPD-RI.png'}}" type="image/png">
     <style>
-        .line-clamp-2 {
-            display: -webkit-box;
-            -webkit-line-clamp: 2;
-            line-clamp: 2;
-            -webkit-box-orient: vertical;
-            overflow: hidden;
-        }
+        /* Alpine.js cloak */
+    [x-cloak] { 
+        display: none !important; 
+    }
+
+    /* Custom scrollbar untuk modal */
+    [x-ref="scrollContainer"]::-webkit-scrollbar {
+        width: 8px;
+    }
+
+    [x-ref="scrollContainer"]::-webkit-scrollbar-track {
+        background: #f1f1f1;
+        border-radius: 10px;
+    }
+
+    [x-ref="scrollContainer"]::-webkit-scrollbar-thumb {
+        background: #888;
+        border-radius: 10px;
+    }
+
+    [x-ref="scrollContainer"]::-webkit-scrollbar-thumb:hover {
+        background: #555;
+    }
+
+    /* Prevent body scroll saat modal buka */
+    body.overflow-hidden {
+        overflow: hidden !important;
+    }
         .line-clamp-3 {
             display: -webkit-box;
             -webkit-line-clamp: 3;

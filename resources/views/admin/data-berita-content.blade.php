@@ -63,9 +63,8 @@
                 @foreach($berita as $key => $item)
                 <tr class="hover:bg-red-50/50 transition cursor-pointer">
                     <td class="px-6 py-4 text-sm font-normal text-gray-900">{{ $berita->firstItem() + $key }}</td>
-                    <td class="px-6 py-4 text-sm font-normal text-gray-800 max-w-xs truncate">{{ $item->judul_berita }}</td>
+                    <td class="px-6 py-4 text-sm font-normal text-gray-800 max-w-xs">{{ $item->judul_berita }}</td>
 
-                    {{-- DATA BARU: Isi Berita (dibuat ringkas/truncate agar tidak memenuhi tabel) --}}
                     <td class="px-6 py-4 text-sm font-normal text-gray-600 max-w-md">
                         {{ \Illuminate\Support\Str::limit(strip_tags($item->isi_berita), 150) }}
                     </td>

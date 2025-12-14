@@ -1,4 +1,54 @@
 document.addEventListener("DOMContentLoaded", () => {
+    
+    const pageContent = document.getElementById("page-content");
+    const spaLinks = document.querySelectorAll(".spa-link");
+
+    
+    function updateActiveLink(activeLink) {
+        spaLinks.forEach(l => {
+            l.classList.remove("bg-red-700", "shadow-inner", "font-semibold");
+            l.classList.add("font-medium");
+        });
+        if (activeLink) {
+            activeLink.classList.add("bg-red-700", "shadow-inner", "font-semibold");
+            activeLink.classList.remove("font-medium");
+        }
+    }
+
+    function loadContent(contentUrl, pageUrl, activeLink) {
+        pageContent.innerHTML = `
+            <div class="flex flex-col items-center justify-center h-full min-h-[50vh] gap-4">
+            <div class="w-12 h-12 border-4 border-blue-300 border-t-blue-600 rounded-full animate-spin"></div>
+            
+            <p class="text-gray-700 font-semibold text-lg animate-pulse">Memuat...</p>
+            
+            <p class="text-gray-400 text-sm">Harap tunggu sebentar, konten sedang dimuat.</p>
+        </div>
+        `;
+
+        fetch(contentUrl)
+            .then(r => r.text())
+            .then(html => {
+                pageContent.innerHTML = html;
+                history.pushState(null, "", pageUrl);
+
+                let finalActiveLink = activeLink;
+                if (!finalActiveLink) {
+                    finalActiveLink = document.querySelector(".spa-link.bg-red-700");
+                }
+                updateActiveLink(finalActiveLink);
+                initAddModal(); 
+                initLogout();
+                initEditModalCloser();
+                initEditFormHandler(); 
+                initAdminCrud(); 
+            })
+            .catch(err => {
+                pageContent.innerHTML = `<p class="text-red-600 text-center py-20">${err}</p>`;
+            });
+    }
+
+
     function initSidebarMobile() {
         const sidebar = document.getElementById("sidebar");
         const toggleBtn = document.getElementById("sidebar-toggle");
@@ -27,6 +77,7 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     }
     initSidebarMobile();
+
     function initSidebarDesktop() {
         const sidebar = document.getElementById("sidebar");
         const desktopToggle = document.getElementById("sidebarToggle");
@@ -40,6 +91,7 @@ document.addEventListener("DOMContentLoaded", () => {
         };
     }
     initSidebarDesktop();
+
     function initLogout() {
         const logoutModal = document.getElementById("logout-modal");
         const mobileLogout = document.getElementById("logout-mobile");
@@ -241,9 +293,284 @@ document.addEventListener("DOMContentLoaded", () => {
             }
         });
     }
+    
     initEditFormHandler();
+    
+    function initAdminCrud() {
+        initAddAdminModal();
+        initEditAdminModal();
+        initAdminEditFormHandler();
+        initDeleteAdminModal();
+        initAdminDeleteFormHandler();
+    }
 
-    const pageContent = document.getElementById("page-content");
+
+    function initAddAdminModal() {
+        const modal = document.getElementById('addAdminModal');
+        const openBtn = document.getElementById('openAddAdminModal');
+        const closeBtn = document.getElementById('closeAddAdminModal');
+        const cancelBtn = document.getElementById('closeAddAdminModal2');
+        const form = document.getElementById('addAdminForm');
+
+        if (!modal) return;
+
+        function toggleModal(show) {
+            modal.classList.toggle('hidden', !show);
+            modal.classList.toggle('flex', show);
+        }
+
+        if (openBtn) openBtn.onclick = () => toggleModal(true);
+        if (closeBtn) closeBtn.onclick = () => toggleModal(false);
+        if (cancelBtn) cancelBtn.onclick = () => toggleModal(false);
+
+        modal.onclick = e => {
+            if (e.target === modal) {
+                toggleModal(false);
+            }
+        };
+
+        form.onsubmit = async function (e) {
+            e.preventDefault();
+            const formData = new FormData(form);
+
+            try {
+                const res = await fetch(form.action, {
+                    method: 'POST',
+                    headers: {
+                        'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').getAttribute('content'),
+                    },
+                    body: formData
+                });
+                
+                if (!res.ok) {
+                    const errorData = await res.json();
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Gagal Menambahkan Admin!',
+                        text: errorData.message || 'Cek kembali isian Anda. Username/Email mungkin sudah terdaftar.',
+                    });
+                    return;
+                }
+                
+                const data = await res.json();
+                
+                Swal.fire({
+                    icon: 'success',
+                    title: 'Berhasil',
+                    text: data.message,
+                    timer: 1800,
+                    showConfirmButton: false
+                });
+
+                toggleModal(false);
+                form.reset(); 
+                const activeLink = document.querySelector(".spa-link.bg-red-700");
+                if (activeLink) {
+                        const contentUrl = activeLink.getAttribute("data-url");
+                        loadContent(contentUrl, activeLink.href, activeLink);
+                }
+            } catch (err) {
+                console.error('Error:', err);
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Gagal',
+                    text: 'Terjadi kesalahan jaringan atau server!',
+                });
+            }
+        };
+    }
+    
+    function initEditAdminModal() {
+        const modal = document.getElementById('editAdminModal');
+        const closeBtn = document.getElementById('closeEditAdminModal');
+        const cancelBtn = document.getElementById('closeEditAdminModal2');
+        const form = document.getElementById('editAdminForm');
+
+        if (!modal) return;
+
+        function toggleModal(show) {
+            modal.classList.toggle('hidden', !show);
+            modal.classList.toggle('flex', show);
+        }
+        
+        if (closeBtn) closeBtn.onclick = () => toggleModal(false);
+        if (cancelBtn) cancelBtn.onclick = () => toggleModal(false);
+
+        modal.onclick = e => {
+            if (e.target === modal) {
+                toggleModal(false);
+            }
+        };
+        document.addEventListener('click', function(e) {
+            if (e.target.closest('.btnEditAdmin')) {
+                e.preventDefault();
+                const btn = e.target.closest('.btnEditAdmin');
+                const adminId = btn.getAttribute('data-id');
+                fetch(`/admin/admin/get/${adminId}`) 
+                    .then(r => r.json())
+                    .then(data => {
+                        if (data.error) {
+                            Swal.fire({ icon: 'error', title: 'Error', text: data.error });
+                            return;
+                        }
+                        document.getElementById('edit_admin_id').value = data.id;
+                        document.getElementById('edit_admin_username').value = data.username;
+                        document.getElementById('edit_admin_email').value = data.email;
+                        form.action = `/admin/admin/update/${data.id}`;
+                        
+                        toggleModal(true);
+                    })
+                    .catch(error => {
+                        console.error('Error fetching admin:', error);
+                        Swal.fire({ icon: 'error', title: 'Gagal', text: 'Gagal mengambil data admin.' });
+                    });
+            }
+        });
+    }
+    function initAdminEditFormHandler() {
+        const form = document.getElementById('editAdminForm');
+        const modal = document.getElementById('editAdminModal');
+
+        if (!form) return;
+
+        form.onsubmit = async function (e) {
+            e.preventDefault();
+            const formData = new FormData(form);
+            formData.append('_method', 'PUT');
+
+            try {
+                const res = await fetch(form.action, { 
+                    method: 'POST', 
+                    headers: {
+                        'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').getAttribute('content'),
+                    },
+                    body: formData
+                });
+                
+                if (!res.ok) {
+                    const errorData = await res.json();
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Gagal Memperbarui Admin!',
+                        text: errorData.message || 'Cek kembali isian Anda.',
+                    });
+                    return;
+                }
+                
+                const data = await res.json();
+
+                Swal.fire({
+                    icon: 'success',
+                    title: 'Berhasil',
+                    text: data.message,
+                    timer: 1800,
+                    showConfirmButton: false
+                });
+
+                modal.classList.add('hidden');
+                modal.classList.remove('flex');
+                
+                const activeLink = document.querySelector(".spa-link.bg-red-700");
+                if (activeLink) {
+                        const contentUrl = activeLink.getAttribute("data-url");
+                        loadContent(contentUrl, activeLink.href, activeLink);
+                }
+            } catch (err) {
+                console.error('Error updating admin:', err);
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Gagal',
+                    text: 'Terjadi kesalahan jaringan atau server!',
+                });
+            }
+        };
+    }
+    function initDeleteAdminModal() {
+        const modal = document.getElementById('deleteAdminModal');
+        const closeBtn = document.getElementById('closeDeleteAdminModal');
+        const cancelBtn = document.getElementById('cancelDeleteAdmin');
+        const form = document.getElementById('deleteAdminForm');
+
+        if (!modal) return;
+
+        function toggleModal(show) {
+            modal.classList.toggle('hidden', !show);
+            modal.classList.toggle('flex', show);
+        }
+        
+        if (closeBtn) closeBtn.onclick = () => toggleModal(false);
+        if (cancelBtn) cancelBtn.onclick = () => toggleModal(false);
+
+         modal.onclick = e => {
+            if (e.target === modal) {
+                toggleModal(false);
+            }
+        };
+
+        document.addEventListener('click', function(e) {
+            if (e.target.closest('.btnDeleteAdmin')) {
+                e.preventDefault();
+                const btn = e.target.closest('.btnDeleteAdmin');
+                const adminId = btn.getAttribute('data-id');
+                const usernameCell = btn.closest('tr').querySelector('td:nth-child(2)');
+                const username = usernameCell ? usernameCell.textContent.trim() : 'Admin ini';
+
+                document.getElementById('delete_admin_username_text').textContent = username;
+                form.action = `/admin/admin/delete/${adminId}`;
+                toggleModal(true);
+            }
+        });
+    }
+
+    function initAdminDeleteFormHandler() {
+        const form = document.getElementById('deleteAdminForm');
+        const modal = document.getElementById('deleteAdminModal');
+
+        if (!form) return;
+
+        form.onsubmit = async function (e) {
+            e.preventDefault();
+            
+            try {
+                const res = await fetch(form.action, {
+                    method: 'POST', 
+                    headers: {
+                        'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').getAttribute('content'),
+                        'Content-Type': 'application/x-www-form-urlencoded',
+                    },
+                    body: '_method=DELETE'
+                });
+
+                if (!res.ok) throw new Error("Gagal menghapus data!");
+
+                const data = await res.json();
+                
+                Swal.fire({
+                    icon: 'success',
+                    title: 'Berhasil',
+                    text: data.message,
+                    timer: 1800,
+                    showConfirmButton: false
+                });
+                
+                modal.classList.add('hidden');
+                modal.classList.remove('flex');
+                
+                const activeLink = document.querySelector(".spa-link.bg-red-700");
+                if (activeLink) {
+                        const contentUrl = activeLink.getAttribute("data-url");
+                        loadContent(contentUrl, activeLink.href, activeLink);
+                }
+            } catch (err) {
+                console.error('Error deleting admin:', err);
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Gagal',
+                    text: 'Terjadi kesalahan jaringan atau server!',
+                });
+            }
+        };
+    }
 
     document.addEventListener("click", async (e) => {
         if (e.target.closest(".btnEdit")) {
@@ -277,7 +604,6 @@ document.addEventListener("DOMContentLoaded", () => {
             const btn = e.target.closest(".btnDelete");
             const id = btn.dataset.id;
             const deleteUrl = `/admin/berita/delete/${id}`;
-            // ... (Logic SweetAlert Delete) ...
             Swal.fire({
                 title: "Hapus Berita?",
                 text: "Data yang sudah dihapus tidak dapat dikembalikan.",
@@ -366,80 +692,20 @@ document.addEventListener("DOMContentLoaded", () => {
             document.getElementById("deleteModal").classList.add("hidden");
         };
     }
-    const spaLinks = document.querySelectorAll(".spa-link");
 
-    function updateActiveLink(activeLink) {
-        spaLinks.forEach(l => {
-            l.classList.remove("bg-red-700", "shadow-inner", "font-semibold");
-            l.classList.add("font-medium");
-        });
-        if (activeLink) {
-            activeLink.classList.add("bg-red-700", "shadow-inner", "font-semibold");
-            activeLink.classList.remove("font-medium");
-        }
-    }
-
-    function loadContent(contentUrl, pageUrl, activeLink) {
-        pageContent.innerHTML = `
-            <div class="flex flex-col items-center justify-center h-full min-h-[50vh] gap-4">
-            <!-- Spinner -->
-            <div class="w-12 h-12 border-4 border-blue-300 border-t-blue-600 rounded-full animate-spin"></div>
-            
-            <!-- Text -->
-            <p class="text-gray-700 font-semibold text-lg animate-pulse">Memuat...</p>
-            
-            <!-- Optional tips -->
-            <p class="text-gray-400 text-sm">Harap tunggu sebentar, konten sedang dimuat.</p>
-        </div>
-        `;
-
-        fetch(contentUrl)
-            .then(r => r.text())
-            .then(html => {
-                pageContent.innerHTML = html;
-                history.pushState(null, "", pageUrl);
-
-                let finalActiveLink = activeLink;
-                if (!finalActiveLink) {
-                    finalActiveLink = document.querySelector(".spa-link.bg-red-700");
-                }
-                updateActiveLink(finalActiveLink);
-
-                initAddModal();
-                initLogout();
-                initEditModalCloser();
-                initEditFormHandler(); 
-            })
-            .catch(err => {
-                pageContent.innerHTML = `<p class="text-red-600 text-center py-20">${err}</p>`;
-            });
-    }
-
-    spaLinks.forEach(link => {
-        link.addEventListener("click", function (e) {
-            const contentUrl = this.getAttribute("data-url");
-            if (!contentUrl) return;
-
-            e.preventDefault();
-            loadContent(contentUrl, this.href, this);
-        });
-    });
     function initInitialLoad() {
         const currentUrl = window.location.href;
-        // Cari link sidebar yang href-nya cocok dengan URL saat ini
         const activeLink = document.querySelector(`.spa-link[href="${currentUrl}"]`);
 
         if (activeLink) {
             const contentUrl = activeLink.getAttribute("data-url");
             
             if (contentUrl) {
-                // Panggil loadContent untuk mengisi #page-content
                 loadContent(contentUrl, currentUrl, activeLink);
             }
         }
     }
     
-    // Panggil fungsi setelah DOM dimuat
     initInitialLoad();
 
 });

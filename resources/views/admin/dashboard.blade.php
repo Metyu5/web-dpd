@@ -15,7 +15,6 @@
 </head>
 <body class="bg-white font-sans antialiased text-gray-800">
 
-    {{-- Ambil request untuk pengecekan route yang lebih fleksibel --}}
     @php
         $request = app('request');
     @endphp
@@ -126,7 +125,7 @@
                                 <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-red-50 hover:text-red-700">Pengaturan</a>
                                 <div class="border-t border-gray-100"></div>
                                 <a href="#" id="logout-desktop"
-                                    class="block px-4 py-2 text-sm text-red-600 hover:bg-red-50 rounded-b-lg">
+                                    class="block px-4 py-2 text-sm text-red-600 hover:bg-red-50 transition duration-150 ease-in-out rounded-b-lg">
                                     Keluar
                                 </a>
                             </div>
