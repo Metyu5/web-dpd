@@ -12,26 +12,21 @@ class AdminController extends Controller
 
     public function login(Request $request)
     {
-        // 1. validasi input
         $request->validate([
             'email' => 'required|email',
             'password' => 'required'
         ]);
 
-        // 2. cek apakah email ada di database
         $admin = Admin::where('email', $request->email)->first();
 
-        // 3. jika email tidak ada atau password salah
         if (!$admin || !Hash::check($request->password, $admin->password)) {
             return back()->with('error', 'Mohon Periksa Kembali Email Dan Password Anda');
         }
 
-        // 4. jika benar → redirect ke dashboard
         session(['admin_id' => $admin->id]);
         return redirect()->route('admin.dashboard');
     }
     
-    // Method untuk menampilkan data admin (sudah dibuat sebelumnya)
     public function index(Request $request)
     {
         $query = Admin::query();
@@ -44,9 +39,6 @@ class AdminController extends Controller
         return view('admin.data-admin-content', compact('admins'));
     }
 
-    // =======================================================
-    // 1. CREATE (Tambah Admin)
-    // =======================================================
     public function store(Request $request)
     {
         $request->validate([
@@ -58,7 +50,7 @@ class AdminController extends Controller
         Admin::create([
             'username' => $request->username,
             'email'    => $request->email,
-            'password' => $request->password, // Mutator di Model Admin akan menghashnya
+            'password' => $request->password, 
         ]);
 
         return response()->json([
@@ -67,9 +59,6 @@ class AdminController extends Controller
         ], 201);
     }
     
-    // =======================================================
-    // 2. GET (Ambil data Admin untuk form Edit)
-    // =======================================================
     public function get($id)
     {
         $admin = Admin::find($id);
@@ -78,7 +67,6 @@ class AdminController extends Controller
             return response()->json(['error' => 'Data admin tidak ditemukan'], 404);
         }
 
-        // Tidak perlu mengirim password yang sudah di-hash
         return response()->json([
             'id'       => $admin->id,
             'username' => $admin->username,
@@ -86,20 +74,15 @@ class AdminController extends Controller
         ]);
     }
 
-    // =======================================================
-    // 3. UPDATE (Edit Admin)
-    // =======================================================
     public function update(Request $request, $id)
     {
         $admin = Admin::findOrFail($id);
 
         $rules = [
-            // Abaikan validasi unique email dan username jika nilainya tidak berubah
             'username' => ['required', 'string', 'max:255', Rule::unique('admins')->ignore($admin->id)],
             'email'    => ['required', 'string', 'email', 'max:255', Rule::unique('admins')->ignore($admin->id)],
         ];
 
-        // Hanya validasi password jika diisi
         if ($request->filled('password')) {
             $rules['password'] = ['nullable', 'string', 'min:8', 'confirmed'];
         }
@@ -110,8 +93,6 @@ class AdminController extends Controller
         $admin->email = $request->email;
 
         if ($request->filled('password')) {
-            // Karena Anda sudah memiliki setPasswordAttribute di Model Admin,
-            // cukup set nilainya
             $admin->password = $request->password; 
         }
         
@@ -123,13 +104,10 @@ class AdminController extends Controller
         ]);
     }
     
-    // =======================================================
-    // 4. DELETE (Hapus Admin)
-    // =======================================================
     public function destroy($id)
     {
         $admin = Admin::findOrFail($id);
-        $admin->delete(); // Menggunakan SoftDeletes
+        $admin->delete(); 
 
         return response()->json([
             'success' => true,

@@ -7,7 +7,8 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
-Route::get('/', [BeritaController::class, 'beranda'])->name('beranda');
+Route::get('/api/beranda-data', [BeritaController::class, 'getBerandaData'])
+    ->name('api.beranda.data');
 
 Route::get('/profil-content', function () {
     return view('welcome');

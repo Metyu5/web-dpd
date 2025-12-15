@@ -8,12 +8,10 @@
 
     <link rel="icon" href="{{'DPD-RI.png'}}" type="image/png">
     <style>
-        /* Alpine.js cloak */
     [x-cloak] { 
         display: none !important; 
     }
 
-    /* Custom scrollbar untuk modal */
     [x-ref="scrollContainer"]::-webkit-scrollbar {
         width: 8px;
     }
@@ -32,7 +30,6 @@
         background: #555;
     }
 
-    /* Prevent body scroll saat modal buka */
     body.overflow-hidden {
         overflow: hidden !important;
     }
@@ -40,6 +37,13 @@
             display: -webkit-box;
             -webkit-line-clamp: 3;
             line-clamp: 3;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+        .line-clamp-2 {
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            line-clamp: 2;
             -webkit-box-orient: vertical;
             overflow: hidden;
         }
@@ -78,12 +82,6 @@
                     085256748481
                 </span>
             </div>
-            <div class="flex gap-4 items-center">
-                <a href="/id" class="hover:text-blue-200 font-semibold animate__animated animate__fadeIn">ID</a>
-                <span>|</span>
-                <a href="/en" class="hover:text-blue-200 animate__animated animate__fadeIn">EN</a>
-                <span class="ml-2 text-xs bg-sky-700 px-2 py-1 rounded animate__animated animate__fadeIn">unknown developer</span>
-            </div>
         </div>
     </div>
 
@@ -94,14 +92,14 @@
                     <img src="{{ asset('DPD-RI.png') }}" class="w-14 h-14" alt="Logo DPD RI">
                     <div>
                         <h1 class="text-xl font-bold text-gray-800">DPD RI</h1>
-                        <p class="text-xs text-gray-600">Dewan Perwakilan Daerah Kota Gorontalo</p>
+                        <p class="text-xs text-gray-600">Dewan Perwakilan Daerah Provinsi Gorontalo</p>
                     </div>
                 </div>
                 <nav class="hidden lg:flex gap-8 text-gray-700 font-medium animate__animated animate__fadeInDown">
                     <a href="/" id="beranda-link" class="hover:text-sky-600 transition border-b-2 border-sky-600 pb-1 menu-link">Beranda</a>
                    <a href="/berita-utama" id="berita-link" class="hover:text-sky-600 transition menu-link">Berita</a>
                     <a href="/profil-content" id="profil-link" class="hover:text-sky-600 transition menu-link">Profil</a>
-                    <a href="#" class="hover:text-sky-600 transition">Kontak</a>
+                    <!-- <a href="/kontak-content" class="hover:text-sky-600 transition">Kontak</a> -->
                 </nav>
                 <button class="lg:hidden text-gray-700">
                     <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -124,7 +122,7 @@
                 <div class="w-1 h-16 bg-white"></div>
                 <div class="text-white">
                     <h2 class="text-4xl md:text-5xl font-bold mb-2 leading-tight">
-                        Portal Berita Resmi<br/>DPD Kota Gorontalo
+                        Portal Berita Resmi<br/>DPD Provinsi Gorontalo
                     </h2>
                 </div>
             </div>
@@ -132,12 +130,12 @@
                 Informasi terkini seputar kegiatan, kebijakan, dan layanan publik dari Dewan Perwakilan Daerah
             </p>
             <div class="flex gap-4 ml-4">
-                <a href="#berita" class="bg-white text-sky-600 px-6 py-3 rounded-lg font-semibold hover:bg-blue-50 transition shadow-lg">
+                <a href="/berita-utama" class="bg-white text-sky-600 px-6 py-3 rounded-lg font-semibold hover:bg-blue-50 transition shadow-lg">
                     Baca Berita
                 </a>
-                <a href="#" class="border-2 border-white text-white px-6 py-3 rounded-lg font-semibold hover:bg-white hover:text-sky-600 transition">
+                <!-- <a href="#" class="border-2 border-white text-white px-6 py-3 rounded-lg font-semibold hover:bg-white hover:text-sky-600 transition">
                     Tentang DPD Gorontalo
-                </a>
+                </a> -->
             </div>
         </div>
     </section>
@@ -149,292 +147,303 @@
                 </span>
                 <div class="flex-1 overflow-hidden">
                     <p class="breaking-news whitespace-nowrap font-semibold">
-                        DPD RI Gelar Rapat Paripurna Pembahasan RUU Otonomi Daerah - Selasa, 2 Desember 2025
+                        Portal Berita Resmi DPD Provinsi Gorontalo - Informasi terkini seputar kegiatan, kebijakan, dan layanan publik dari Dewan Perwakilan Daerah. &nbsp; • &nbsp; Portal Berita Resmi DPD Provinsi Gorontalo - Informasi terkini seputar kegiatan, kebijakan, dan layanan publik dari Dewan Perwakilan Daerah. &nbsp; • &nbsp; Portal Berita Resmi DPD Provinsi Gorontalo - Informasi terkini seputar kegiatan, kebijakan, dan layanan publik dari Dewan Perwakilan Daerah.
                     </p>
                 </div>
             </div>
         </div>
     </section>
 
-    <main class="max-w-7xl mx-auto px-4 py-12" id="main-content">
-        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8">
-            <div class="lg:col-span-8">
-                <div id="berita-utama">
-                    <div class="flex items-center gap-3 mb-8">
-                        <div class="w-1.5 h-10 bg-sky-600 rounded-full"></div>
-                        <h3 class="text-3xl font-bold text-gray-800">Berita Utama</h3>
-                    </div>
-                </div>
-                <div class="bg-white shadow-xl rounded-2xl overflow-hidden hover-lift mb-12">
-                    <div class="relative">
-                        <img src="https://www.dpd.go.id/media/berita-lama/berita-20201118_052515-.jpg" 
-                             class="w-full h-80 object-cover">
-                        <div class="absolute top-4 left-4">
-                            <span class="bg-sky-600 text-white px-4 py-1.5 rounded-full text-sm font-semibold shadow-lg">
-                                Utama
-                            </span>
-                        </div>
-                    </div>
-                    <div class="p-8">
-                        <div class="flex items-center gap-3 mb-4 text-sm text-gray-500">
-                            <span class="flex items-center gap-1">
-                                <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
-                                    <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-12a1 1 0 10-2 0v4a1 1 0 00.293.707l2.828 2.829a1 1 0 101.415-1.415L11 9.586V6z" clip-rule="evenodd"/>
-                                </svg>
-                                2 Desember 2025
-                            </span>
-                            <span>•</span>
-                            <span>Pemerintah Daerah</span>
-                        </div>
-                        <h4 class="text-3xl font-bold text-gray-800 mb-4 hover:text-sky-600 transition cursor-pointer leading-tight">
-                            DPD Kota Gorontalo
-                        </h4>
-                        <p class="text-gray-600 mb-6 leading-relaxed text-lg">
-                            Dapatkan update terkini tentang kegiatan, program, dan kebijakan Dewan Perwakilan Daerah Kota Gorontalo untuk kemajuan daerah.
-                        </p>
-                        <div class="flex items-center justify-between">
-                           
-                            <div class="flex gap-2">
-                                <button class="p-2 hover:bg-gray-100 rounded-lg transition">
-                                    <svg class="w-5 h-5 text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8.684 13.342C8.886 12.938 9 12.482 9 12c0-.482-.114-.938-.316-1.342m0 2.684a3 3 0 110-2.684m0 2.684l6.632 3.316m-6.632-6l6.632-3.316m0 0a3 3 0 105.367-2.684 3 3 0 00-5.367 2.684zm0 9.316a3 3 0 105.368 2.684 3 3 0 00-5.368-2.684z"/>
-                                    </svg>
-                                </button>
-                                <button class="p-2 hover:bg-gray-100 rounded-lg transition">
-                                    <svg class="w-5 h-5 text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 5a2 2 0 012-2h10a2 2 0 012 2v16l-7-3.5L5 21V5z"/>
-                                    </svg>
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+
+<main class="max-w-7xl mx-auto px-4 py-12" id="main-content" x-data="berandaData">
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-8">
+        <div class="lg:col-span-8">
+            
+            <div id="berita-utama">
                 <div class="flex items-center gap-3 mb-8">
                     <div class="w-1.5 h-10 bg-sky-600 rounded-full"></div>
-                    <h3 class="text-2xl font-bold text-gray-800">Berita Terkini</h3>
+                    <h3 class="text-3xl font-bold text-gray-800">Berita Utama</h3>
                 </div>
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
-                    <div class="bg-white shadow-lg rounded-xl overflow-hidden hover-lift group">
-                        <div class="relative overflow-hidden">
-                            <img src="https://gorontalo.brmp.pertanian.go.id/storage/assets/uploads/images/berita/o0ZRooU1CdnhHJQ5BTUFgozGiP7PilsBNeVLTMet.png" 
-                                 class="w-full h-52 object-cover group-hover:scale-110 transition duration-500">
-                            <div class="absolute top-3 left-3">
-                                <span class="bg-sky-600 text-white px-3 py-1 rounded-full text-xs font-semibold">
-                                    Kegiatan
-                                </span>
-                            </div>
-                        </div>
-                        <div class="p-5">
-                            <div class="flex items-center gap-2 mb-3 text-xs text-gray-500">
-                                <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
-                                    <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-12a1 1 0 10-2 0v4a1 1 0 00.293.707l2.828 2.829a1 1 0 101.415-1.415L11 9.586V6z" clip-rule="evenodd"/>
-                                </svg>
-                                09 Oktober 2025
-                            </div>
-                            <h4 class="font-bold text-lg text-gray-800 mb-2 group-hover:text-sky-600 transition cursor-pointer line-clamp-2">
-                                DPD RI Serap Aspirasi Pelaku UMKM, Dorong Peningkatan Daya Saing Produk Lokal Minyak Kelapa
-                            </h4>
-                            <p class="text-gray-600 text-sm mb-4 line-clamp-3">
-                                Dalam rangka menjalankan agenda reses, salah satu Anggota Dewan Perwakilan Daerah Republik Indonesia (DPD RI) di Daerah Pemilihan Provinsi Gorontalo Hj. Rahmijati Jahja,  melakukan kunjungan kerja ke salah satu pelaku Usaha Mikro Kecil dan Menengah (UMKM) Helco Melati pengolah minyak kelapa yang berlokasi di Desa Huidu Kecamatan Limboto Barat Kabupaten Gorontalo.
-                            </p>
-                          
-                        </div>
-                    </div>
-                    <div class="bg-white shadow-lg rounded-xl overflow-hidden hover-lift group">
-                        <div class="relative overflow-hidden">
-                            <img src="https://www.dpd.go.id/media/WhatsApp%20Image%202025-10-03%20at%2017.37.56.jpeg" 
-                                 class="w-full h-52 object-cover group-hover:scale-110 transition duration-500">
-                            <div class="absolute top-3 left-3">
-                                <span class="bg-purple-600 text-white px-3 py-1 rounded-full text-xs font-semibold">
-                                    Agenda
-                                </span>
-                            </div>
-                        </div>
-                        <div class="p-5">
-                            <div class="flex items-center gap-2 mb-3 text-xs text-gray-500">
-                                <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
-                                    <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-12a1 1 0 10-2 0v4a1 1 0 00.293.707l2.828 2.829a1 1 0 101.415-1.415L11 9.586V6z" clip-rule="evenodd"/>
-                                </svg>
-                                03 Oktober 2025
-                            </div>
-                            <h4 class="font-bold text-lg text-gray-800 mb-2 group-hover:text-sky-600 transition cursor-pointer line-clamp-2">
-                                Kantor DPD RI Provinsi Gorontalo Rayakan HUT ke-21 dengan Bakti Sosial dan Beragam Kreativitas
-                            </h4>
-                            <p class="text-gray-600 text-sm mb-4 line-clamp-3">
-                                DPD RI mengumumkan jadwal kunjungan kerja ke berbagai daerah untuk mendengar aspirasi masyarakat dan meninjau pelaksanaan program pembangunan.
-                            </p>
-                            
-                        </div>
-                    </div>
-                    <div class="bg-white shadow-lg rounded-xl overflow-hidden hover-lift group">
-                        <div class="relative overflow-hidden">
-                            <img src="https://www.dpd.go.id/media/WhatsApp%20Image%202025-05-14%20at%2020.01.30.jpeg" 
-                                 class="w-full h-52 object-cover group-hover:scale-110 transition duration-500">
-                            <div class="absolute top-3 left-3">
-                                <span class="bg-blue-600 text-white px-3 py-1 rounded-full text-xs font-semibold">
-                                    Publikasi
-                                </span>
-                            </div>
-                        </div>
-                        <div class="p-5">
-                            <div class="flex items-center gap-2 mb-3 text-xs text-gray-500">
-                                <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
-                                    <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-12a1 1 0 10-2 0v4a1 1 0 00.293.707l2.828 2.829a1 1 0 101.415-1.415L11 9.586V6z" clip-rule="evenodd"/>
-                                </svg>
-                                14 Mei 2025
-                            </div>
-                            <h4 class="font-bold text-lg text-gray-800 mb-2 group-hover:text-sky-600 transition cursor-pointer line-clamp-2">
-                                Komite I DPD RI Bahas Pentingnya Peta Wilayah dalam RUU Kabupaten/Kota
-                            </h4>
-                            <p class="text-gray-600 text-sm mb-4 line-clamp-3">
-                               dpd.go.id, Jakarta- Komite I Dewan Perwakilan Daerah RI menerima masukan dan usulan Pemerintah Provinsi Sulawesi Tenggara, Sulawesi Utara dan Gorontalo terkait penyempurnaan dasar hukum, karakteristik daerah, hari jadi atau pembentukan daerah, batas daerah, cakupan wilayah, dan pencantuman wilayah serta titik koordinat ke dalam RUU Kabupaten/Kota untuk mencegah potensi sengketa wilayah. Hal ini disampaikan dalam rapat dengar pendapat umum (RDPU) Komite I DPD RI dengan Gubernur Sulawesi Tenggara, Sulawesi Utara dan Gorontalo di Ruang Rapat Komite I, Rabu, 14 Mei 2025.
-                            </p>
-                          
-                        </div>
-                    </div>
-                    <div class="bg-white shadow-lg rounded-xl overflow-hidden hover-lift group">
-                        <div class="relative overflow-hidden">
-                            <img src="https://www.dpd.go.id/media/Terbitan/WhatsApp%20Image%202024-04-02%20at%2020.02.29%20%281%29.jpeg" 
-                                 class="w-full h-52 object-cover group-hover:scale-110 transition duration-500">
-                            <div class="absolute top-3 left-3">
-                                <span class="bg-orange-600 text-white px-3 py-1 rounded-full text-xs font-semibold">
-                                    Berita
-                                </span>
-                            </div>
-                        </div>
-                        <div class="p-5">
-                            <div class="flex items-center gap-2 mb-3 text-xs text-gray-500">
-                                <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
-                                    <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-12a1 1 0 10-2 0v4a1 1 0 00.293.707l2.828 2.829a1 1 0 101.415-1.415L11 9.586V6z" clip-rule="evenodd"/>
-                                </svg>
-                                02 April 2024 
-                            </div>
-                            <h4 class="font-bold text-lg text-gray-800 mb-2 group-hover:text-sky-600 transition cursor-pointer line-clamp-2">
-                                Ketua DPD RI Berbuka Puasa dengan Senator Terpilih 2024
-                            </h4>
-                            <p class="text-gray-600 text-sm mb-4 line-clamp-3">
-                               dpd.go.id - KETUA DPD RI, AA LaNyalla Mahmud Mattalitti berbuka puasa dengan sejumlah Senator terpilih pada Pemilu 14 Februari 2024 lalu di Pelataran Hutan Kota, Jakarta, Selasa (2/4/2024).
-                            </p>
-                           
-                        </div>
-                    </div>
+            </div>
 
+            <template x-if="loading">
+                <div class="bg-white shadow-xl rounded-2xl overflow-hidden p-8">
+                    <div class="animate-pulse space-y-4">
+                        <div class="bg-gray-300 h-80 rounded"></div>
+                        <div class="h-4 bg-gray-300 rounded w-3/4"></div>
+                        <div class="h-4 bg-gray-300 rounded w-1/2"></div>
+                    </div>
                 </div>
+            </template>
+
+            <template x-if="!loading && !beritaUtama">
+                <div class="bg-white shadow-xl rounded-2xl overflow-hidden p-12 text-center">
+                    <svg class="w-20 h-20 mx-auto text-gray-300 mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/>
+                    </svg>
+                    <h4 class="text-xl font-bold text-gray-400 mb-2">Tidak Ada Berita Utama</h4>
+                    <p class="text-gray-500">Belum ada berita utama yang dipublikasikan.</p>
+                </div>
+            </template>
+
+            <div x-show="!loading && beritaUtama !== null && typeof beritaUtama === 'object'" 
+                 x-cloak
+                 class="bg-white shadow-xl rounded-2xl overflow-hidden hover-lift mb-12 cursor-pointer"
+                 @click="if(beritaUtama?.id_berita) $dispatch('open-modal', { 
+                     id: beritaUtama.id_berita, 
+                     tanggal: beritaUtama.tanggal || '', 
+                     keterangan: beritaUtama.keterangan || '' 
+                 })">
+                <div class="relative">
+                    <img :src="beritaUtama?.foto_url || 'data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%22800%22 height=%22320%22%3E%3Crect fill=%22%23e5e7eb%22 width=%22800%22 height=%22320%22/%3E%3Ctext x=%2250%25%22 y=%2250%25%22 font-size=%2220%22 fill=%22%239ca3af%22 text-anchor=%22middle%22 dy=%22.3em%22%3EImage Not Available%3C/text%3E%3C/svg%3E'" 
+                         :alt="beritaUtama?.judul_berita || 'Berita'"
+                         class="w-full h-80 object-cover"
+                         onerror="this.style.backgroundColor='#f3f4f6'">
+                    <div class="absolute top-4 left-4">
+                        <span class="bg-sky-600 text-white px-4 py-1.5 rounded-full text-sm font-semibold shadow-lg">
+                            Utama
+                        </span>
+                    </div>
+                </div>
+                <div class="p-8">
+                    <div class="flex items-center gap-3 mb-4 text-sm text-gray-500">
+                        <span class="flex items-center gap-1">
+                            <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-12a1 1 0 10-2 0v4a1 1 0 00.293.707l2.828 2.829a1 1 0 101.415-1.415L11 9.586V6z" clip-rule="evenodd"/>
+                            </svg>
+                            <span x-text="beritaUtama?.tanggal || '-'"></span>
+                        </span>
+                        <span>•</span>
+                        <span x-text="getCategoryLabel(beritaUtama?.keterangan || '')"></span>
+                    </div>
+                    <h4 class="text-3xl font-bold text-gray-800 mb-4 hover:text-sky-600 transition leading-tight" 
+                        x-text="beritaUtama?.judul_berita || 'Tidak ada judul'"></h4>
+                    <p class="text-gray-600 mb-6 leading-relaxed text-lg" 
+                       x-text="beritaUtama?.isi_berita || 'Tidak ada konten'"></p>
+                    <div class="flex items-center justify-between">
+                        <div class="flex gap-2">
+                            <button class="p-2 hover:bg-gray-100 rounded-lg transition">
+                                <svg class="w-5 h-5 text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8.684 13.342C8.886 12.938 9 12.482 9 12c0-.482-.114-.938-.316-1.342m0 2.684a3 3 0 110-2.684m0 2.684l6.632 3.316m-6.632-6l6.632-3.316m0 0a3 3 0 105.367-2.684 3 3 0 00-5.367 2.684zm0 9.316a3 3 0 105.368 2.684 3 3 0 00-5.368-2.684z"/>
+                                </svg>
+                            </button>
+                            <button class="p-2 hover:bg-gray-100 rounded-lg transition">
+                                <svg class="w-5 h-5 text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 5a2 2 0 012-2h10a2 2 0 012 2v16l-7-3.5L5 21V5z"/>
+                                </svg>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="flex items-center gap-3 mb-8">
+                <div class="w-1.5 h-10 bg-sky-600 rounded-full"></div>
+                <h3 class="text-2xl font-bold text-gray-800">Berita Terkini</h3>
+            </div>
+
+            <template x-if="loading">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
+                    <template x-for="i in 4" :key="'loading-' + i">
+                        <div class="bg-white shadow-lg rounded-xl overflow-hidden p-5">
+                            <div class="animate-pulse space-y-3">
+                                <div class="bg-gray-300 h-52 rounded"></div>
+                                <div class="h-4 bg-gray-300 rounded w-3/4"></div>
+                                <div class="h-4 bg-gray-300 rounded w-1/2"></div>
+                            </div>
+                        </div>
+                    </template>
+                </div>
+            </template>
+
+            <template x-if="!loading && (!beritaTerkini || beritaTerkini.length === 0)">
+                <div class="bg-white shadow-lg rounded-xl p-12 text-center mb-8">
+                    <svg class="w-16 h-16 mx-auto text-gray-300 mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 20H5a2 2 0 01-2-2V6a2 2 0 012-2h10a2 2 0 012 2v1m2 13a2 2 0 01-2-2V7m2 13a2 2 0 002-2V9a2 2 0 00-2-2h-2m-4-3H9M7 16h6M7 8h6v4H7V8z"/>
+                    </svg>
+                    <h4 class="text-lg font-bold text-gray-400 mb-2">Tidak Ada Berita Terkini</h4>
+                    <p class="text-gray-500">Belum ada berita terkini yang tersedia.</p>
+                </div>
+            </template>
+
+            <template x-if="showBeritaTerkini">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
+                    <template x-for="(item, index) in validBeritaTerkini" :key="item?.id_berita || 'berita-' + index">
+                    <div class="bg-white shadow-lg rounded-xl overflow-hidden hover-lift group cursor-pointer"
+                        x-show="item && item.id_berita"
+                        @click="if(item?.id_berita) $dispatch('open-modal', {
+                                 id: item.id_berita, 
+                                 tanggal: item.tanggal || '', 
+                                 keterangan: item.keterangan || '' 
+                             })">
+                            <div class="relative overflow-hidden">
+                                <img :src="item?.foto_url || '...'" 
+                                     :alt="item?.judul_berita || 'Berita'"
+                                     class="w-full h-52 object-cover group-hover:scale-110 transition duration-500"
+                                     onerror="this.style.backgroundColor='#f3f4f6'">
+                                <div class="absolute top-3 left-3">
+                                    <span class="text-white px-3 py-1 rounded-full text-xs font-semibold"
+                                          :class="getCategoryColor(item.keterangan || '')"
+                                          x-text="getCategoryLabel(item.keterangan || '')"></span>
+                                </div>
+                            </div>
+                            <div class="p-5">
+                                <div class="flex items-center gap-2 mb-3 text-xs text-gray-500">
+                                    <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
+                                        <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-12a1 1 0 10-2 0v4a1 1 0 00.293.707l2.828 2.829a1 1 0 101.415-1.415L11 9.586V6z" clip-rule="evenodd"/>
+                                    </svg>
+                                   <span x-text="item?.tanggal || '-'"></span>
+                                </div>
+                                <h4 class="text-lg font-bold text-gray-800 mb-2 group-hover:text-sky-600 transition line-clamp-2" 
+                                    x-text="item?.judul_berita || 'Tidak ada judul'"></h4>
+                                <p class="text-sm text-gray-600 line-clamp-3" 
+                                   x-text="item?.isi_berita || 'Tidak ada konten'"></p>
+                            </div>
+                        </div>
+                    </template>
+                </div>
+            </template>
+
+            <!-- <template x-if="!loading && beritaTerkini && beritaTerkini.length > 0">
                 <div class="text-center mt-10">
                     <button class="bg-sky-600 text-white px-10 py-3 rounded-lg font-semibold hover:bg-blue-700 transition shadow-lg hover:shadow-xl">
                         Muat Berita Lainnya
                     </button>
                 </div>
+            </template> -->
 
-            </div>
-            <aside class="lg:col-span-4 space-y-6">
-                <div class="bg-white shadow-lg rounded-xl p-6">
-                    <h4 class="font-bold text-lg mb-4 text-gray-800 flex items-center gap-2">
-                        <svg class="w-5 h-5 text-sky-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        </div>
+
+        <aside class="lg:col-span-4 space-y-6">
+            
+            <div class="bg-white shadow-lg rounded-xl p-6">
+                <h4 class="font-bold text-lg mb-4 text-gray-800 flex items-center gap-2">
+                    <svg class="w-5 h-5 text-sky-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/>
+                    </svg>
+                    Cari Berita
+                </h4>
+                <div class="relative">
+                    <input type="text" placeholder="Cari berita..." 
+                           class="w-full border-2 border-gray-200 rounded-lg px-4 py-3 pr-12 focus:outline-none focus:border-sky-500 transition">
+                    <button class="absolute right-2 top-1/2 -translate-y-1/2 bg-sky-600 text-white p-2 rounded-lg hover:bg-blue-700 transition">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/>
                         </svg>
-                        Cari Berita
-                    </h4>
-                    <div class="relative">
-                        <input type="text" placeholder="Cari berita..." 
-                               class="w-full border-2 border-gray-200 rounded-lg px-4 py-3 pr-12 focus:outline-none focus:border-sky-500 transition">
-                        <button class="absolute right-2 top-1/2 -translate-y-1/2 bg-sky-600 text-white p-2 rounded-lg hover:bg-blue-700 transition">
-                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/>
-                            </svg>
-                        </button>
-                    </div>
+                    </button>
                 </div>
-                <div class="bg-white shadow-lg rounded-xl p-6">
-                    <h4 class="font-bold text-lg mb-5 text-gray-800">Kategori</h4>
+            </div>
+
+            <div class="bg-white shadow-lg rounded-xl p-6">
+                <h4 class="font-bold text-lg mb-5 text-gray-800">Kategori</h4>
+                
+                <template x-if="loading">
+                    <div class="space-y-3">
+                        <template x-for="i in 4" :key="'kat-load-' + i">
+                            <div class="animate-pulse h-12 bg-gray-200 rounded-lg"></div>
+                        </template>
+                    </div>
+                </template>
+
+                <div x-show="!loading" x-cloak>
                     <ul class="space-y-3">
                         <li>
                             <a href="#" class="flex justify-between items-center p-3 rounded-lg hover:bg-blue-50 transition group">
                                 <span class="text-gray-700 group-hover:text-sky-600 font-medium">Berita Utama</span>
-                                <span class="bg-blue-100 text-sky-700 text-xs px-3 py-1 rounded-full font-semibold">1</span>
+                                <span class="bg-blue-100 text-sky-700 text-xs px-3 py-1 rounded-full font-semibold" 
+                                      x-text="kategoriCount?.utama || 0"></span>
                             </a>
                         </li>
                         <li>
                             <a href="#" class="flex justify-between items-center p-3 rounded-lg hover:bg-blue-50 transition group">
                                 <span class="text-gray-700 group-hover:text-sky-600 font-medium">Kegiatan</span>
-                                <span class="bg-blue-100 text-sky-700 text-xs px-3 py-1 rounded-full font-semibold">3</span>
+                                <span class="bg-blue-100 text-sky-700 text-xs px-3 py-1 rounded-full font-semibold" 
+                                      x-text="kategoriCount?.kegiatan || 0"></span>
                             </a>
                         </li>
                         <li>
                             <a href="#" class="flex justify-between items-center p-3 rounded-lg hover:bg-blue-50 transition group">
                                 <span class="text-gray-700 group-hover:text-sky-600 font-medium">Agenda</span>
-                                <span class="bg-blue-100 text-sky-700 text-xs px-3 py-1 rounded-full font-semibold">8</span>
+                                <span class="bg-blue-100 text-sky-700 text-xs px-3 py-1 rounded-full font-semibold" 
+                                      x-text="kategoriCount?.agenda || 0"></span>
                             </a>
                         </li>
                         <li>
                             <a href="#" class="flex justify-between items-center p-3 rounded-lg hover:bg-blue-50 transition group">
                                 <span class="text-gray-700 group-hover:text-sky-600 font-medium">Publikasi</span>
-                                <span class="bg-blue-100 text-sky-700 text-xs px-3 py-1 rounded-full font-semibold">8</span>
+                                <span class="bg-blue-100 text-sky-700 text-xs px-3 py-1 rounded-full font-semibold" 
+                                      x-text="kategoriCount?.publikasi || 0"></span>
                             </a>
                         </li>
                     </ul>
                 </div>
+            </div>
 
-                <div class="bg-white shadow-lg rounded-xl p-6">
-                    <h4 class="font-bold text-lg mb-5 text-gray-800 flex items-center gap-2">
-                        <svg class="w-5 h-5 text-sky-600" fill="currentColor" viewBox="0 0 20 20">
+            <div class="bg-white shadow-lg rounded-xl p-6">
+                <h4 class="font-bold text-lg mb-5 text-gray-800 flex items-center gap-2">
+                    <svg class="w-5 h-5 text-sky-600" fill="currentColor" viewBox="0 0 20 20">
+                        <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/>
+                    </svg>
+                    Berita Populer
+                </h4>
+
+                <template x-if="loading">
+                    <div class="space-y-4">
+                        <template x-for="i in 3" :key="'pop-load-' + i">
+                            <div class="flex gap-3">
+                                <div class="w-20 h-20 bg-gray-200 rounded-lg animate-pulse"></div>
+                                <div class="flex-1 space-y-2">
+                                    <div class="h-4 bg-gray-200 rounded animate-pulse"></div>
+                                    <div class="h-3 bg-gray-200 rounded w-2/3 animate-pulse"></div>
+                                </div>
+                            </div>
+                        </template>
+                    </div>
+                </template>
+
+                <template x-if="!loading && (!beritaPopuler || beritaPopuler.length === 0)">
+                    <div class="text-center py-8">
+                        <svg class="w-12 h-12 mx-auto text-gray-300 mb-3" fill="currentColor" viewBox="0 0 20 20">
                             <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/>
                         </svg>
-                        Berita Populer
-                    </h4>
+                        <p class="text-sm text-gray-500">Tidak ada berita populer</p>
+                    </div>
+                </template>
+
+                <template x-if="showBeritaPopuler">
                     <ul class="space-y-4">
-                        <li class="flex gap-3 group cursor-pointer">
-                            <img src="https://nasdemdprri.id/storage/app/media/gobel%20melon.jpg" 
-                                 class="w-20 h-20 object-cover rounded-lg flex-shrink-0">
-                            <div class="flex-1">
-                                <h5 class="text-sm font-semibold text-gray-800 group-hover:text-sky-600 transition line-clamp-2 mb-1">
-                                    Gobel Prakarsai Kerja Sama Pertanian Hokota-Gorontalo, Kirim Petani Muda ke Jepang
-                                </h5>
-                                <div class="flex items-center gap-2 text-xs text-gray-500">
-                                    <svg class="w-3 h-3" fill="currentColor" viewBox="0 0 20 20">
-                                        <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-12a1 1 0 10-2 0v4a1 1 0 00.293.707l2.828 2.829a1 1 0 101.415-1.415L11 9.586V6z" clip-rule="evenodd"/>
-                                    </svg>
-                                    15 OKTOBER 2025
+                        <template x-for="(item, index) in validBeritaPopuler" :key="item?.id_berita || 'populer-' + index">
+                        <li class="flex gap-3 group cursor-pointer"
+                            x-show="item && item.id_berita"
+                            @click="if(item?.id_berita) $dispatch('open-modal', {
+                                    id: item.id_berita, 
+                                    tanggal: item.tanggal || '', 
+                                    keterangan: 'berita_populer' 
+                                })">
+                                <img :src="item?.foto_url || '...'"
+                                     :alt="item?.judul_berita || 'Berita'"
+                                     class="w-20 h-20 object-cover rounded-lg flex-shrink-0"
+                                     onerror="this.style.backgroundColor='#f3f4f6'">
+                                <div class="flex-1">
+                                    <h5 x-text="item?.judul_berita || 'Tidak ada judul'"></h5>
+                                    <div class="flex items-center gap-2 text-xs text-gray-500">
+                                        <svg class="w-3 h-3" fill="currentColor" viewBox="0 0 20 20">
+                                            <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-12a1 1 0 10-2 0v4a1 1 0 00.293.707l2.828 2.829a1 1 0 101.415-1.415L11 9.586V6z" clip-rule="evenodd"/>
+                                        </svg>
+                                        
+                                       <span x-text="item?.tanggal || '-'"></span>
+                                    </div>
                                 </div>
-                            </div>
-                        </li>
-                        <li class="flex gap-3 group cursor-pointer">
-                            <img src="https://cdn.rri.co.id/berita/Gorontalo/o/1753610912564-IMG-20250727-WA0083/a9iybptz8ig0jaq.jpeg" 
-                                 class="w-20 h-20 object-cover rounded-lg flex-shrink-0">
-                            <div class="flex-1">
-                                <h5 class="text-sm font-semibold text-gray-800 group-hover:text-sky-600 transition line-clamp-2 mb-1">
-                                    DPD Golkar Gorontalo Salah Satu Terbaik di Indonesia
-                                </h5>
-                                <div class="flex items-center gap-2 text-xs text-gray-500">
-                                    <svg class="w-3 h-3" fill="currentColor" viewBox="0 0 20 20">
-                                        <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-12a1 1 0 10-2 0v4a1 1 0 00.293.707l2.828 2.829a1 1 0 101.415-1.415L11 9.586V6z" clip-rule="evenodd"/>
-                                    </svg>
-                                    27 Jul 2025
-                                </div>
-                            </div>
-                        </li>
-                        <li class="flex gap-3 group cursor-pointer">
-                            <img src="https://asset.tribunnews.com/7R-K64_PpxomGpOdvcveWXU9XaE=/1200x675/filters:upscale():quality(30):format(webp):focal(0.5x0.5:0.5x0.5)/gorontalo/foto/bank/originals/DPD-PDI-Perjuangan-Provinsi-Gorontalo-menggelar-konferensi-pers.jpg" 
-                                 class="w-20 h-20 object-cover rounded-lg flex-shrink-0">
-                            <div class="flex-1">
-                                <h5 class="text-sm font-semibold text-gray-800 group-hover:text-sky-600 transition line-clamp-2 mb-1">
-                                    Dinamika Jelang Musda, Persaingan Ketat Perebutan Ketua DPD PDIP Gorontalo
-                                </h5>
-                                <div class="flex items-center gap-2 text-xs text-gray-500">
-                                    <svg class="w-3 h-3" fill="currentColor" viewBox="0 0 20 20">
-                                        <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-12a1 1 0 10-2 0v4a1 1 0 00.293.707l2.828 2.829a1 1 0 101.415-1.415L11 9.586V6z" clip-rule="evenodd"/>
-                                    </svg>
-                                    Senin, 22 September 2025
-                                </div>
-                            </div>
-                        </li>
+                            </li>
+                        </template>
                     </ul>
-                </div>
+                </template>
+            </div>
 
-            </aside>
+        </aside>
 
-        </div>
-    </main>
+    </div>
+</main>
     <footer class="bg-gray-900 text-gray-300 pt-12 pb-6 mt-16">
         <div class="max-w-7xl mx-auto px-4">
             <div class="grid grid-cols-1 md:grid-cols-12 gap-8 mb-8">
@@ -474,23 +483,6 @@
                         </a>
                     </div>
                 </div>
-                <div class="md:col-span-2">
-                    <h4 class="font-bold text-white mb-4 text-sm">Tautan Cepat</h4>
-                    <ul class="space-y-2 text-sm">
-                        <li><a href="#" class="hover:text-sky-400 transition flex items-center gap-2">
-                            <span class="text-sky-500">›</span> Profil DPD RI
-                        </a></li>
-                        <li><a href="#" class="hover:text-sky-400 transition flex items-center gap-2">
-                            <span class="text-sky-500">›</span> Anggota DPD
-                        </a></li>
-                        <li><a href="#" class="hover:text-sky-400 transition flex items-center gap-2">
-                            <span class="text-sky-500">›</span> Struktur Organisasi
-                        </a></li>
-                        <li><a href="#" class="hover:text-sky-400 transition flex items-center gap-2">
-                            <span class="text-sky-500">›</span> Alat Kelengkapan
-                        </a></li>
-                    </ul>
-                </div>
                 <div class="md:col-span-3">
                     <h4 class="font-bold text-white mb-4 text-sm">Kontak</h4>
                     <ul class="space-y-3 text-sm">
@@ -506,13 +498,6 @@
                                 <path d="M2 3a1 1 0 011-1h2.153a1 1 0 01.986.836l.74 4.435a1 1 0 01-.54 1.06l-1.548.773a11.037 11.037 0 006.105 6.105l.774-1.548a1 1 0 011.059-.54l4.435.74a1 1 0 01.836.986V17a1 1 0 01-1 1h-2C7.82 18 2 12.18 2 5V3z"/>
                             </svg>
                             <span class="text-gray-400">085256748481</span>
-                        </li>
-                        <li class="flex items-center gap-3">
-                            <svg class="w-5 h-5 text-sky-500 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
-                                <path d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z"/>
-                                <path d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z"/>
-                            </svg>
-                            <span class="text-gray-400">unknowndeveloper@gmail.com</span>
                         </li>
                     </ul>
                 </div>
@@ -533,120 +518,262 @@
         </div>
     </footer>
 
-   <script>
-    document.addEventListener('DOMContentLoaded', function() {
-        const mainContent = document.getElementById('main-content');
-        const menuLinks = document.querySelectorAll('.menu-link'); 
-        const heroSection = document.getElementById('hero-section');
-        const breakingNewsSection = document.getElementById('breaking-news-section');
-        const initialContent = mainContent.innerHTML; 
-        function showLoading() {
-            mainContent.innerHTML = `
-                <div class="text-center py-20 text-sky-600">
-                    <svg class="animate-spin h-10 w-10 text-sky-600 mx-auto mb-4" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
-                        <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
-                        <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
-                    </svg>
-                    <p class="font-semibold text-xl">Memuat Konten...</p>
-                </div>
-            `;
+  <script>
+
+document.addEventListener('DOMContentLoaded', function() {
+    const mainContent = document.getElementById('main-content');
+    const menuLinks = document.querySelectorAll('.menu-link'); 
+    const heroSection = document.getElementById('hero-section');
+    const breakingNewsSection = document.getElementById('breaking-news-section');
+    
+    let berandaHTML = null;
+    let berandaSaved = false;
+    let isNavigating = false;
+    let currentPage = '/';
+    
+    function saveBerandaState() {
+    if (!berandaSaved && mainContent) {
+        const berandaContainer = mainContent.querySelector('[x-data="berandaData"]');
+        if (berandaContainer) {
+            const clone = berandaContainer.cloneNode(true);
+            berandaHTML = clone.outerHTML;
+            berandaSaved = true;
+            console.log('💾 Beranda state saved (clean clone)');
         }
+    }
+}
+    
+    function showLoading() {
+        if (!mainContent) return;
+        
+        mainContent.innerHTML = `
+            <div class="text-center py-20 text-sky-600">
+                <svg class="animate-spin h-10 w-10 text-sky-600 mx-auto mb-4" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                    <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+                    <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                </svg>
+                <p class="font-semibold text-xl">Memuat Konten...</p>
+            </div>
+        `;
+    }
 
-        function loadContent(url, push = true) {
+    function cleanupAlpine(container) {
+        if (!window.Alpine || !container) return;
+        
+        try {
+            const allElements = container.querySelectorAll('*');
             
-            showLoading(); 
-
-            const isBeranda = url === '/'; 
-            
-            let fetchUrl = url;
-            if (url === '/profil-content') {
-                fetchUrl = '/profil-content/content'; 
-            } else if (url === '/berita-utama') {
-                fetchUrl = '/berita-utama/content'; 
-            }
-            heroSection.style.display = isBeranda ? 'block' : 'none';
-            breakingNewsSection.style.display = isBeranda ? 'block' : 'none';
-            if (push) {
-                history.pushState({ path: url }, '', url);
-            }
-            if (isBeranda) {
-                setTimeout(() => {
-                    mainContent.innerHTML = initialContent;
-                    window.scrollTo({ top: 0, behavior: 'smooth' });
-                }, 100); 
-                return;
-            }
-            fetch(fetchUrl)
-                .then(response => {
-                    if (!response.ok) {
-                        throw new Error(`Gagal mengambil konten. Status: ${response.status}. Cek Route: ${fetchUrl}`);
+            allElements.forEach(el => {
+                Object.keys(el).forEach(key => {
+                    if (key.startsWith('__x') || key.startsWith('_x_') || key === '__alpine_root__') {
+                        try {
+                            delete el[key];
+                        } catch (e) {}
                     }
-                    return response.text();
-                })
-                .then(html => {
+                });
+            });
+            
+            const dataElements = container.querySelectorAll('[x-data]');
+            dataElements.forEach(el => {
+                if (el.__x) {
+                    try {
+                        if (typeof el.__x.$destroy === 'function') {
+                            el.__x.$destroy();
+                        }
+                    } catch (e) {
+                        console.warn('Destroy error:', e);
+                    }
+                    delete el.__x;
+                }
+            });
+            
+            console.log('🧹 Aggressive Alpine cleanup complete');
+        } catch (error) {
+            console.error('⚠️ Cleanup error:', error);
+        }
+    }
+
+function reinitializeAlpine(container) {
+    if (!window.Alpine || !container) {
+        console.error('❌ Alpine or container not available');
+        return;
+    }
+    
+    setTimeout(() => {
+        try {
+            console.log('🔄 Reinitializing Alpine...');
+            
+            const alpineRoot = container.querySelector('[x-data]');
+            
+            if (alpineRoot) {
+                Alpine.initTree(alpineRoot);
+                console.log('✅ Alpine reinitialized successfully');
+            } else {
+                console.warn('⚠️ No Alpine root element found');
+            }
+        } catch (error) {
+            console.error('❌ Alpine reinit error:', error);
+            
+            setTimeout(() => {
+                console.log('🔄 Attempting full page reload...');
+                window.location.href = '/';
+            }, 1000);
+        }
+    }, 300);
+}
+
+    function loadContent(url, push = true) {
+        if (isNavigating) {
+            console.log('⚠️ Navigation already in progress');
+            return;
+        }
+        if (url === currentPage) {
+            console.log('⚠️ Already on this page');
+            return;
+        }
+        
+        isNavigating = true;
+        const isBeranda = url === '/'; 
+        if (!isBeranda && !berandaSaved) {
+            saveBerandaState();
+        }
+        
+        showLoading(); 
+        
+        let fetchUrl = url;
+        if (url === '/profil-content') {
+            fetchUrl = '/profil-content/content'; 
+        } else if (url === '/berita-utama') {
+            fetchUrl = '/berita-utama/content'; 
+        }
+        if (heroSection) heroSection.style.display = isBeranda ? 'block' : 'none';
+        if (breakingNewsSection) breakingNewsSection.style.display = isBeranda ? 'block' : 'none';
+        if (push) {
+            history.pushState({ path: url }, '', url);
+        }
+        
+        currentPage = url;
+if (isBeranda) {
+    console.log('🏠 Restoring Beranda...');
+    cleanupAlpine(mainContent);
+    setTimeout(() => {
+        mainContent.innerHTML = '';
+        setTimeout(() => {
+            if (berandaHTML) {
+                mainContent.innerHTML = berandaHTML;
+                requestAnimationFrame(() => {
+                    reinitializeAlpine(mainContent);
+                    window.scrollTo({ top: 0, behavior: 'smooth' });
+                    isNavigating = false;
+                    console.log('✅ Beranda restored successfully');
+                });
+            } else {
+                console.error('❌ Beranda HTML not saved, reloading...');
+                window.location.href = '/';
+            }
+        }, 50);
+    }, 150);
+    return;
+}
+        
+        fetch(fetchUrl)
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error(`HTTP ${response.status}: ${response.statusText}`);
+                }
+                return response.text();
+            })
+            .then(html => {
+                setTimeout(() => {
+                    console.log('📄 Loading new page...');
+                    
+                    cleanupAlpine(mainContent);
+                    
                     setTimeout(() => {
                         mainContent.innerHTML = html;
+                        reinitializeAlpine(mainContent);
+                        
                         window.scrollTo({ top: 0, behavior: 'smooth' });
-                    }, 100); 
-                })
-                .catch(error => {
-                    mainContent.innerHTML = `
-                        <div class="text-center py-20 text-red-600 font-semibold text-xl">
-                            Terjadi kesalahan saat memuat konten. Periksa Route atau File Blade.
-                            <p class="text-sm text-gray-500 mt-2">${error.message}</p>
-                        </div>`;
-                    console.error('Error:', error);
-                });
-        }
-        function setActiveLink(clickedLink) {
-            menuLinks.forEach(link => {
-                link.classList.remove('border-b-2', 'border-sky-600', 'pb-1');
+                        isNavigating = false;
+                    }, 150);
+                }, 100);
+            })
+            .catch(error => {
+                mainContent.innerHTML = `
+                    <div class="text-center py-20 text-red-600 font-semibold text-xl">
+                        Terjadi kesalahan saat memuat konten.
+                        <p class="text-sm text-gray-500 mt-2">${error.message}</p>
+                        <button onclick="window.location.reload()" 
+                                class="mt-4 bg-sky-600 text-white px-6 py-2 rounded-lg hover:bg-sky-700">
+                            Muat Ulang Halaman
+                        </button>
+                    </div>`;
+                console.error('❌ Fetch error:', error);
+                isNavigating = false;
             });
-            clickedLink.classList.add('border-b-2', 'border-sky-600', 'pb-1');
-        }
-        function checkInitialUrl() {
-            const currentPath = window.location.pathname;
-            const menuLinkForPath = document.querySelector(`.menu-link[href="${currentPath}"]`);
-            if (currentPath !== '/' && menuLinkForPath) {
-                loadContent(currentPath, false); 
-                setActiveLink(menuLinkForPath);
-            } else {
-                const berandaLink = document.getElementById('beranda-link');
-                if (berandaLink) {
-                    setActiveLink(berandaLink);
-                }
-            }
-        }
+    }
+    
+    function setActiveLink(clickedLink) {
+        if (!clickedLink) return;
+        
         menuLinks.forEach(link => {
-            link.addEventListener('click', function(e) {
-                const href = this.getAttribute('href');
-
-                if (href.startsWith('#')) {
-                    return;
-                }
-
-                e.preventDefault(); 
-                loadContent(href, true); 
-
-                setActiveLink(this);
-            });
+            link.classList.remove('border-b-2', 'border-sky-600', 'pb-1');
         });
-        window.addEventListener('popstate', function(e) {
-            const currentPath = window.location.pathname;
-            const menuLinkForPath = document.querySelector(`.menu-link[href="${currentPath}"]`);
-            if (menuLinkForPath) {
-                loadContent(currentPath, false); 
-                setActiveLink(menuLinkForPath);
-            } else if (currentPath === '/') {
-                loadContent('/', false);
-                const berandaLink = document.getElementById('beranda-link');
-                if (berandaLink) {
-                    setActiveLink(berandaLink);
-                }
+        clickedLink.classList.add('border-b-2', 'border-sky-600', 'pb-1');
+    }
+    
+    function checkInitialUrl() {
+        const currentPath = window.location.pathname;
+        const menuLinkForPath = document.querySelector(`.menu-link[href="${currentPath}"]`);
+        
+        if (currentPath !== '/' && menuLinkForPath) {
+            saveBerandaState();
+            currentPage = currentPath;
+            loadContent(currentPath, false); 
+            setActiveLink(menuLinkForPath);
+        } else {
+            const berandaLink = document.getElementById('beranda-link');
+            if (berandaLink) {
+                setActiveLink(berandaLink);
             }
+        }
+    }
+    
+    menuLinks.forEach(link => {
+        link.addEventListener('click', function(e) {
+            const href = this.getAttribute('href');
+
+            // Allow hash links
+            if (!href || href.startsWith('#')) {
+                return;
+            }
+
+            e.preventDefault(); 
+            loadContent(href, true); 
+            setActiveLink(this);
         });
-        checkInitialUrl();
     });
+    
+    window.addEventListener('popstate', function(e) {
+        const currentPath = window.location.pathname;
+        const menuLinkForPath = document.querySelector(`.menu-link[href="${currentPath}"]`);
+        
+        if (menuLinkForPath) {
+            loadContent(currentPath, false); 
+            setActiveLink(menuLinkForPath);
+        } else if (currentPath === '/') {
+            loadContent('/', false);
+            const berandaLink = document.getElementById('beranda-link');
+            if (berandaLink) {
+                setActiveLink(berandaLink);
+            }
+        }
+    });
+    
+    checkInitialUrl();
+    
+    console.log('✅ Navigation system initialized');
+});
 </script>
 </body>
 </html>
