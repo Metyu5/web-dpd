@@ -6,14 +6,18 @@
     <title>Login Admin - DPD RI Kota Gorontalo</title>
         @vite('resources/css/app.css', 'resources/js/app.js')
         <link rel="icon" href="{{ asset('DPD-RI.png') }}" type="image/png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-ie6G9gH5X1b7i1E7A0nE8e3gR1/6aN9zO72f5P0g9S5zE2a4O3wD6eQ0eF3Q2o8F/QxR+K4Vf2eX/Kq8m8pQw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <style>
+        /* CSS Dasar untuk memastikan full height dan menghilangkan scrollbar yang tidak perlu */
         html, body {
             margin: 0;
             padding: 0;
             height: 100%;
-            overflow: hidden !important;
+            /* Pastikan tidak ada scrollbar pada body */
+            overflow: auto; 
         }
         
+        /* Keyframes dan Animasi */
         @keyframes fadeIn {
             from { opacity: 0; transform: translateY(20px); }
             to { opacity: 1; transform: translateY(0); }
@@ -28,41 +32,54 @@
         .animate-slideDown {
             animation: slideDown 0.5s ease-out;
         }
+        
+        /* Pattern Background (dapat disesuaikan) */
         .bg-pattern {
+            /* Anda dapat mengganti ini dengan image pattern atau warna solid */
             background-color: #f8fafc;
-            background-size: 80px 140px;
-            background-position: 0 0, 0 0, 40px 70px, 40px 70px;
+            /* Contoh pattern minimalis (bisa dihapus/diganti) */
+            /* background-image: radial-gradient(#d3d3d3 1px, transparent 1px), radial-gradient(#d3d3d3 1px, transparent 1px);
+            background-size: 40px 40px;
+            background-position: 0 0, 20px 20px; */
         }
+        
+        /* Focus Styling */
         .input-focus:focus {
-            border-color: #0284c7;
+            border-color: #0284c7; /* sky-600 */
             box-shadow: 0 0 0 3px rgba(2, 132, 199, 0.1);
         }
        
+        /* Logo Shadow */
         .logo-shadow {
             filter: drop-shadow(0 4px 6px rgba(0, 0, 0, 0.1));
+        }
+
+        /* Custom Hover Effect for Button */
+        .btn-hover:hover {
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05); /* shadow-xl */
         }
     </style>
         
 </head>
-<body class="h-full bg-pattern overflow-hidden">
+<body class="h-full bg-pattern">
     
     <div id="loader-screen" class="fixed inset-0 bg-black/50 flex items-center justify-center z-[9999] transition-opacity duration-300">
         <div class="animate-spin rounded-full h-16 w-16 border-4 border-white border-t-transparent"></div>
     </div>
      
-    <div class="h-full flex flex-col justify-center px-6 sm:px-6 lg:px-8 overflow-hidden -translate-y-10">
+    <div class="min-h-full flex flex-col justify-center py-12 sm:px-6 lg:px-8 px-4">
         
         <div class="sm:mx-auto sm:w-full sm:max-w-md animate-slideDown">
             <div class="flex justify-center mb-4">
                 <div class="logo-shadow">
-                    <img src="{{ asset('DPD-RI.png') }}" class="w-16" alt="logoDPD">
+                    <img src="{{ asset('DPD-RI.png') }}" class="w-16 h-16 object-contain" alt="logoDPD">
                 </div>
             </div>
             
-            <h2 class="text-center text-2xl font-extrabold text-gray-900 mb-1">
+            <h2 class="text-center text-3xl font-extrabold text-gray-900 mb-1">
                 Portal Admin DPD RI
             </h2>
-            <p class="text-center text-xs text-gray-600 mb-1">
+            <p class="text-center text-sm text-gray-600 mb-1">
                 Dewan Perwakilan Daerah Kota Gorontalo
             </p>
             <div class="flex items-center justify-center gap-2 text-xs text-gray-500">
@@ -71,61 +88,64 @@
             </div>
         </div>
 
-        <div class="mt-4 sm:mx-auto sm:w-full sm:max-w-md animate-fadeIn">
-            <div class="bg-white py-6 px-6 shadow-2xl rounded-2xl sm:px-8 border border-gray-100">
+        <div class="mt-8 sm:mx-auto sm:w-full sm:max-w-md animate-fadeIn">
+            <div class="bg-white py-8 px-6 shadow-2xl rounded-xl sm:px-10 border border-gray-100">
                 
-                <div class="mb-4 bg-blue-50 border-l-4 border-sky-500 p-3 rounded-r-lg">
+                <div class="mb-5 bg-blue-50 border-l-4 border-sky-500 p-4 rounded-r-lg">
                     <div class="flex items-start">
                         <div class="flex-shrink-0">
-                            <i class="fas fa-info-circle text-sky-500 text-sm mt-0.5"></i>
+                            <i class="fas fa-info-circle text-sky-500 text-base mt-0.5"></i>
                         </div>
-                        <div class="ml-2">
-                            <p class="text-xs text-sky-800 font-medium">
+                        <div class="ml-3">
+                            <p class="text-sm text-sky-800 font-medium">
                                 Masuk dengan akun administrator resmi
                             </p>
                         </div>
                     </div>
                 </div>
+                
                 @if (session('error'))
-                    <div class="bg-red-100 border-l-4 border-red-600 p-3 mb-3 rounded-r-lg text-red-700 text-xs">
+                    <div class="bg-red-100 border-l-4 border-red-600 p-4 mb-4 rounded-r-lg text-red-700 text-sm font-medium">
                         {{ session('error') }}
                     </div>
                 @endif
-                <form class="space-y-4" action="{{ route('admin.login.process') }}" method="POST">
+                
+                <form class="space-y-6" action="{{ route('admin.login.process') }}" method="POST">
                     @csrf
+                    
                     <div>
-                        <label for="email" class="block text-xs font-semibold text-gray-700 mb-1.5">
+                        <label for="email" class="block text-sm font-semibold text-gray-700 mb-2">
                             <i class="fas fa-user text-gray-400 mr-1"></i>Email
                         </label>
                         <div class="relative">
                             <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-                                <i class="fas fa-envelope text-gray-400 text-sm"></i>
+                                <i class="fas fa-envelope text-gray-400 text-base"></i>
                             </div>
                             <input 
                                 id="email" 
                                 name="email" 
                                 type="text" 
                                 required 
-                                class="input-focus appearance-none block w-full pl-10 pr-3 py-2.5 border border-gray-300 rounded-lg placeholder-gray-400 focus:outline-none transition duration-200 text-gray-900 text-sm"
+                                class="input-focus appearance-none block w-full pl-10 pr-3 py-3 border border-gray-300 rounded-lg placeholder-gray-400 focus:outline-none transition duration-200 text-gray-900 text-sm"
                                 placeholder="Masukkan email"
                             >
                         </div>
                     </div>
 
                     <div>
-                        <label for="password" class="block text-xs font-semibold text-gray-700 mb-1.5">
+                        <label for="password" class="block text-sm font-semibold text-gray-700 mb-2">
                             <i class="fas fa-lock text-gray-400 mr-1"></i>Password
                         </label>
                         <div class="relative">
                             <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-                                <i class="fas fa-key text-gray-400 text-sm"></i>
+                                <i class="fas fa-key text-gray-400 text-base"></i>
                             </div>
                             <input 
                                 id="password" 
                                 name="password" 
                                 type="password" 
                                 required 
-                                class="input-focus appearance-none block w-full pl-10 pr-10 py-2.5 border border-gray-300 rounded-lg placeholder-gray-400 focus:outline-none transition duration-200 text-gray-900 text-sm"
+                                class="input-focus appearance-none block w-full pl-10 pr-10 py-3 border border-gray-300 rounded-lg placeholder-gray-400 focus:outline-none transition duration-200 text-gray-900 text-sm"
                                 placeholder="Masukkan password"
                             >
                             <button 
@@ -133,7 +153,7 @@
                                 onclick="togglePassword()" 
                                 class="absolute inset-y-0 right-0 pr-3 flex items-center text-gray-400 hover:text-gray-600 transition"
                             >
-                                <i id="toggleIcon" class="fas fa-eye text-sm"></i>
+                                <i id="toggleIcon" class="fas fa-eye text-base"></i>
                             </button>
                         </div>
                     </div>
@@ -144,45 +164,46 @@
                                 id="remember-me" 
                                 name="remember-me" 
                                 type="checkbox" 
-                                class="h-3.5 w-3.5 text-sky-600 focus:ring-sky-500 border-gray-300 rounded cursor-pointer"
+                                class="h-4 w-4 text-sky-600 focus:ring-sky-500 border-gray-300 rounded cursor-pointer"
                             >
-                            <label for="remember-me" class="ml-2 block text-xs text-gray-700 cursor-pointer">
+                            <label for="remember-me" class="ml-2 block text-sm text-gray-700 cursor-pointer">
                                 Ingat saya
                             </label>
                         </div>
 
-                        <div class="text-xs">
+                        <div class="text-sm">
                             <a href="#" class="font-medium text-sky-600 hover:text-sky-500 transition">
                                 Lupa password?
                             </a>
                         </div>
                     </div>
 
-                    <div class="bg-gray-50 p-3 rounded-lg border border-gray-200">
-                        <div class="flex items-center justify-between mb-2">
-                            <label class="block text-xs font-semibold text-gray-700">
+                    <div class="bg-gray-50 p-4 rounded-lg border border-gray-200">
+                        <div class="flex items-center justify-between mb-3">
+                            <label class="block text-sm font-semibold text-gray-700">
                                 <i class="fas fa-robot text-gray-400 mr-1"></i>Verifikasi Keamanan
                             </label>
-                            <button type="button" onclick="refreshCaptcha()" class="text-sky-600 hover:text-sky-700 text-xs">
+                            <button type="button" onclick="refreshCaptcha()" class="text-sky-600 hover:text-sky-700 text-sm font-medium">
                                 <i class="fas fa-sync-alt mr-1"></i>Muat Ulang
                             </button>
                         </div>
-                        <div class="flex gap-2 items-center">
-                            <div class="bg-gradient-to-br from-sky-100 to-blue-100 px-3 py-2 rounded-lg border-2 border-sky-300 font-mono text-xl font-bold text-sky-700 tracking-widest select-none" id="captchaCode">
+                        <div class="flex gap-3 items-center">
+                            <div class="bg-gradient-to-br from-sky-100 to-blue-100 px-4 py-2.5 rounded-lg border-2 border-sky-300 font-mono text-2xl font-bold text-sky-700 tracking-widest select-none" id="captchaCode">
                                 A8K2X
                             </div>
                             <input 
                                 type="text" 
-                                placeholder="Ketik kode" 
-                                class="input-focus flex-1 px-3 py-2 border border-gray-300 rounded-lg focus:outline-none transition text-sm"
+                                placeholder="Ketik kode di sini" 
+                                class="input-focus flex-1 px-4 py-3 border border-gray-300 rounded-lg focus:outline-none transition text-sm"
                                 required
                             >
                         </div>
                     </div>
+                    
                     <div>
                         <button 
                             type="submit" 
-                            class="btn-hover w-full flex justify-center items-center py-2.5 px-4 border border-transparent rounded-lg shadow-lg text-sm font-bold text-white bg-gradient-to-r from-sky-600 to-green-600 hover:from-sky-700 hover:to-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-sky-500 transition-all duration-200"
+                            class="btn-hover w-full flex justify-center items-center py-3 px-4 border border-transparent rounded-lg shadow-lg text-base font-bold text-white bg-gradient-to-r from-sky-600 to-indigo-600 hover:from-sky-700 hover:to-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-sky-500 transition-all duration-200"
                         >
                             <i class="fas fa-sign-in-alt mr-2"></i>
                             Masuk ke Dashboard
@@ -190,17 +211,18 @@
                     </div>
                 </form>
             </div>
-            <!-- Footer Info -->
-            <div class="mt-3 text-center">
+            
+            <div class="mt-6 text-center">
                 <p class="text-xs text-gray-500">
                     <i class="fas fa-lock text-gray-400 mr-1"></i>
-                    Koneksi aman dan terenkripsi
+                    Koneksi aman dan terenkripsi. Hak Cipta &copy; {{ date('Y') }}.
                 </p>
             </div>
         </div>
     </div>
 
     <script>
+    // Fungsi untuk mengubah tipe input password (show/hide)
     function togglePassword() {
         const passwordInput = document.getElementById('password');
         const toggleIcon = document.getElementById('toggleIcon');
@@ -216,44 +238,53 @@
         }
     }
 
+    // Fungsi untuk memuat ulang Captcha
     function refreshCaptcha() {
         const chars = 'ABCDEFGHJKLMNPQRSTUVWXYZ23456789';
         let captcha = '';
         for (let i = 0; i < 5; i++) {
             captcha += chars.charAt(Math.floor(Math.random() * chars.length));
         }
-        document.getElementById('captchaCode').textContent = captcha;
-
+        
         const captchaElement = document.getElementById('captchaCode');
-        captchaElement.style.transform = 'rotate(360deg)';
-        captchaElement.style.transition = 'transform 0.5s ease';
+        
+        // Animasi muat ulang
+        captchaElement.style.transition = 'transform 0.2s ease';
+        captchaElement.style.transform = 'scale(0.8)';
+        
         setTimeout(() => {
-            captchaElement.style.transform = 'rotate(0deg)';
-        }, 500);
+            captchaElement.textContent = captcha;
+            captchaElement.style.transform = 'scale(1)';
+        }, 200); 
     }
 
+    // Mengubah tampilan tombol saat submit
     document.querySelector('form').addEventListener('submit', function() {
         const submitBtn = this.querySelector('button[type="submit"]');
         submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin mr-2"></i>Memverifikasi...';
         submitBtn.disabled = true;
+        
+        // Opsional: Anda mungkin ingin memastikan Captcha di cek di sini sebelum benar-benar submit.
+        // Untuk demo, ini hanya menampilkan status loading.
     });
 
+    // Menghilangkan Loader Screen setelah halaman dimuat
     window.addEventListener("load", () => {
         const loader = document.getElementById("loader-screen");
-        loader.style.opacity = "0";
-
+        // Berikan waktu sebentar sebelum menghilangkan loader
         setTimeout(() => {
-            loader.style.display = "none";
-        }, 300); 
-    });
-
-    window.addEventListener('load', function() {
+            loader.style.opacity = "0";
+            // Setelah transisi opacity selesai, sembunyikan sepenuhnya
+            setTimeout(() => {
+                loader.style.display = "none";
+            }, 300); // Sesuai durasi transisi opacity
+        }, 300); // Sedikit delay agar user melihat loader
+        
+        // Inisialisasi Captcha saat halaman dimuat
         refreshCaptcha();
     });
     
 </script>
-
-
 
 </body>
 </html>
