@@ -33,7 +33,6 @@ document.addEventListener('alpine:init', () => {
         
         init() {
             if (this._initialized) {
-                console.log('⚠️ berandaData already initialized, skipping...');
                 return;
             }
             
@@ -41,25 +40,21 @@ document.addEventListener('alpine:init', () => {
             
             if (this.$el) {
                 if (initializedComponents.has(this.$el)) {
-                    console.log('⚠️ Element already tracked, aborting init');
                     return;
                 }
                 initializedComponents.add(this.$el);
             }
             
-            console.log('🚀 berandaData component initialized');
             this.fetchData();
         },
         
         async fetchData() {
             if (this.loading === false && this.beritaUtama !== null) {
-                console.log('📊 Data already loaded, skipping fetch');
                 return;
             }
             
             try {
                 this.loading = true;
-                console.log('📡 Fetching beranda data...');
                 
                 const response = await fetch('/api/beranda-data');
                 
@@ -68,11 +63,6 @@ document.addEventListener('alpine:init', () => {
                 }
                 
                 const result = await response.json();
-                console.log('✅ Data received:', {
-                    beritaUtama: !!result.data?.beritaUtama,
-                    beritaTerkini: result.data?.beritaTerkini?.length || 0,
-                    beritaPopuler: result.data?.beritaPopuler?.length || 0
-                });
                 
                 if (result.success) {
                     this.$nextTick(() => {
@@ -80,12 +70,9 @@ document.addEventListener('alpine:init', () => {
                         this.beritaTerkini = Array.isArray(result.data.beritaTerkini) ? result.data.beritaTerkini : [];
                         this.beritaPopuler = Array.isArray(result.data.beritaPopuler) ? result.data.beritaPopuler : [];
                         this.kategoriCount = result.data.kategoriCount || {};
-                        
-                        console.log('✅ State updated successfully');
                     });
                 }
             } catch (error) {
-                console.error('❌ Error fetching beranda data:', error);
                 window.notyf?.error('Gagal memuat data berita');
             } finally {
                 setTimeout(() => {
@@ -138,11 +125,8 @@ document.addEventListener('alpine:init', () => {
 
         openModal(initialData) {
             if (!initialData?.id) {
-                console.error('❌ Invalid modal data:', initialData);
                 return;
             }
-            
-            console.log('🚀 Opening modal with ID:', initialData.id);
             
             this.show = true;
             document.body.classList.add('overflow-hidden');
@@ -175,7 +159,6 @@ document.addEventListener('alpine:init', () => {
                     return response.json();
                 })
                 .then(response => {
-                    console.log('✅ Modal data loaded');
                     
                     if (response.success && response.data) {
                         this.$nextTick(() => {
@@ -194,7 +177,6 @@ document.addEventListener('alpine:init', () => {
                     }
                 })
                 .catch(error => {
-                    console.error('❌ Modal fetch error:', error);
                     this.loading = false;
                     this.error = error.message;
                 });
@@ -207,12 +189,10 @@ document.addEventListener('alpine:init', () => {
         
         init() {
             if (this._initialized) {
-                console.log('⚠️ newsModal already initialized');
                 return;
             }
             
             this._initialized = true;
-            console.log('🚀 newsModal component initialized');
             
             this.$watch('show', (value) => {
                 if (!value) {
@@ -226,11 +206,105 @@ document.addEventListener('alpine:init', () => {
         }
     }));
     
+    Alpine.data('newsManager', () => ({
+        loading: false,
+        searchQuery: '',
+        currentPage: 1,
+        newsData: {
+            data: [],
+            current_page: 1,
+            last_page: 1,
+            from: 0,
+            to: 0,
+            total: 0
+        },
+        
+        init() {
+            this.fetchNews(); 
+
+            this.$watch('searchQuery', (newQuery) => {
+                this.currentPage = 1;
+                this.fetchNews();
+            });
+        },
+        
+        async fetchNews() {
+            this.loading = true;
+            
+            const searchParam = encodeURIComponent(this.searchQuery.trim());
+            
+            const url = `/admin/api/data-berita?page=${this.currentPage}&search=${searchParam}`;
+            
+            try {
+                const response = await fetch(url);
+                
+                if (!response.ok) {
+                    throw new Error(`HTTP ${response.status}: ${response.statusText}`);
+                }
+                
+                const result = await response.json();
+                
+                if (result.success && result.data) {
+                    this.$nextTick(() => {
+                        this.newsData = result.data;
+                    });
+                } else {
+                    this.newsData.data = [];
+                    this.newsData.total = 0;
+                }
+            } catch (error) {
+                window.notyf?.error('Gagal memuat data berita: ' + error.message);
+                this.newsData.data = []; 
+                this.newsData.total = 0;
+            } finally {
+                this.loading = false;
+            }
+        },
+        
+        changePage(page) {
+            if (page >= 1 && page <= this.newsData.last_page) {
+                this.currentPage = page;
+                this.fetchNews();
+            }
+        },
+
+        getCategoryColorClass(keterangan) {
+            if (!keterangan) return 'bg-gray-100 text-gray-800';
+            
+            const colorMap = {
+                'utama': 'bg-yellow-100 text-yellow-800',
+                'agenda': 'bg-blue-100 text-blue-800',
+                'publikasi': 'bg-green-100 text-green-800',
+                'berita': 'bg-red-100 text-red-800',
+                'kegiatan': 'bg-purple-100 text-purple-800',
+                'berita_populer': 'bg-indigo-100 text-indigo-800',
+            };
+            return colorMap[keterangan.toLowerCase()] || 'bg-gray-100 text-gray-800';
+        },
+
+        getCategoryLabel(keterangan) {
+            if (!keterangan) return 'Lainnya';
+            return keterangan.split('_').map(word => word.charAt(0).toUpperCase() + word.slice(1)).join(' ');
+        },
+        
+        truncateHtml(html, length) {
+            const strippedString = html.replace(/(<([^>]+)>)/ig, '');
+            
+            if (strippedString.length <= length) {
+                return strippedString;
+            }
+            return strippedString.substring(0, length) + '...';
+        },
+
+        assetUrl(path) {
+            return path && path.startsWith('storage/') ? `/${path}` : (path ? path : '/images/default.jpg');
+        }
+    }));
+    
 });
 
 Alpine.start()
 
-// Global Variables
 window.Swal = Swal;
 window.notyf = new Notyf({
     position: { x: 'right', y: 'bottom' },

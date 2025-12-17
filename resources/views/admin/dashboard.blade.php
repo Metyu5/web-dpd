@@ -15,7 +15,6 @@
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
     
     <style>
-        /* Menggunakan custom class untuk scrollbar di sidebar agar lebih halus */
         .sidebar-scroll::-webkit-scrollbar {
             width: 6px;
         }
@@ -140,7 +139,6 @@
             </header>
 
             <main id="page-content" class="flex-1 overflow-x-hidden overflow-y-auto p-4 sm:p-6 md:p-8">
-                {{-- KONTEN AWAL TELAH DIHAPUS. Konten akan dimuat oleh admin.js melalui AJAX/SPA --}}
             </main>
         </div>
     </div>
@@ -168,40 +166,32 @@
             const sidebarToggle = document.getElementById('sidebar-toggle');
             const closeSidebar = document.getElementById('close-sidebar');
 
-            // Fungsi untuk membuka sidebar (mobile)
             function openSidebar() {
                 sidebar.classList.remove('-translate-x-full');
                 overlay.classList.remove('hidden');
                 overlay.classList.add('opacity-100');
-                document.body.style.overflow = 'hidden'; // Mencegah scroll di body saat sidebar terbuka
+                document.body.style.overflow = 'hidden'; 
             }
 
-            // Fungsi untuk menutup sidebar (mobile)
             function closeSidebarFunc() {
                 sidebar.classList.add('-translate-x-full');
                 overlay.classList.add('hidden');
                 overlay.classList.remove('opacity-100');
-                document.body.style.overflow = 'auto'; // Mengaktifkan kembali scroll body
+                document.body.style.overflow = 'auto'; 
             }
 
-            // Event listener untuk tombol toggle (mobile)
             sidebarToggle.addEventListener('click', openSidebar);
-            // Event listener untuk tombol tutup di dalam sidebar
             closeSidebar.addEventListener('click', closeSidebarFunc);
-            // Event listener untuk overlay
             overlay.addEventListener('click', closeSidebarFunc);
 
-            // Handle SPA link click to close sidebar on mobile
             document.querySelectorAll('.spa-link').forEach(link => {
                 link.addEventListener('click', () => {
-                    // Check if it's a mobile view (or sidebar is currently overlaid)
-                    if (window.innerWidth < 768) { // md: breakpoint is 768px
+                    if (window.innerWidth < 768) { 
                         closeSidebarFunc();
                     }
                 });
             });
 
-            // Toggle Sidebar untuk Desktop (shrink/expand)
             const mainContent = document.getElementById('main-content');
             const desktopSidebarToggle = document.getElementById('sidebarToggle');
 
@@ -209,20 +199,13 @@
                 if (window.innerWidth >= 768) { // Hanya berlaku di desktop
                     sidebar.classList.toggle('w-64');
                     sidebar.classList.toggle('w-20');
-                    
-                    // Toggle visibility of text in sidebar
                     const sidebarTitle = sidebar.querySelector('.text-xl.font-semibold');
                     const sidebarLinks = sidebar.querySelectorAll('a span');
-                    
-                    // Simple example, for full effect, adjust layout dynamically (JS and CSS)
-                    // For this simple toggle, we focus on the sidebar width change.
                 }
             });
 
-            // Pastikan sidebar tertutup ketika resize dari desktop ke mobile
             window.addEventListener('resize', () => {
                 if (window.innerWidth >= 768) {
-                    // Pastikan overlay hilang jika beralih ke desktop
                     if (!overlay.classList.contains('hidden')) {
                         closeSidebarFunc();
                     }
@@ -230,7 +213,6 @@
             });
         });
         
-        // Modal Logout
         document.getElementById('logout-mobile').addEventListener('click', function() {
             document.getElementById('logout-modal').style.display = 'flex';
         });
@@ -241,7 +223,6 @@
         document.getElementById('cancel-logout').addEventListener('click', function() {
             document.getElementById('logout-modal').style.display = 'none';
         });
-        // Tambahkan logic untuk confirm-logout di file admin.js Anda
     </script>
 </body>
 

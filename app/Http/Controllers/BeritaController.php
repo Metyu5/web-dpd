@@ -67,6 +67,24 @@ public function getBerandaData()
     ]);
 }
 
+public function adminApiIndex(Request $request)
+{
+    $search = $request->get('search');
+    $query = Berita::orderBy('tanggal_pembuatan', 'desc');
+
+    if ($search) {
+        $query->where('judul_berita', 'like', '%' . $search . '%');
+    }
+
+    $berita = $query->paginate(5); 
+
+    return response()->json([
+        'success' => true,
+        'message' => 'Data berita berhasil dimuat.',
+        'data' => $berita
+    ]);
+}
+
 
    public function content(Request $request)
     {
@@ -78,7 +96,7 @@ public function getBerandaData()
 
         $berita = $query
             ->orderBy('tanggal_pembuatan', 'desc')
-            ->paginate(6); // Data berita tetap diambil
+            ->paginate(6); 
 
         return view('berita-content', compact('berita'));
     }

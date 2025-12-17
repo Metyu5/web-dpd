@@ -13,7 +13,7 @@
 <h2 class="text-2xl font-bold text-gray-800 mb-8">Manajemen Data Akun Admin</h2>
 
 <div class="bg-white p-6 rounded-2xl shadow-xl border border-gray-100">
-    
+
     <div class="flex flex-col md:flex-row justify-between md:items-center gap-4 mb-6 pb-4 border-b">
         <div>
             <h3 class="text-xl font-semibold text-gray-800">Daftar Akun Admin Aktif</h3>
@@ -43,11 +43,9 @@
         </div>
     </div>
 
-    {{-- AWAL TABEL CONTAINER --}}
     <div class="overflow-x-auto rounded-xl border border-gray-200">
         <table class="min-w-full divide-y divide-gray-200">
-            
-            {{-- HEADER TABEL (TETAP DI SINI) --}}
+
             <thead class="bg-gray-50">
                 <tr>
                     <th class="px-6 py-3 text-left text-xs font-normal text-gray-700 uppercase tracking-wider">No</th>
@@ -57,12 +55,10 @@
                     <th class="px-6 py-3 text-center text-xs font-normal text-gray-700 uppercase tracking-wider">Aksi</th>
                 </tr>
             </thead>
-            
-            {{-- BODY TABEL --}}
+
             <tbody class="bg-white divide-y divide-gray-100">
-                
+
                 @if($admins->isEmpty())
-                {{-- TAMPILKAN PESAN KOSONG DI DALAM TABEL --}}
                 <tr>
                     <td colspan="5" class="p-10 text-center">
                         <h3 class="text-xl font-normal text-red-600 mb-2">Data Admin Kosong</h3>
@@ -70,30 +66,24 @@
                     </td>
                 </tr>
                 @else
-                
-                {{-- LOOP DATA ADMIN --}}
+
                 @foreach($admins as $key => $admin)
                 <tr class="hover:bg-red-50/50 transition cursor-pointer">
-                    {{-- 1. NOMOR URUT DENGAN PAGINASI --}}
                     <td class="px-6 py-4 text-sm font-normal text-gray-900">
                         {{ $admins->firstItem() + $key }}
                     </td>
-                    {{-- 2. USERNAME --}}
                     <td class="px-6 py-4 text-sm font-normal text-gray-800 max-w-xs truncate">
                         {{ $admin->username }}
                     </td>
-                    {{-- 3. EMAIL --}}
                     <td class="px-6 py-4 text-sm font-normal text-gray-800 max-w-xs truncate">
                         {{ $admin->email }}
                     </td>
-                    {{-- 4. TANGGAL DIBUAT (created_at) --}}
                     <td class="px-6 py-4 text-sm font-normal text-gray-600 max-w-md">
                         {{ $admin->created_at->format('d M Y H:i') }}
                     </td>
-                    
-                    {{-- 5. AKSI --}}
+
                     <td class="px-6 py-4 text-sm flex justify-center gap-2">
-                        
+
                         <button class="btnEditAdmin p-2 bg-blue-100 text-blue-700 rounded-lg hover:bg-blue-200 transition"
                             data-id="{{ $admin->id }}">
                             <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -111,15 +101,12 @@
                     </td>
                 </tr>
                 @endforeach
-                
+
                 @endif
-                
+
             </tbody>
         </table>
     </div>
-    {{-- AKHIR TABEL CONTAINER --}}
-
-    {{-- Paginasi (Hanya tampil jika data tidak kosong) --}}
     @if($admins->isNotEmpty())
     <div class="flex justify-between items-center mt-6 px-2">
         <p class="text-sm text-gray-600">Menampilkan <span class="font-semibold">{{ $admins->firstItem() }}-{{ $admins->lastItem() }}</span> dari <span class="font-semibold">{{ $admins->total() }}</span> admin</p>
@@ -128,7 +115,6 @@
     @endif
 </div>
 
-{{-- MODAL --}}
 @include('admin.components.admin.tambah-admin-modal')
 @include('admin.components.admin.edit-admin-modal')
 @include('admin.components.admin.delete-admin-modal')

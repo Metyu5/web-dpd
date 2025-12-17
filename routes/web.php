@@ -20,12 +20,9 @@ Route::get('/profil-content/content', function () {
 Route::get('/berita-utama', function () {
     return view('welcome');
 })->name('berita.index');
-// Route::get('/berita-utama/content', function () {
-//     return view('berita-content');
-// })->name('berita.content');
 Route::get('/berita-utama/content', [BeritaController::class, 'content'])
     ->name('berita.content');
-Route::get('/berita/{id}', [BeritaController::class, 'getDetail']) 
+Route::get('/berita/{id}', [BeritaController::class, 'getDetail'])
     ->name('berita.getDetail');
 
 Route::get('/admin', function () {
@@ -45,6 +42,11 @@ Route::prefix('admin')->name('admin.')->group(function () {
 
     Route::get('/data-berita/content', [BeritaController::class, 'index'])
         ->name('berita.content');
+        Route::get('/api/data-berita', [BeritaController::class, 'adminApiIndex'])
+        ->name('api.berita.index');
+        
+    Route::get('/api/data-berita', [BeritaController::class, 'adminApiIndex'])
+        ->name('api.berita.index');
 
     Route::post('/data-berita', [BeritaController::class, 'store'])
         ->name('store-berita');
@@ -72,5 +74,4 @@ Route::prefix('admin')->name('admin.')->group(function () {
     Route::get('/manajemen-berita/content', function () {
         return view('admin.manajemen-berita-content');
     })->name('manajemen.content');
-    
 });

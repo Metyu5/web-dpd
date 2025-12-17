@@ -743,7 +743,6 @@ if (isBeranda) {
         link.addEventListener('click', function(e) {
             const href = this.getAttribute('href');
 
-            // Allow hash links
             if (!href || href.startsWith('#')) {
                 return;
             }

@@ -222,7 +222,6 @@
     </div>
 
     <script>
-    // Fungsi untuk mengubah tipe input password (show/hide)
     function togglePassword() {
         const passwordInput = document.getElementById('password');
         const toggleIcon = document.getElementById('toggleIcon');
@@ -238,7 +237,6 @@
         }
     }
 
-    // Fungsi untuk memuat ulang Captcha
     function refreshCaptcha() {
         const chars = 'ABCDEFGHJKLMNPQRSTUVWXYZ23456789';
         let captcha = '';
@@ -248,7 +246,6 @@
         
         const captchaElement = document.getElementById('captchaCode');
         
-        // Animasi muat ulang
         captchaElement.style.transition = 'transform 0.2s ease';
         captchaElement.style.transform = 'scale(0.8)';
         
@@ -258,29 +255,21 @@
         }, 200); 
     }
 
-    // Mengubah tampilan tombol saat submit
     document.querySelector('form').addEventListener('submit', function() {
         const submitBtn = this.querySelector('button[type="submit"]');
         submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin mr-2"></i>Memverifikasi...';
         submitBtn.disabled = true;
-        
-        // Opsional: Anda mungkin ingin memastikan Captcha di cek di sini sebelum benar-benar submit.
-        // Untuk demo, ini hanya menampilkan status loading.
     });
 
-    // Menghilangkan Loader Screen setelah halaman dimuat
     window.addEventListener("load", () => {
         const loader = document.getElementById("loader-screen");
-        // Berikan waktu sebentar sebelum menghilangkan loader
         setTimeout(() => {
             loader.style.opacity = "0";
-            // Setelah transisi opacity selesai, sembunyikan sepenuhnya
             setTimeout(() => {
                 loader.style.display = "none";
-            }, 300); // Sesuai durasi transisi opacity
-        }, 300); // Sedikit delay agar user melihat loader
+            }, 300); 
+        }, 300); 
         
-        // Inisialisasi Captcha saat halaman dimuat
         refreshCaptcha();
     });
     
