@@ -205,6 +205,81 @@ document.addEventListener('alpine:init', () => {
             });
         }
     }));
+
+    Alpine.data('adminManager', () => ({
+    loading: false,
+    searchQuery: '',
+    currentPage: 1,
+    adminData: {
+        data: [],
+        current_page: 1,
+        last_page: 1,
+        from: 0,
+        to: 0,
+        total: 0
+    },
+
+    init() {
+        this.fetchAdmins();
+
+        this.$watch('searchQuery', (newQuery) => {
+            this.currentPage = 1; 
+            this.fetchAdmins();
+        });
+    },
+    
+
+    async fetchAdmins() {
+        this.loading = true;
+        const searchParam = encodeURIComponent(this.searchQuery.trim());
+        
+        // Memanggil route yang sama dengan index tapi via AJAX
+        const url = `/admin/data-admin/content?page=${this.currentPage}&search=${searchParam}`;
+
+        try {
+            const response = await fetch(url, {
+                headers: {
+                    'X-Requested-With': 'XMLHttpRequest', // Penting agar Laravel mendeteksi AJAX
+                    'Accept': 'application/json'
+                }
+            });
+
+            if (!response.ok) throw new Error(`HTTP ${response.status}`);
+            
+            const result = await response.json();
+
+            if (result.success) {
+                this.adminData = result.data;
+            }
+        } catch (error) {
+            window.notyf?.error('Gagal memuat data admin');
+            console.error(error);
+        } finally {
+            this.loading = false;
+        }
+    },
+
+    
+
+    changePage(page) {
+        if (page >= 1 && page <= this.adminData.last_page) {
+            this.currentPage = page;
+            this.fetchAdmins();
+        }
+    },
+
+    formatDate(dateString) {
+        if (!dateString) return '-';
+        const date = new Date(dateString);
+        return date.toLocaleDateString('id-ID', {
+            day: '2-digit',
+            month: 'short',
+            year: 'numeric',
+            hour: '2-digit',
+            minute: '2-digit'
+        });
+    }
+}));
     
     Alpine.data('newsManager', () => ({
         loading: false,
@@ -302,6 +377,7 @@ document.addEventListener('alpine:init', () => {
     }));
     
 });
+
 
 Alpine.start()
 

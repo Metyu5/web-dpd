@@ -1,7 +1,7 @@
 <div class="bg-white p-4 sm:p-6 rounded-2xl shadow-xl border border-gray-100" 
      x-data="newsManager" 
      x-init="init()">
-    <div class="flex flex-col md:flex-row justify-between md:items-center gap-4 mb-6 pb-4 border-b">
+    <div class="flex flex-col md:flex-row justify-between md:items-center gap-4 mb-6 pb-4 ">
         <div>
             <h3 class="text-xl font-semibold text-gray-800">Manajemen Data Berita</h3>
             <p class="text-gray-500 text-sm mt-1">Kelola semua berita, agenda, publikasi dan konten populer.</p>
@@ -68,18 +68,18 @@
                                 </td>
                                 
                                 <td class="px-4 py-4 whitespace-nowrap">
-                                    <span class="px-3 py-1 text-xs font-medium rounded-full" 
+                                    <span class="px-3 py-1 text-xs font-normal rounded-full" 
                                         :class="getCategoryColorClass(item.keterangan)" 
                                         x-text="getCategoryLabel(item.keterangan)">
                                     </span>
                                 </td>
                                 
                                 <td class="px-4 py-4 text-sm flex justify-center items-center gap-2 whitespace-nowrap">
-                                    <button class="btnEdit p-2 bg-blue-100 text-blue-700 rounded-lg hover:bg-blue-200 transition duration-150"
+                                    <button class="btnEdit p-2 bg-blue-100 text-blue-500 rounded-lg hover:bg-blue-200 transition duration-150"
                                         :data-id="item.id_berita" title="Edit">
                                         <i class="fas fa-edit w-4 h-4"></i> </button>
 
-                                    <button class="btnDelete p-2 bg-red-100 text-red-700 rounded-lg hover:bg-red-200 transition duration-150"
+                                    <button class="btnDelete p-2 bg-red-100 text-red-500 rounded-lg hover:bg-red-200 transition duration-150"
                                         :data-id="item.id_berita" title="Hapus">
                                         <i class="fas fa-trash-alt w-4 h-4"></i> </button>
                                 </td>

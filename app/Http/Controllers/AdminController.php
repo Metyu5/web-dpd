@@ -26,16 +26,26 @@ class AdminController extends Controller
         session(['admin_id' => $admin->id]);
         return redirect()->route('admin.dashboard');
     }
-    
+
     public function index(Request $request)
     {
-        $query = Admin::query();
-        if ($request->filled('search')) {
-            $search = $request->search;
+        $search = $request->get('search');
+        $query = Admin::latest();
+
+        if ($search) {
             $query->where('username', 'like', '%' . $search . '%')
-                  ->orWhere('email', 'like', '%' . $search . '%');
+                ->orWhere('email', 'like', '%' . $search . '%');
         }
-        $admins = $query->latest()->paginate(5); 
+
+        $admins = $query->paginate(5);
+
+        if ($request->ajax() || $request->wantsJson()) {
+            return response()->json([
+                'success' => true,
+                'data' => $admins
+            ]);
+        }
+
         return view('admin.data-admin-content', compact('admins'));
     }
 
@@ -50,7 +60,7 @@ class AdminController extends Controller
         Admin::create([
             'username' => $request->username,
             'email'    => $request->email,
-            'password' => $request->password, 
+            'password' => $request->password,
         ]);
 
         return response()->json([
@@ -58,7 +68,7 @@ class AdminController extends Controller
             'message' => 'Admin berhasil ditambahkan!',
         ], 201);
     }
-    
+
     public function get($id)
     {
         $admin = Admin::find($id);
@@ -93,9 +103,9 @@ class AdminController extends Controller
         $admin->email = $request->email;
 
         if ($request->filled('password')) {
-            $admin->password = $request->password; 
+            $admin->password = $request->password;
         }
-        
+
         $admin->save();
 
         return response()->json([
@@ -103,11 +113,11 @@ class AdminController extends Controller
             'message' => 'Data Admin berhasil diperbarui!',
         ]);
     }
-    
+
     public function destroy($id)
     {
         $admin = Admin::findOrFail($id);
-        $admin->delete(); 
+        $admin->delete();
 
         return response()->json([
             'success' => true,
