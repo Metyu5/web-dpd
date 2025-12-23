@@ -8,7 +8,7 @@
     <title>Dashboard Admin DPD Gorontalo</title>
     @vite(['resources/css/app.css', 'resources/css/admin.css', 'resources/js/app.js', 'resources/js/admin.js'])
     <link rel="icon" href="{{ asset('DPD-RI.png') }}" type="image/png">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-ie6G9gH5X1b7i1E7A0nE8e3gR1/6aN9zO72f5P0g9S5zE2a4O3wD6eQ0eF3Q2o8F/QxR+K4Vf2eX/Kq8m8pQw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;600;700;800&display=swap" rel="stylesheet">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -196,7 +196,7 @@
             const desktopSidebarToggle = document.getElementById('sidebarToggle');
 
             desktopSidebarToggle.addEventListener('click', () => {
-                if (window.innerWidth >= 768) { // Hanya berlaku di desktop
+                if (window.innerWidth >= 768) { 
                     sidebar.classList.toggle('w-64');
                     sidebar.classList.toggle('w-20');
                     const sidebarTitle = sidebar.querySelector('.text-xl.font-semibold');

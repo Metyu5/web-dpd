@@ -2,18 +2,17 @@
 <html lang="id" class="h-full antialiased">
 <head>
     <meta charset="UTF-8">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login Admin - DPD RI Kota Gorontalo</title>
         @vite('resources/css/app.css', 'resources/js/app.js')
         <link rel="icon" href="{{ asset('DPD-RI.png') }}" type="image/png">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-ie6G9gH5X1b7i1E7A0nE8e3gR1/6aN9zO72f5P0g9S5zE2a4O3wD6eQ0eF3Q2o8F/QxR+K4Vf2eX/Kq8m8pQw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
     <style>
-        /* CSS Dasar untuk memastikan full height dan menghilangkan scrollbar yang tidak perlu */
         html, body {
             margin: 0;
             padding: 0;
             height: 100%;
-            /* Pastikan tidak ada scrollbar pada body */
             overflow: auto; 
         }
         
@@ -33,30 +32,22 @@
             animation: slideDown 0.5s ease-out;
         }
         
-        /* Pattern Background (dapat disesuaikan) */
         .bg-pattern {
-            /* Anda dapat mengganti ini dengan image pattern atau warna solid */
             background-color: #f8fafc;
-            /* Contoh pattern minimalis (bisa dihapus/diganti) */
-            /* background-image: radial-gradient(#d3d3d3 1px, transparent 1px), radial-gradient(#d3d3d3 1px, transparent 1px);
-            background-size: 40px 40px;
-            background-position: 0 0, 20px 20px; */
+    
         }
         
-        /* Focus Styling */
         .input-focus:focus {
-            border-color: #0284c7; /* sky-600 */
+            border-color: #0284c7; 
             box-shadow: 0 0 0 3px rgba(2, 132, 199, 0.1);
         }
        
-        /* Logo Shadow */
         .logo-shadow {
             filter: drop-shadow(0 4px 6px rgba(0, 0, 0, 0.1));
         }
 
-        /* Custom Hover Effect for Button */
         .btn-hover:hover {
-            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05); /* shadow-xl */
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05); 
         }
     </style>
         

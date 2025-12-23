@@ -1,65 +1,138 @@
-<section class="pb-12 max-w-4xl mx-auto">
-    <div class="flex items-center gap-3 mb-10 border-b pb-4">
-        <div class="w-1.5 h-10 bg-sky-600 rounded-full"></div>
-        <h3 class="text-3xl font-bold text-gray-800">Hubungi Kami</h3>
+<div class="mb-6">
+    <div class="flex items-center gap-3 mb-2">
+        <div class="w-1 h-7 bg-sky-600 rounded-full"></div>
+        <h1 class="text-2xl font-semibold text-gray-800">Hubungi Kami</h1>
     </div>
-
-    <p class="text-lg text-gray-600 mb-10">
-        Kami terbuka untuk aspirasi, pertanyaan, dan masukan dari masyarakat. Silakan hubungi kami melalui saluran komunikasi di bawah ini.
+    <p class="text-sm text-gray-600 ml-4">
+        Kami siap melayani Anda. Jangan ragu untuk menghubungi kami melalui kontak di bawah ini.
     </p>
+</div>
 
-    <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-        
-        <div class="bg-white p-6 rounded-xl shadow-lg border-t-4 border-sky-600">
-            <h4 class="text-2xl font-semibold text-gray-800 mb-3 flex items-center">
-                <svg class="w-6 h-6 mr-3 text-sky-600" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z" clip-rule="evenodd"></path></svg>
-                Kantor DPD
-            </h4>
-            <p class="text-gray-600 leading-relaxed">
-                Jl. Arif Rahman Hakim No.18, Wumialo, <br>
-                Kec. Kota Tengah, Kota Gorontalo, <br>
-                Gorontalo 96138
-            </p>
-            <a href="https://maps.app.goo.gl/YourMapLink" target="_blank" class="mt-4 inline-block text-sm font-semibold text-sky-600 hover:text-sky-800 transition">Lihat di Peta &rarr;</a>
+<div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+    <!-- Informasi Kontak -->
+    <div class="space-y-4">
+
+        <!-- Alamat -->
+        <div class="bg-white shadow-md rounded-xl p-5">
+            <div class="flex items-start gap-3">
+                <div class="bg-sky-100 p-3 rounded-lg">
+                    <svg class="w-5 h-5 text-sky-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                              d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/>
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                              d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/>
+                    </svg>
+                </div>
+                <div class="flex-1">
+                    <h3 class="text-base font-semibold text-gray-800 mb-1">Alamat Kantor</h3>
+                    <p class="text-sm text-gray-600 leading-relaxed">
+                        Jl. Arif Rahman Hakim No.18, Wumialo<br>
+                        Kota Gorontalo, 96138
+                    </p>
+                </div>
+            </div>
         </div>
 
-        <div class="bg-white p-6 rounded-xl shadow-lg border-t-4 border-sky-600">
-            <h4 class="text-2xl font-semibold text-gray-800 mb-3 flex items-center">
-                <svg class="w-6 h-6 mr-3 text-sky-600" fill="currentColor" viewBox="0 0 20 20"><path d="M2 3a1 1 0 011-1h2.153a1 1 0 01.986.836l.74 4.435a1 1 0 01-.54 1.06l-1.548.773a11.037 11.037 0 006.105 6.105l.772-1.548a1 1 0 011.06-.54l4.435.74A1 1 0 0118 16.847V17a1 1 0 01-1 1h-2C7.29 18 3 13.71 3 8V5a1 1 0 011-1h1a1 1 0 001-1z"></path></svg>
-                Media Komunikasi
-            </h4>
-            
-            <p class="text-gray-700 font-medium mt-4">Telepon / WhatsApp:</p>
-            <a href="tel:085256748481" class="text-lg text-sky-600 hover:text-sky-800 transition">085256748481</a>
-            
-            <p class="text-gray-700 font-medium mt-4">Email Resmi:</p>
-            <a href="mailto:unknowndeveloper@gmail.com" class="text-lg text-sky-600 hover:text-sky-800 transition break-words">unknowndeveloper@gmail.com</a>
+        <!-- Telepon -->
+        <div class="bg-white shadow-md rounded-xl p-5">
+            <div class="flex items-start gap-3">
+                <div class="bg-sky-100 p-3 rounded-lg">
+                    <svg class="w-5 h-5 text-sky-600" fill="currentColor" viewBox="0 0 20 20">
+                        <path d="M2 3a1 1 0 011-1h2.153a1 1 0 01.986.836l.74 4.435a1 1 0 01-.54 1.06l-1.548.773a11.037 11.037 0 006.105 6.105l.774-1.548a1 1 0 011.059-.54l4.435.74a1 1 0 01.836.986V17a1 1 0 01-1 1h-2C7.82 18 2 12.18 2 5V3z"/>
+                    </svg>
+                </div>
+                <div class="flex-1">
+                    <h3 class="text-base font-semibold text-gray-800 mb-1">Telepon</h3>
+                    <a href="tel:085256748481" class="text-sm text-gray-600 hover:text-sky-600 transition">
+                        0852-5674-8481
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Email -->
+        <div class="bg-white shadow-md rounded-xl p-5">
+            <div class="flex items-start gap-3">
+                <div class="bg-sky-100 p-3 rounded-lg">
+                    <svg class="w-5 h-5 text-sky-600" fill="currentColor" viewBox="0 0 20 20">
+                        <path d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z"/>
+                        <path d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z"/>
+                    </svg>
+                </div>
+                <div class="flex-1">
+                    <h3 class="text-base font-semibold text-gray-800 mb-1">Email</h3>
+                    <a href="mailto:info@dpd.go.id" class="text-sm text-gray-600 hover:text-sky-600 transition">
+                        info@dpd.go.id
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Media Sosial -->
+        <div class="bg-white shadow-md rounded-xl p-5">
+            <h3 class="text-base font-semibold text-gray-800 mb-3">Media Sosial</h3>
+            <div class="flex gap-2">
+                <a href="#" class="w-10 h-10 bg-sky-600 rounded-lg flex items-center justify-center hover:bg-blue-700 transition">
+                            <svg class="w-5 h-5 text-white" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
+                            </svg>
+                        </a>
+                        <a href="#" class="w-10 h-10 bg-sky-600 rounded-lg flex items-center justify-center hover:bg-blue-400 transition">
+                            <svg class="w-5 h-5 text-white" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M23.953 4.57a10 10 0 01-2.825.775 4.958 4.958 0 002.163-2.723c-.951.555-2.005.959-3.127 1.184a4.92 4.92 0 00-8.384 4.482C7.69 8.095 4.067 6.13 1.64 3.162a4.822 4.822 0 00-.666 2.475c0 1.71.87 3.213 2.188 4.096a4.904 4.904 0 01-2.228-.616v.06a4.923 4.923 0 003.946 4.827 4.996 4.996 0 01-2.212.085 4.936 4.936 0 004.604 3.417 9.867 9.867 0 01-6.102 2.105c-.39 0-.779-.023-1.17-.067a13.995 13.995 0 007.557 2.209c9.053 0 13.998-7.496 13.998-13.985 0-.21 0-.42-.015-.63A9.935 9.935 0 0024 4.59z"/>
+                            </svg>
+                        </a>
+                        <a href="https://www.instagram.com/dpdrigorontalo26" target="_blank" class="w-10 h-10 bg-sky-600 rounded-lg flex items-center justify-center hover:bg-red-700 transition">
+                            <svg class="w-5 h-5 text-white" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+                            </svg>
+                        </a>
+                        <a href="#" class="w-10 h-10 bg-sky-600 rounded-lg flex items-center justify-center hover:bg-red-700 transition">
+                            <svg class="w-5 h-5 text-white" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
+                            </svg>
+                        </a>
+                
+            </div>
         </div>
     </div>
-    
-    <div class="mt-12">
-        <h4 class="text-2xl font-semibold text-gray-800 mb-6">Kirim Pesan Langsung</h4>
-        <div class="bg-gray-50 p-8 rounded-xl shadow-inner">
-            <p class="text-sm text-gray-500 italic">
-                *Karena ini hanya tampilan statis, formulir di bawah ini belum terintegrasi dengan backend.
-            </p>
-            <form class="mt-4 space-y-4">
-                <div>
-                    <label for="nama" class="block text-sm font-medium text-gray-700">Nama Lengkap</label>
-                    <input type="text" id="nama" class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm p-3 focus:ring-sky-500 focus:border-sky-500">
-                </div>
-                <div>
-                    <label for="email" class="block text-sm font-medium text-gray-700">Email</label>
-                    <input type="email" id="email" class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm p-3 focus:ring-sky-500 focus:border-sky-500">
-                </div>
-                <div>
-                    <label for="pesan" class="block text-sm font-medium text-gray-700">Pesan / Aspirasi</label>
-                    <textarea id="pesan" rows="4" class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm p-3 focus:ring-sky-500 focus:border-sky-500"></textarea>
-                </div>
-                <button type="submit" class="w-full py-3 px-4 border border-transparent rounded-md shadow-sm text-base font-medium text-white bg-sky-600 hover:bg-sky-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-sky-500">
-                    Kirim Pesan
-                </button>
-            </form>
-        </div>
+
+    <!-- Form Kontak -->
+    <div class="bg-white shadow-md rounded-xl p-6">
+        <h2 class="text-lg font-semibold text-gray-800 mb-4">Kirim Pesan</h2>
+        <form class="space-y-4">
+            <input type="text" placeholder="Nama Lengkap"
+                   class="w-full border border-gray-300 rounded-md px-3 py-2 text-sm focus:ring-2 focus:ring-sky-500">
+
+            <input type="email" placeholder="Email"
+                   class="w-full border border-gray-300 rounded-md px-3 py-2 text-sm focus:ring-2 focus:ring-sky-500">
+
+            <input type="tel" placeholder="Nomor Telepon"
+                   class="w-full border border-gray-300 rounded-md px-3 py-2 text-sm focus:ring-2 focus:ring-sky-500">
+
+            <textarea rows="4" placeholder="Pesan"
+                      class="w-full border border-gray-300 rounded-md px-3 py-2 text-sm focus:ring-2 focus:ring-sky-500 resize-none"></textarea>
+
+            <button type="submit"
+                    class="w-full bg-sky-600 text-white py-2.5 rounded-md text-sm font-semibold hover:bg-sky-700 transition">
+                Kirim Pesan
+            </button>
+        </form>
     </div>
-</section>
+</div>
+
+<!-- Map -->
+<div class="mt-12 bg-white shadow-xl rounded-2xl p-8">
+    <h2 class="text-2xl font-bold text-gray-800 mb-6">Lokasi Kantor</h2>
+    <div class="rounded-xl overflow-hidden h-96">
+        <iframe 
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3989.6579776824!2d123.06048807475834!3d0.5449000638956248!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x32792163c2c3e8f5%3A0x3e3e3e3e3e3e3e3e!2sJl.%20Arif%20Rahman%20Hakim%20No.18%2C%20Wumialo%2C%20Kec.%20Kota%20Tengah%2C%20Kota%20Gorontalo%2C%20Gorontalo!5e0!3m2!1sid!2sid!4v1234567890123!5m2!1sid!2sid" 
+            width="100%" 
+            height="100%" 
+            style="border:0;" 
+            allowfullscreen="" 
+            loading="lazy" 
+            referrerpolicy="no-referrer-when-downgrade">
+        </iframe>
+    </div>
+</div>

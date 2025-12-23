@@ -84,35 +84,37 @@ class AdminController extends Controller
         ]);
     }
 
-    public function update(Request $request, $id)
-    {
-        $admin = Admin::findOrFail($id);
+    // Bagian update di AdminController.php
+public function update(Request $request, $id)
+{
+    $admin = Admin::findOrFail($id);
 
-        $rules = [
-            'username' => ['required', 'string', 'max:255', Rule::unique('admins')->ignore($admin->id)],
-            'email'    => ['required', 'string', 'email', 'max:255', Rule::unique('admins')->ignore($admin->id)],
-        ];
+    $rules = [
+        'username' => ['required', 'string', 'max:255', Rule::unique('admins')->ignore($admin->id)],
+        'email'    => ['required', 'string', 'email', 'max:255', Rule::unique('admins')->ignore($admin->id)],
+    ];
 
-        if ($request->filled('password')) {
-            $rules['password'] = ['nullable', 'string', 'min:8', 'confirmed'];
-        }
-
-        $request->validate($rules);
-
-        $admin->username = $request->username;
-        $admin->email = $request->email;
-
-        if ($request->filled('password')) {
-            $admin->password = $request->password;
-        }
-
-        $admin->save();
-
-        return response()->json([
-            'success' => true,
-            'message' => 'Data Admin berhasil diperbarui!',
-        ]);
+    if ($request->filled('password')) {
+        $rules['password'] = ['required', 'string', 'min:8', 'confirmed'];
     }
+
+    $request->validate($rules);
+
+    $admin->username = $request->username;
+    $admin->email = $request->email;
+
+    if ($request->filled('password')) {
+        // Pastikan di-hash sebelum disimpan
+        $admin->password = Hash::make($request->password);
+    }
+
+    $admin->save();
+
+    return response()->json([
+        'success' => true,
+        'message' => 'Data Admin berhasil diperbarui!',
+    ]);
+}
 
     public function destroy($id)
     {

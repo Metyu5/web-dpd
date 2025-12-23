@@ -282,7 +282,7 @@ document.addEventListener('alpine:init', () => {
 }));
     
     Alpine.data('newsManager', () => ({
-        loading: false,
+        loading: true,
         searchQuery: '',
         currentPage: 1,
         newsData: {
@@ -302,6 +302,8 @@ document.addEventListener('alpine:init', () => {
                 this.fetchNews();
             });
         },
+
+        
         
         async fetchNews() {
             this.loading = true;

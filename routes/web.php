@@ -13,6 +13,15 @@ Route::get('/api/beranda-data', [BeritaController::class, 'getBerandaData'])
 Route::get('/profil-content', function () {
     return view('welcome');
 })->name('profil.index');
+
+Route::get('/kontak-content', function () {
+    return view('kontak-content');
+})->name('kontak.index');
+
+Route::get('/visi-misi-content', function () {
+    return view('visi-misi-content');
+})->name('visi-misi.index');
+
 Route::get('/profil-content/content', function () {
     return view('profil-content');
 })->name('profil.content');
@@ -20,6 +29,7 @@ Route::get('/profil-content/content', function () {
 Route::get('/berita-utama', function () {
     return view('welcome');
 })->name('berita.index');
+
 Route::get('/berita-utama/content', [BeritaController::class, 'content'])
     ->name('berita.content');
 Route::get('/berita/{id}', [BeritaController::class, 'getDetail'])

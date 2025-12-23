@@ -99,7 +99,8 @@
                     <a href="/" id="beranda-link" class="hover:text-sky-600 transition border-b-2 border-sky-600 pb-1 menu-link">Beranda</a>
                    <a href="/berita-utama" id="berita-link" class="hover:text-sky-600 transition menu-link">Berita</a>
                     <a href="/profil-content" id="profil-link" class="hover:text-sky-600 transition menu-link">Profil</a>
-                    <!-- <a href="/kontak-content" class="hover:text-sky-600 transition">Kontak</a> -->
+                    <a href="/kontak-content" id="kontak-link" class="hover:text-sky-600 transition menu-link">Kontak</a>
+                    <a href="/visi-misi-content" id="visi-misi-link" class="hover:text-sky-600 transition menu-link">Visi Misi</a>
                 </nav>
                 <button class="lg:hidden text-gray-700">
                     <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">

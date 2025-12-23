@@ -15,13 +15,13 @@
 
                 <div>
                     <label class="block text-sm font-medium mb-1">Username</label>
-                    <input type="text" name="username" id="edit_admin_username" required
+                    <input type="text" name="username" id="edit_admin_username" required autocomplete="username"
                         class="w-full px-4 py-2 text-sm rounded border border-gray-300 focus:border-green-600 focus:ring-1 focus:ring-green-600 outline-none">
                 </div>
 
                 <div>
                     <label class="block text-sm font-medium mb-1">Email</label>
-                    <input type="email" name="email" id="edit_admin_email" required
+                    <input type="email" name="email" id="edit_admin_email" required autocomplete="email"
                         class="w-full px-4 py-2 text-sm rounded border border-gray-300 focus:border-green-600 focus:ring-1 focus:ring-green-600 outline-none">
                 </div>
 
@@ -30,12 +30,12 @@
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
                     <div>
                         <label class="block text-sm font-medium mb-1">Password Baru</label>
-                        <input type="password" name="password" 
+                        <input type="password" name="password"  autocomplete="new-password"
                             class="w-full px-4 py-2 text-sm rounded border border-gray-300 focus:border-green-600 focus:ring-1 focus:ring-green-600 outline-none">
                     </div>
                     <div>
                         <label class="block text-sm font-medium mb-1">Konfirmasi Password Baru</label>
-                        <input type="password" name="password_confirmation" 
+                        <input type="password" name="password_confirmation"  autocomplete="new-password"
                             class="w-full px-4 py-2 text-sm rounded border border-gray-300 focus:border-green-600 focus:ring-1 focus:ring-green-600 outline-none">
                     </div>
                 </div>

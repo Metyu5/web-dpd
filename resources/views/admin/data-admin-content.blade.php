@@ -119,4 +119,3 @@
 
 @include('admin.components.admin.tambah-admin-modal')
 @include('admin.components.admin.edit-admin-modal')
-@include('admin.components.admin.delete-admin-modal')

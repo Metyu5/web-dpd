@@ -672,6 +672,71 @@ document.addEventListener("DOMContentLoaded", () => {
 
     });
 
+document.addEventListener('click', function (e) {
+    const deleteBtn = e.target.closest('.btnDeleteAdmin');
+    
+    if (deleteBtn) {
+        e.preventDefault();
+        const adminId = deleteBtn.getAttribute('data-id');
+        const username = deleteBtn.closest('tr').querySelector('td:nth-child(2)').textContent.trim();
+
+       Swal.fire({
+    title: 'Apakah Anda yakin?',
+    text: `Data admin "${username}" akan dihapus permanen!`,
+    icon: 'warning',
+    showCancelButton: true,
+    confirmButtonColor: '#ef4444',
+    cancelButtonColor: '#6b7280',
+    confirmButtonText: 'Ya, Hapus!',
+    cancelButtonText: 'Batal',
+    reverseButtons: true,
+    
+    showLoaderOnConfirm: true, 
+    preConfirm: () => {
+        const csrfToken = document.querySelector('meta[name="csrf-token"]').content;
+        
+        return fetch(`/admin/admin/delete/${adminId}`, {
+            method: 'POST',
+            headers: {
+                'X-CSRF-TOKEN': csrfToken,
+                'X-Requested-With': 'XMLHttpRequest',
+                'Content-Type': 'application/x-www-form-urlencoded',
+            },
+            body: '_method=DELETE'
+        })
+        .then(response => {
+            if (!response.ok) {
+                throw new Error(response.statusText)
+            }
+            return response.json()
+        })
+        .catch(error => {
+            Swal.showValidationMessage(`Request failed: ${error}`);
+        });
+    },
+    
+    allowOutsideClick: () => !Swal.isLoading() 
+}).then((result) => {
+    if (result.isConfirmed && result.value.success) {
+        Swal.fire({
+            icon: 'success',
+            title: 'Berhasil!',
+            text: 'Data admin telah dihapus.',
+            showConfirmButton: false,
+            timer: 1500
+        });
+        
+        const activeLink = document.querySelector(".spa-link.bg-red-700");
+        if (activeLink) {
+            const contentUrl = activeLink.getAttribute("data-url");
+            const pageUrl = activeLink.href;
+            loadContent(contentUrl, pageUrl, activeLink);
+        }
+    }
+});
+    }
+});
+
 
     function initEditModalCloser() {
         const close1 = document.getElementById("closeEditModal");
