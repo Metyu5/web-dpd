@@ -8,11 +8,11 @@
             </h3>
         </div>
 
-        <p class="text-lg text-gray-600 mb-10 max-w-4xl">
+        <p class="text-lg text-gray-600 mb-10 max-w-4xl animate__animated animate__fadeIn">
             Kumpulan berita terbaru dan kegiatan yang dilakukan oleh Dewan Perwakilan Daerah (DPD) Republik Indonesia dari Daerah Pemilihan Provinsi Gorontalo.
         </p>
 
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 animate__animated animate__fadeInUp">
 
             @foreach ($berita as $item)
             <div

@@ -120,18 +120,18 @@
         <div class="absolute bottom-0 left-0 w-96 h-96 bg-cyan-600 rounded-full filter blur-3xl opacity-20"></div>
         <div class="relative max-w-7xl mx-auto px-4 py-24 md:py-32">
             <div class="flex items-center gap-3 mb-6">
-                <div class="w-1 h-16 bg-white"></div>
-                <div class="text-white">
-                    <h2 class="text-4xl md:text-5xl font-bold mb-2 leading-tight">
+                <div class="w-1 h-16 bg-white animate__animated animate__backInLeft"></div>
+                <div class="text-white animate__animated animate__backInLeft">
+                    <h2 class="text-4xl md:text-5xl font-bold mb-2 leading-tight ">
                         Portal Berita Resmi<br/>DPD Provinsi Gorontalo
                     </h2>
                 </div>
             </div>
-            <p class="text-lg md:text-xl text-blue-100 max-w-2xl mb-8 ml-4">
+            <p class="text-lg md:text-xl text-blue-100 max-w-2xl mb-8 ml-4 animate__animated animate__backInLeft">
                 Informasi terkini seputar kegiatan, kebijakan, dan layanan publik dari Dewan Perwakilan Daerah
             </p>
             <div class="flex gap-4 ml-4">
-                <a href="/berita-utama" class="bg-white text-sky-600 px-6 py-3 rounded-lg font-semibold hover:bg-blue-50 transition shadow-lg">
+                <a href="/berita-utama" class="bg-white text-sky-600 px-6 py-3 rounded-lg font-semibold hover:bg-blue-50 transition shadow-lg animate__animated animate__fadeIn">
                     Baca Berita
                 </a>
                 <!-- <a href="#" class="border-2 border-white text-white px-6 py-3 rounded-lg font-semibold hover:bg-white hover:text-sky-600 transition">

@@ -4,11 +4,11 @@
         <h3 class="text-3xl font-bold text-gray-800">Profil Anggota DPD RI Dapil Gorontalo</h3>
     </div>
 
-    <p class="text-lg text-gray-600 mb-10 max-w-4xl">
+    <p class="text-lg text-gray-600 mb-10 max-w-4xl animate__animated animate__fadeIn">
         Dewan Perwakilan Daerah (DPD) Republik Indonesia dari Daerah Pemilihan Provinsi Gorontalo memiliki peran penting dalam memperjuangkan aspirasi daerah. Berikut adalah profil empat Senator yang terpilih untuk periode 2024-2029.
     </p>
 
-    <div class="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+    <div class="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4 gap-8 animate__animated animate__fadeInUp">
         
         <div class="text-center group p-4 rounded-lg transition duration-300 hover:bg-gray-100/50">
             <div class="relative inline-block transform transition duration-500 group-hover:scale-[1.05]">
